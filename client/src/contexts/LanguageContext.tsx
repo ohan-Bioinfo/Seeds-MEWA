@@ -72,8 +72,9 @@ const translations: Record<Language, Record<string, string>> = {
     'header.subtitle': 'Ministry of Environment, Water & Agriculture',
 
     // Home Page
-    'home.hero.title': "Explore Saudi Arabia's Seed Genetic Resources",
-    'home.hero.description': 'Discover passport data for 8 crops (wheat, coffee, barley, millet, sorghum, sesame, faba bean, mango) across nine Saudi regions. Filter by crop type, region, and accession details to support breeding and agricultural research.',
+    'home.hero.title': 'MEWA Seed & Seedlings Data Center',
+    'home.hero.description': 'Passport data for 8 crops across nine Saudi regions. Filter by crop, region, and accession details.',
+    'home.hero.subtitle': 'Ministry of Environment, Water & Agriculture',
     'home.stats.total': 'Total Samples',
     'home.stats.totalDesc': 'Across all regions',
     'home.stats.wheat': 'Wheat Accessions',
@@ -97,7 +98,7 @@ const translations: Record<Language, Record<string, string>> = {
     'home.label.showingSaudi': 'Showing {n} Saudi accessions',
     'home.label.clickRegion': 'Click a region marker to highlight it. Click crop tiles above to filter.',
     'home.label.domCropColor': '(Marker color = dominant crop in region)',
-    'home.label.passportSummary': 'Passport Summary',
+    'home.label.passportSummary': 'Passport Data Summary',
     'home.label.clickToExplore': 'Click a region on the map or a crop tile to explore',
     'home.label.totalAccessions': 'Total accessions',
     'home.label.saudiCount': 'Saudi',
@@ -191,8 +192,8 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.country': 'Kingdom of Saudi Arabia',
     'footer.quickLinks': 'Quick Links',
     'footer.contact': 'Contact',
-    'footer.email': 'Email: info@mewa.gov.sa',
-    'footer.phone': 'Phone: +966 11 XXX XXXX',
+    'footer.email': 'Email: nalsofuani@mewa.gov.sa',
+    'footer.phone': 'Phone: +966 50 018 3515',
     'footer.contactForm': 'Contact Form',
     'footer.rights': '© 2026 Ministry of Environment, Water & Agriculture. All rights reserved.',
 
@@ -261,8 +262,9 @@ const translations: Record<Language, Record<string, string>> = {
     'header.subtitle': 'وزارة البيئة والمياه والزراعة',
 
     // Home Page
-    'home.hero.title': 'استكشف الموارد الوراثية للبذور في المملكة العربية السعودية',
-    'home.hero.description': 'اكتشف بيانات جواز السفر لـ 8 محاصيل (قمح، بن، شعير، دخن، ذرة رفيعة، سمسم، فول، مانجو) عبر تسع مناطق سعودية. قم بالتصفية حسب نوع المحصول والمنطقة وتفاصيل الانضمام لدعم أبحاث التربية والزراعة.',
+    'home.hero.title': 'مركز بيانات البذور والتقاوي - وزارة الزراعة',
+    'home.hero.description': 'بيانات الجواز لـ 8 محاصيل (قمح، بن، شعير، دخن، ذرة رفيعة، سمسم، فول، مانجو) عبر تسع مناطق سعودية.',
+    'home.hero.subtitle': 'وزارة البيئة والمياه والزراعة',
     'home.stats.total': 'إجمالي العينات',
     'home.stats.totalDesc': 'عبر جميع المناطق',
     'home.stats.wheat': 'انضمامات القمح',
@@ -276,7 +278,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Home badges & labels
     'home.badge.totalAccessions': 'إجمالي الاعتمادات',
-    'home.badge.cropsWithData': 'محاصيل بيانات جواز السفر',
+    'home.badge.cropsWithData': 'محاصيل بيانات الجواز',
     'home.badge.saudiRegions': 'منطقة سعودية',
     'home.label.accessions': 'اعتماد',
     'home.label.activeRegions': 'مناطق نشطة',
@@ -286,11 +288,11 @@ const translations: Record<Language, Record<string, string>> = {
     'home.label.showingSaudi': 'عرض {n} اعتماد سعودي',
     'home.label.clickRegion': 'انقر على علامة منطقة لتمييزها. انقر على بلاطات المحاصيل للتصفية.',
     'home.label.domCropColor': '(لون العلامة = المحصول السائد في المنطقة)',
-    'home.label.passportSummary': 'ملخص جواز السفر',
+    'home.label.passportSummary': 'ملخص بيانات الجواز',
     'home.label.clickToExplore': 'انقر على منطقة في الخريطة أو بلاطة محصول للاستكشاف',
     'home.label.totalAccessions': 'إجمالي الاعتمادات',
     'home.label.saudiCount': 'سعودي',
-    'home.label.noteMappedRegions': 'اعتمادات سعودية من هذه المنطقة ببيانات جواز السفر. الاعتمادات الدولية (CIMMYT، ICARDA، إلخ) غير مُعروضة جغرافياً.',
+    'home.label.noteMappedRegions': 'اعتمادات سعودية من هذه المنطقة ببيانات الجواز. الاعتمادات الدولية (CIMMYT، ICARDA، إلخ) غير مُعروضة جغرافياً.',
     'home.label.regionBreakdown': 'توزيع المناطق',
 
     // Data Catalog
@@ -380,8 +382,8 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.country': 'المملكة العربية السعودية',
     'footer.quickLinks': 'روابط سريعة',
     'footer.contact': 'اتصل بنا',
-    'footer.email': 'البريد الإلكتروني: info@mewa.gov.sa',
-    'footer.phone': 'الهاتف: +966 11 XXX XXXX',
+    'footer.email': 'البريد الإلكتروني: nalsofuani@mewa.gov.sa',
+    'footer.phone': 'الهاتف: +966 50 018 3515',
     'footer.contactForm': 'نموذج الاتصال',
     'footer.rights': '© 2026 وزارة البيئة والمياه والزراعة. جميع الحقوق محفوظة.',
 

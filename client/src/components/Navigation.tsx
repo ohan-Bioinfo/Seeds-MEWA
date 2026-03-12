@@ -85,21 +85,9 @@ export default function Navigation() {
             })}
           </div>
 
-          {/* Language Switcher + user badge — desktop */}
-          <div
-            className={`hidden xl:flex items-center gap-3 shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}
-          >
+          {/* Language Switcher — desktop */}
+          <div className={`hidden xl:flex items-center shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
             <LanguageSwitcher />
-            <div
-              className={`flex items-center gap-2 px-3 py-1.5 bg-secondary rounded-full text-sm ${isRTL ? "flex-row-reverse" : ""}`}
-            >
-              <div className="h-7 w-7 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-bold">
-                {isRTL ? "ع" : "U"}
-              </div>
-              <span className="text-foreground font-medium">
-                {t("nav.publicAccess")}
-              </span>
-            </div>
           </div>
 
           {/* Mobile / tablet: Language switcher + hamburger */}
@@ -144,18 +132,6 @@ export default function Navigation() {
                   </Link>
                 );
               })}
-            </div>
-            <div
-              className={`mt-3 pt-3 border-t border-border flex items-center justify-between px-2 ${isRTL ? "flex-row-reverse" : ""}`}
-            >
-              <div
-                className={`flex items-center gap-2 text-sm text-muted-foreground ${isRTL ? "flex-row-reverse" : ""}`}
-              >
-                <div className="h-7 w-7 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-bold">
-                  {isRTL ? "ع" : "U"}
-                </div>
-                <span>{t("nav.publicAccess")}</span>
-              </div>
             </div>
           </div>
         )}

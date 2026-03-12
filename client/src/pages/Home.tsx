@@ -89,10 +89,13 @@ export default function Home() {
         <div className="absolute inset-0 topographic-pattern opacity-30" />
         <div className="container relative py-10 md:py-14">
           {/* SEO: single h1 per page */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary mb-3 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary mb-1 leading-tight">
             {t("home.hero.title")}
           </h1>
-          <p className="text-base sm:text-lg text-foreground/80 max-w-2xl">
+          <p className="text-base sm:text-lg font-medium text-primary/70 mb-3">
+            {t("home.hero.subtitle")}
+          </p>
+          <p className="text-sm sm:text-base text-foreground/75 max-w-2xl">
             {t("home.hero.description")}
           </p>
           {/* Summary badges */}
