@@ -17,8 +17,6 @@ import {
   FileCode2,
   Layers,
   FlaskConical,
-  Search,
-  FileText,
 } from "lucide-react";
 import {
   BarChart,
@@ -209,12 +207,11 @@ export default function GenomicsHub() {
 
         {/* ── Tabs ── */}
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="grid w-full grid-cols-5 mb-8">
+          <TabsList className="grid w-full grid-cols-4 mb-8">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="gbs">GBS Data</TabsTrigger>
             <TabsTrigger value="wgs">WGS Data</TabsTrigger>
             <TabsTrigger value="files">File Types</TabsTrigger>
-            <TabsTrigger value="tools">Analysis Tools</TabsTrigger>
           </TabsList>
 
           {/* ── Overview Tab ── */}
@@ -524,79 +521,6 @@ export default function GenomicsHub() {
             </Card>
           </TabsContent>
 
-          {/* ── Analysis Tools Tab ── */}
-          <TabsContent value="tools" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: BarChart3,
-                  title: "Diversity Analysis",
-                  desc: "Calculate genetic diversity indices and population structure",
-                  items: [
-                    "PCA and PCoA analysis",
-                    "STRUCTURE population analysis",
-                    "Genetic distance matrices",
-                    "Heterozygosity calculations",
-                  ],
-                  action: "Launch Tool",
-                },
-                {
-                  icon: Search,
-                  title: "BLAST Search",
-                  desc: "Search sequence similarity against MEWA germplasm database",
-                  items: [
-                    "BLASTN for nucleotide sequences",
-                    "BLASTP for protein sequences",
-                    "BLASTX for translated searches",
-                    "Custom database selection",
-                  ],
-                  action: "Launch BLAST",
-                },
-                {
-                  icon: FileText,
-                  title: "Genome Browser",
-                  desc: "Visualize genomic features and GFF annotations",
-                  items: [
-                    "Interactive genome visualization",
-                    `13,257 GFF annotation files`,
-                    "SNP and marker positions",
-                    "Custom track upload",
-                  ],
-                  action: "Open Browser",
-                },
-                {
-                  icon: Dna,
-                  title: "GWAS & Population Genetics",
-                  desc: "Use PLINK datasets for genome-wide association studies",
-                  items: [
-                    `413 PLINK BED datasets`,
-                    "Wheat GBS panel (~2,912 samples)",
-                    "Multi-crop SNP calling (VCF)",
-                    "Linkage disequilibrium analysis",
-                  ],
-                  action: "Launch GWAS",
-                },
-              ].map(({ icon: Icon, title, desc, items, action }) => (
-                <Card key={title} className="border-primary/20">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-base">
-                      <Icon className="h-5 w-5 text-primary" />
-                      {title}
-                    </CardTitle>
-                    <CardDescription>{desc}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground mb-4">
-                      {items.map(item => (
-                        <li key={item}>• {item}</li>
-                      ))}
-                    </ul>
-                    <Button className="w-full mewa-gradient text-white">{action}</Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
         </Tabs>
       </div>
     </PageLayout>

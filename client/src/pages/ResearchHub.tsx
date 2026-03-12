@@ -1,520 +1,492 @@
+/**
+ * Research Hub — Saudi Arabia Crop Genomics & Genetics Literature
+ * Studies sourced from: answer_ceb8d085.markdown (2009–2025)
+ * 22 comprehensive studies across date palm, wheat, vegetables, food security
+ */
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen, Users, FileText, Microscope, TrendingUp, ExternalLink } from "lucide-react";
+import { BookOpen, Users, FileText, ExternalLink, Dna, Sprout, Shield } from "lucide-react";
+
+// ── Data from answer_ceb8d085.markdown ───────────────────────────────────────
+
+const DIRECT_SAUDI_STUDIES = [
+  {
+    code: "SAU-CROP-001",
+    title: "Shaping the future of date palm through new genetic improvement strategies",
+    crop: "Date Palm",
+    year: 2025,
+    markers: ["CRISPR-Cas9", "SNP", "Transcriptome", "Metabolome"],
+    authors: "Nasser Al Kaabi et al.",
+    journal: "Functional Plant Biology",
+    type: "Saudi Direct",
+    focus: "Genetic improvement & editing",
+  },
+  {
+    code: "SAU-CROP-002",
+    title: "Correlation and genetic analyses in Saudi Arabian wheat reveal correlation networks and several trait-associated markers",
+    crop: "Wheat",
+    year: 2020,
+    markers: ["ISSR", "SSR", "SCoT"],
+    authors: "Mohammed Ali Alshehri et al.",
+    journal: "ELEWA Biosciences",
+    type: "Saudi Direct",
+    focus: "19 primers · 195 alleles · 60% polymorphism",
+  },
+  {
+    code: "SAU-CROP-003",
+    title: "CRISPR/Cas9: A Practical Approach in Date Palm Genome Editing",
+    crop: "Date Palm",
+    year: 2017,
+    markers: ["CRISPR/Cas9", "Whole Genome"],
+    authors: "Muhammad Naeem Sattar et al.",
+    journal: "Frontiers Media",
+    type: "Saudi Direct",
+    focus: "Genome editing — first Saudi application",
+  },
+  {
+    code: "SAU-CROP-004",
+    title: "Harnessing rhizospheric core microbiomes from arid regions for enhancing date palm resilience to climate change effects",
+    crop: "Date Palm",
+    year: 2024,
+    markers: ["Microbiome Genomics", "Stress Response Genes"],
+    authors: "Ameni Ben Zineb et al.",
+    journal: "Frontiers Media",
+    type: "Saudi Direct",
+    focus: "Climate resilience via microbiome",
+  },
+];
+
+const REGIONAL_STUDIES = [
+  {
+    title: "Recent advances in date palm genomics: A comprehensive review",
+    crop: "Date Palm", year: 2022,
+    authors: "Hifzur Rahman et al.", journal: "Frontiers Media",
+    category: "Date Palm Genomics",
+  },
+  {
+    title: "Genetic Diversity and Adaptation of Date Palm (Phoenix dactylifera L.)",
+    crop: "Date Palm", year: 2009,
+    authors: "Sakina Elshibli", journal: "—",
+    category: "Date Palm Genomics",
+  },
+  {
+    title: "Phoenix dactylifera in vitro culture and transformation of Thio-60 antifungal gene via chitosan nanoparticle",
+    crop: "Date Palm", year: 2023,
+    authors: "Kholoud Abd Allah et al.", journal: "Springer",
+    category: "Date Palm Genomics",
+  },
+  {
+    title: "How to Cope With Stress in the Desert—The Date Palm Approach",
+    crop: "Date Palm", year: 2024,
+    authors: "Baoguo Du et al.", journal: "Wiley",
+    category: "Stress Tolerance",
+  },
+  {
+    title: "Applicability of Start Codon Targeted (SCoT) markers for the assessment of genetic diversity in bread wheat germplasm",
+    crop: "Wheat", year: 2024,
+    authors: "Muhammad Tanveer Altaf et al.", journal: "Springer",
+    category: "Stress Tolerance",
+  },
+  {
+    title: "A Blueprint for Building Resilience and Food Security in MENA and SSA Drylands: Diversifying Agriculture With Neglected and Underutilized Species",
+    crop: "Multiple (26 NUS crops)", year: 2025,
+    authors: "Krishna Prasad Devkota et al.", journal: "Wiley",
+    category: "Food Security",
+  },
+  {
+    title: "Oasis agriculture revitalization and carbon sequestration for climate-resilient communities",
+    crop: "Multiple", year: 2024,
+    authors: "Faten Dhawi & Megbel Aleidan", journal: "Frontiers Media",
+    category: "Food Security",
+  },
+];
+
+const DROUGHT_STUDIES = [
+  {
+    title: "Molecular and agro-morphological diversity assessment of some bread wheat genotypes and their crosses for drought tolerance",
+    authors: "Mohamed A. Ezzat et al.", year: 2024, journal: "PeerJ Inc.",
+    markers: ["ISSR", "SCoT"], note: "Saudi-applicable wheat breeding",
+  },
+  {
+    title: "Multivariate Analysis of Morpho-Physiological Traits Reveals Differential Drought Tolerance Potential of Bread Wheat Genotypes at the Seedling Stage",
+    authors: "Mohammed Mohi-Ud-Din et al.", year: 2021, journal: "MDPI",
+    markers: ["Morpho-physiological"], note: "127 genotypes · 90% accuracy",
+  },
+  {
+    title: "ISSR Markers-Trait Associations and Stability Analysis in Bread Wheat Varieties",
+    authors: "M.H. Motawea et al.", year: 2015, journal: "—",
+    markers: ["ISSR"], note: "7 drought-tolerant varieties identified (DSI<1)",
+  },
+  {
+    title: "Plant responses to environmental stresses—from gene to biotechnology",
+    authors: "Mohammad Ahanger et al.", year: 2017, journal: "Oxford University Press",
+    markers: ["Review"], note: "Comprehensive stress response review",
+  },
+  {
+    title: "Salt-Tolerant Crops: Time to Deliver",
+    authors: "Vanessa Melino & Mark Tester", year: 2023, journal: "Annual Reviews",
+    markers: ["Review"], note: "Salinity tolerance strategies for arid regions",
+  },
+];
+
+const VEGETABLE_STUDIES = [
+  {
+    title: "Exploring Genetic Variability among and within Hail Tomato Landraces Based on Sequence-Related Amplified Polymorphism Markers",
+    authors: "Reem H. Alzahib et al.", year: 2021, journal: "MDPI",
+    region: "Hail, Saudi Arabia", polymorphism: "100%",
+    note: "🇸🇦 Direct Saudi Arabia study",
+  },
+  {
+    title: "Morphological, Biochemical, and Molecular Diversity Assessment of Egyptian Bottle Gourd Cultivars",
+    authors: "Ehab A. Ibrahim et al.", year: 2024, journal: "Cambridge University Press",
+    region: "Regional (applicable to KSA)", polymorphism: "—",
+    note: "Vegetable genetic diversity",
+  },
+  {
+    title: "Assessment of genetic variability among Jordanian tomato landrace using inter-simple sequence repeats markers",
+    authors: "Mohammad Brake et al.", year: 2021, journal: "Hashemite University",
+    region: "Regional context", polymorphism: "—",
+    note: "Tomato landrace conservation",
+  },
+];
+
+const SEED_BANKING_STUDIES = [
+  {
+    title: "Effective seedbank management to ensure food security and preserve biodiversity",
+    authors: "Samik Bhattacharya & Klaus Mummenhoff", year: 2024, journal: "Springer",
+    relevance: "Genomic viability prediction models for seed banks",
+  },
+  {
+    title: "A Blueprint for Building Resilience and Food Security in MENA Drylands",
+    authors: "Krishna Prasad Devkota et al.", year: 2025, journal: "Wiley",
+    relevance: "26 neglected/underutilized species documented for MENA region",
+  },
+  {
+    title: "Oasis agriculture revitalization and carbon sequestration for climate-resilient communities",
+    authors: "Faten Dhawi & Megbel Aleidan", year: 2024, journal: "Frontiers Media",
+    relevance: "Traditional oasis agricultural system revitalization",
+  },
+];
+
+const MARKER_STATS = [
+  { marker: "SCoT", count: "8+", desc: "Start Codon Targeted" },
+  { marker: "SSR", count: "6+", desc: "Microsatellites" },
+  { marker: "ISSR", count: "6+", desc: "Inter-Simple Sequence Repeat" },
+  { marker: "CRISPR-Cas9", count: "2", desc: "Genome editing" },
+  { marker: "SNP/AFLP/SRAP/RAPD", count: "Multiple", desc: "Supporting markers" },
+];
+
+const RECOMMENDATIONS = [
+  { num: 1, title: "Establish Saudi Crop Genomics Consortium", detail: "Link universities and research centers" },
+  { num: 2, title: "Develop Bread Wheat & Date Palm SNP Arrays", detail: "Cost-effective genotyping for breeding" },
+  { num: 3, title: "Create Crop Germplasm Database", detail: "Similar to CAGBASE (camel) but for crops" },
+  { num: 4, title: "Expand Seed Banking Genomic Programs", detail: "Use viability prediction models" },
+  { num: 5, title: "Integrate Climate Resilience Breeding", detail: "Focus on drought/heat tolerance traits" },
+  { num: 6, title: "Document Landrace Genetic Resources", detail: "Preserve Hail tomato and other local varieties" },
+  { num: 7, title: "Support Multi-Crop GWAS Studies", detail: "Larger cohorts for statistical power" },
+];
+
+const CROP_BADGES: Record<string, string> = {
+  "Date Palm": "#C2410C",
+  "Wheat": "#166534",
+  "Multiple": "#7C3AED",
+  "Multiple (26 NUS crops)": "#7C3AED",
+};
 
 export default function ResearchHub() {
   return (
     <PageLayout
       title="Research Hub"
-      description="Collaborative research platform for agricultural scientists and breeding programs"
+      description="Saudi Arabia Crop Genomics & Genetics — 22 comprehensive studies (2009–2025)"
       hero
     >
-      <div className="container py-12">
-        {/* Research Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-          <Card className="border-primary/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Active Projects</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-primary">24</div>
-              <p className="text-xs text-muted-foreground mt-1">Ongoing research</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-primary/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Publications</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-primary">156</div>
-              <p className="text-xs text-muted-foreground mt-1">Peer-reviewed papers</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-primary/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Collaborators</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-primary">42</div>
-              <p className="text-xs text-muted-foreground mt-1">Partner institutions</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-primary/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Breeding Lines</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-primary">387</div>
-              <p className="text-xs text-muted-foreground mt-1">Advanced lines</p>
-            </CardContent>
-          </Card>
+      <div className="container py-10">
+
+        {/* Stats strip */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          {[
+            { label: "Total Studies", value: "22", sub: "2009–2025", icon: BookOpen },
+            { label: "Direct Saudi Studies", value: "4", sub: "KSA-specific research", icon: Shield },
+            { label: "Crops Covered", value: "10+", sub: "Date palm, wheat, vegetables…", icon: Sprout },
+            { label: "Marker Types", value: "8+", sub: "ISSR, SSR, SCoT, CRISPR…", icon: Dna },
+          ].map(({ label, value, sub, icon: Icon }) => (
+            <Card key={label} className="border-primary/20">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                  <Icon className="h-4 w-4" />
+                  {label}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-primary">{value}</div>
+                <p className="text-xs text-muted-foreground mt-1">{sub}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        <Tabs defaultValue="projects" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
-            <TabsTrigger value="projects">Research Projects</TabsTrigger>
-            <TabsTrigger value="publications">Publications</TabsTrigger>
-            <TabsTrigger value="breeding">Breeding Programs</TabsTrigger>
-            <TabsTrigger value="collaborate">Collaborate</TabsTrigger>
+        <Tabs defaultValue="saudi" className="w-full">
+          <TabsList className="grid w-full grid-cols-5 mb-8">
+            <TabsTrigger value="saudi">Saudi Direct</TabsTrigger>
+            <TabsTrigger value="regional">Regional</TabsTrigger>
+            <TabsTrigger value="drought">Drought Studies</TabsTrigger>
+            <TabsTrigger value="vegetables">Vegetables</TabsTrigger>
+            <TabsTrigger value="gaps">Gaps & Recs</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="projects" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Active Research Projects</CardTitle>
-                <CardDescription>
-                  Current research initiatives at MEWA Seed Center
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    {
-                      title: "Climate-Resilient Wheat Varieties for Arid Regions",
-                      pi: "Dr. Fahad Al-Otaibi",
-                      institution: "King Saud University",
-                      duration: "2024-2027",
-                      status: "Active",
-                      focus: ["Drought tolerance", "Heat stress", "Yield stability"],
-                      funding: "KACST"
-                    },
-                    {
-                      title: "Genetic Diversity Assessment of Saudi Coffee Germplasm",
-                      pi: "Dr. Noura Al-Ghamdi",
-                      institution: "MEWA Research Center",
-                      duration: "2025-2026",
-                      status: "Active",
-                      focus: ["Molecular markers", "Population structure", "Conservation"],
-                      funding: "MEWA"
-                    },
-                    {
-                      title: "Development of Disease-Resistant Barley Cultivars",
-                      pi: "Dr. Mohammed Al-Shehri",
-                      institution: "King Abdulaziz University",
-                      duration: "2023-2026",
-                      status: "Active",
-                      focus: ["Fungal resistance", "QTL mapping", "Marker-assisted selection"],
-                      funding: "KAUST"
-                    },
-                    {
-                      title: "Sustainable Date Palm Production Systems",
-                      pi: "Dr. Sara Al-Dosari",
-                      institution: "Qassim University",
-                      duration: "2025-2028",
-                      status: "Active",
-                      focus: ["Water efficiency", "Integrated pest management", "Quality traits"],
-                      funding: "KACST"
-                    },
-                  ].map((project, idx) => (
-                    <Card key={idx} className="border-border hover:shadow-md transition-shadow">
-                      <CardHeader>
-                        <div className="flex items-start justify-between">
-                          <div className="flex-1">
-                            <CardTitle className="text-lg mb-2">{project.title}</CardTitle>
-                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                              <div className="flex items-center gap-1">
-                                <Users className="h-3 w-3" />
-                                {project.pi}
-                              </div>
-                              <div>•</div>
-                              <div>{project.institution}</div>
-                            </div>
-                          </div>
-                          <Badge className="bg-primary">{project.status}</Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="flex flex-wrap gap-2">
-                          {project.focus.map((area, i) => (
-                            <Badge key={i} variant="outline" className="text-xs">
-                              {area}
-                            </Badge>
-                          ))}
-                        </div>
-                        <div className="flex items-center justify-between text-sm pt-2 border-t border-border">
-                          <div className="text-muted-foreground">
-                            Duration: <span className="text-foreground font-medium">{project.duration}</span>
-                          </div>
-                          <div className="text-muted-foreground">
-                            Funding: <span className="text-foreground font-medium">{project.funding}</span>
-                          </div>
-                          <Button size="sm" variant="outline">
-                            View Details
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+          {/* ── Saudi Direct Studies ── */}
+          <TabsContent value="saudi" className="space-y-4">
+            <div className="flex items-center gap-2 mb-4">
+              <Shield className="h-5 w-5 text-primary" />
+              <div>
+                <h2 className="font-semibold">Primary Saudi Arabia Direct Studies</h2>
+                <p className="text-sm text-muted-foreground">4 studies conducted directly in KSA</p>
+              </div>
+            </div>
+            {DIRECT_SAUDI_STUDIES.map((s) => (
+              <Card key={s.code} className="border-primary/30 hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <Badge className="bg-primary text-xs">{s.code}</Badge>
+                        <Badge variant="outline" className="text-xs" style={{ color: CROP_BADGES[s.crop] || "#166534", borderColor: CROP_BADGES[s.crop] || "#166534" }}>
+                          {s.crop}
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">{s.year}</span>
+                      </div>
+                      <CardTitle className="text-base leading-snug">{s.title}</CardTitle>
+                      <CardDescription className="mt-1">{s.authors} — <span className="italic">{s.journal}</span></CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-xs text-muted-foreground font-medium">Markers:</span>
+                    {s.markers.map((m) => (
+                      <Badge key={m} variant="secondary" className="text-xs">{m}</Badge>
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2">📌 {s.focus}</p>
+                </CardContent>
+              </Card>
+            ))}
           </TabsContent>
 
-          <TabsContent value="publications" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Recent Publications</CardTitle>
-                <CardDescription>
-                  Peer-reviewed research using MEWA germplasm resources
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    {
-                      title: "Genetic diversity and population structure of Saudi wheat landraces revealed by SSR markers",
-                      authors: "Al-Otaibi F, Al-Shehri M, Al-Qahtani A",
-                      journal: "Saudi Journal of Biological Sciences",
-                      year: 2026,
-                      doi: "10.1016/j.sjbs.2026.01.234",
-                      citations: 12,
-                      type: "Research Article"
-                    },
-                    {
-                      title: "Drought tolerance mechanisms in traditional coffee varieties from southwestern Saudi Arabia",
-                      authors: "Al-Ghamdi N, Al-Dosari S, Mohammed K",
-                      journal: "Plant Physiology and Biochemistry",
-                      year: 2026,
-                      doi: "10.1016/j.plaphy.2026.02.156",
-                      citations: 8,
-                      type: "Research Article"
-                    },
-                    {
-                      title: "Marker-assisted selection for heat tolerance in Saudi wheat breeding programs",
-                      authors: "Al-Shehri M, Al-Otaibi F, Hassan R",
-                      journal: "Crop Science",
-                      year: 2025,
-                      doi: "10.1002/csc2.20987",
-                      citations: 24,
-                      type: "Research Article"
-                    },
-                    {
-                      title: "Conservation and utilization of plant genetic resources in Saudi Arabia: Current status and future prospects",
-                      authors: "Al-Qahtani A, Al-Ghamdi N, Al-Dosari S",
-                      journal: "Genetic Resources and Crop Evolution",
-                      year: 2025,
-                      doi: "10.1007/s10722-025-01234-5",
-                      citations: 31,
-                      type: "Review"
-                    },
-                  ].map((pub, idx) => (
-                    <Card key={idx} className="border-border hover:shadow-md transition-shadow">
-                      <CardHeader className="pb-3">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <CardTitle className="text-base font-semibold mb-2 leading-snug">
-                              {pub.title}
-                            </CardTitle>
-                            <div className="text-sm text-muted-foreground">
-                              {pub.authors}
-                            </div>
-                          </div>
-                          <Badge variant="outline" className="flex-shrink-0">
-                            {pub.type}
-                          </Badge>
+          {/* ── Regional Studies ── */}
+          <TabsContent value="regional" className="space-y-4">
+            <div className="flex items-center gap-2 mb-4">
+              <BookOpen className="h-5 w-5 text-primary" />
+              <div>
+                <h2 className="font-semibold">Regional Studies Applicable to Saudi Arabia</h2>
+                <p className="text-sm text-muted-foreground">7 studies from MENA region with direct KSA relevance</p>
+              </div>
+            </div>
+
+            {["Date Palm Genomics", "Stress Tolerance", "Food Security"].map((cat) => (
+              <Card key={cat}>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm text-muted-foreground uppercase tracking-wide">{cat}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {REGIONAL_STUDIES.filter((s) => s.category === cat).map((s) => (
+                    <div key={s.title} className="border border-border rounded-lg p-3 hover:border-primary/40 transition-colors">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1">
+                          <p className="text-sm font-medium leading-snug">{s.title}</p>
+                          <p className="text-xs text-muted-foreground mt-1">{s.authors} — <span className="italic">{s.journal}</span></p>
                         </div>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="flex items-center justify-between text-sm">
-                          <div className="space-y-1">
-                            <div className="text-muted-foreground">
-                              <span className="italic">{pub.journal}</span> ({pub.year})
-                            </div>
-                            <div className="text-xs text-muted-foreground">
-                              DOI: {pub.doi} • Cited by {pub.citations}
-                            </div>
-                          </div>
-                          <Button size="sm" variant="outline" className="gap-1">
-                            <ExternalLink className="h-3 w-3" />
-                            View
-                          </Button>
+                        <div className="flex flex-col items-end gap-1 shrink-0">
+                          <Badge variant="outline" className="text-xs">{s.year}</Badge>
+                          <Badge variant="secondary" className="text-xs">{s.crop}</Badge>
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </div>
                   ))}
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
           </TabsContent>
 
-          <TabsContent value="breeding" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Active Breeding Programs</CardTitle>
-                <CardDescription>
-                  Crop improvement initiatives utilizing MEWA germplasm
-                </CardDescription>
+          {/* ── Drought Studies ── */}
+          <TabsContent value="drought" className="space-y-4">
+            <div className="flex items-center gap-2 mb-4">
+              <Dna className="h-5 w-5 text-primary" />
+              <div>
+                <h2 className="font-semibold">Wheat Drought Tolerance & Stress Studies</h2>
+                <p className="text-sm text-muted-foreground">5 studies — multiple marker types, direct Saudi applications</p>
+              </div>
+            </div>
+
+            {/* Marker usage summary */}
+            <Card className="bg-secondary/30">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm">Most Frequent Molecular Markers</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[
-                    {
-                      crop: "Wheat",
-                      program: "Saudi Wheat Improvement Program",
-                      objectives: ["Drought tolerance", "Disease resistance", "Quality traits", "Yield potential"],
-                      lines: 156,
-                      trials: 12,
-                      releases: 3,
-                      coordinator: "Dr. Fahad Al-Otaibi"
-                    },
-                    {
-                      crop: "Coffee",
-                      program: "Saudi Coffee Enhancement Initiative",
-                      objectives: ["Climate adaptation", "Cup quality", "Pest resistance", "Productivity"],
-                      lines: 48,
-                      trials: 6,
-                      releases: 1,
-                      coordinator: "Dr. Noura Al-Ghamdi"
-                    },
-                    {
-                      crop: "Barley",
-                      program: "Barley Breeding for Marginal Lands",
-                      objectives: ["Salt tolerance", "Low water requirement", "Feed quality", "Early maturity"],
-                      lines: 89,
-                      trials: 8,
-                      releases: 2,
-                      coordinator: "Dr. Mohammed Al-Shehri"
-                    },
-                    {
-                      crop: "Date Palm",
-                      program: "Date Palm Genetic Improvement",
-                      objectives: ["Fruit quality", "Water efficiency", "Disease resistance", "Shelf life"],
-                      lines: 94,
-                      trials: 5,
-                      releases: 1,
-                      coordinator: "Dr. Sara Al-Dosari"
-                    },
-                  ].map((program, idx) => (
-                    <Card key={idx} className="border-primary/20">
-                      <CardHeader>
-                        <div className="flex items-center justify-between mb-2">
-                          <CardTitle className="text-lg">{program.crop} Breeding</CardTitle>
-                          <Microscope className="h-5 w-5 text-primary" />
-                        </div>
-                        <CardDescription className="font-medium text-foreground">
-                          {program.program}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div>
-                          <h4 className="text-sm font-semibold text-foreground mb-2">Breeding Objectives:</h4>
-                          <div className="flex flex-wrap gap-1">
-                            {program.objectives.map((obj, i) => (
-                              <Badge key={i} variant="outline" className="text-xs">
-                                {obj}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-3 gap-4 pt-3 border-t border-border">
-                          <div className="text-center">
-                            <div className="text-2xl font-bold text-primary">{program.lines}</div>
-                            <div className="text-xs text-muted-foreground">Lines</div>
-                          </div>
-                          <div className="text-center">
-                            <div className="text-2xl font-bold text-primary">{program.trials}</div>
-                            <div className="text-xs text-muted-foreground">Trials</div>
-                          </div>
-                          <div className="text-center">
-                            <div className="text-2xl font-bold text-primary">{program.releases}</div>
-                            <div className="text-xs text-muted-foreground">Releases</div>
-                          </div>
-                        </div>
-
-                        <div className="pt-3 border-t border-border">
-                          <div className="text-xs text-muted-foreground mb-2">Program Coordinator:</div>
-                          <div className="text-sm font-medium text-foreground">{program.coordinator}</div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Recent Variety Releases</CardTitle>
-                <CardDescription>
-                  New cultivars developed from MEWA germplasm
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {[
-                    { name: "MEWA-Wheat-1", crop: "Wheat", year: 2025, traits: "Drought tolerant, High yield", region: "Central & Western" },
-                    { name: "Saudi Coffee Elite", crop: "Coffee", year: 2024, traits: "Premium quality, Disease resistant", region: "Southern" },
-                    { name: "MEWA-Barley-3", crop: "Barley", year: 2025, traits: "Salt tolerant, Early maturity", region: "Eastern" },
-                  ].map((variety, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-secondary/50 transition-colors">
-                      <div className="flex items-center gap-4">
-                        <TrendingUp className="h-5 w-5 text-primary" />
-                        <div>
-                          <div className="font-semibold text-foreground">{variety.name}</div>
-                          <div className="text-sm text-muted-foreground">{variety.crop} • {variety.traits}</div>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-sm font-medium">{variety.year}</div>
-                        <div className="text-xs text-muted-foreground">{variety.region}</div>
-                      </div>
+                <div className="flex flex-wrap gap-2">
+                  {MARKER_STATS.map((m) => (
+                    <div key={m.marker} className="bg-card border border-border rounded-lg px-3 py-2 text-center">
+                      <div className="font-bold text-primary text-sm">{m.count}</div>
+                      <div className="text-xs font-medium">{m.marker}</div>
+                      <div className="text-[10px] text-muted-foreground">{m.desc}</div>
                     </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
-          </TabsContent>
 
-          <TabsContent value="collaborate" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="border-primary/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Users className="h-5 w-5 text-primary" />
-                    Research Collaboration
-                  </CardTitle>
-                  <CardDescription>
-                    Partner with MEWA Seed Center on research projects
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground">
-                    We welcome collaborative research proposals from universities, research institutions, and breeding programs worldwide.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Joint research projects and funding applications</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Student research and thesis projects</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Technology transfer and capacity building</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>International germplasm exchange programs</span>
-                    </li>
-                  </ul>
-                  <Button className="w-full mewa-gradient text-white">
-                    Submit Proposal
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="border-primary/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <BookOpen className="h-5 w-5 text-primary" />
-                    Training & Workshops
-                  </CardTitle>
-                  <CardDescription>
-                    Capacity building programs and technical training
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground">
-                    MEWA offers training programs in plant genetic resources management, breeding, and genomics.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Germplasm characterization and evaluation</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Molecular marker techniques</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Breeding methodology and selection</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Bioinformatics and data analysis</span>
-                    </li>
-                  </ul>
-                  <Button className="w-full mewa-gradient text-white">
-                    View Schedule
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="border-primary/20">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-primary" />
-                    Data Sharing
-                  </CardTitle>
-                  <CardDescription>
-                    Access and contribute to MEWA databases
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground">
-                    We encourage data sharing to advance agricultural research and breeding programs.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Phenotypic evaluation data</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Genotypic and molecular marker data</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Environmental and agronomic trial results</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Germplasm characterization information</span>
-                    </li>
-                  </ul>
-                  <Button className="w-full mewa-gradient text-white">
-                    Data Portal
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="border-primary/20">
-                <CardHeader>
-                  <CardTitle>Partner Institutions</CardTitle>
-                  <CardDescription>
-                    Our research and breeding network
-                  </CardDescription>
+            {DROUGHT_STUDIES.map((s) => (
+              <Card key={s.title} className="hover:shadow-md transition-shadow">
+                <CardHeader className="pb-2">
+                  <div className="flex items-start justify-between gap-3">
+                    <CardTitle className="text-sm font-semibold leading-snug flex-1">{s.title}</CardTitle>
+                    <Badge variant="outline" className="text-xs shrink-0">{s.year}</Badge>
+                  </div>
+                  <CardDescription>{s.authors} — <span className="italic">{s.journal}</span></CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3 text-sm">
+                  <div className="flex flex-wrap gap-1 mb-1">
+                    {s.markers.map((m) => (
+                      <Badge key={m} variant="secondary" className="text-xs">{m}</Badge>
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground">📌 {s.note}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </TabsContent>
+
+          {/* ── Vegetable & Seed Banking ── */}
+          <TabsContent value="vegetables" className="space-y-6">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <Sprout className="h-5 w-5 text-primary" />
+                <div>
+                  <h2 className="font-semibold">Saudi Vegetable & Landrace Studies</h2>
+                  <p className="text-sm text-muted-foreground">3 studies — genetic diversity preservation and breeding</p>
+                </div>
+              </div>
+              <div className="space-y-3">
+                {VEGETABLE_STUDIES.map((s) => (
+                  <Card key={s.title} className="hover:shadow-md transition-shadow">
+                    <CardHeader className="pb-2">
+                      <div className="flex items-start justify-between gap-3">
+                        <CardTitle className="text-sm font-semibold leading-snug flex-1">{s.title}</CardTitle>
+                        <Badge variant="outline" className="text-xs shrink-0">{s.year}</Badge>
+                      </div>
+                      <CardDescription>{s.authors} — <span className="italic">{s.journal}</span></CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex gap-3 text-xs text-muted-foreground">
+                        <span>📍 {s.region}</span>
+                        {s.polymorphism !== "—" && <span>Polymorphism: {s.polymorphism}</span>}
+                      </div>
+                      <p className="text-xs font-medium text-primary mt-1">{s.note}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <FileText className="h-5 w-5 text-primary" />
+                <div>
+                  <h2 className="font-semibold">Food Security & Seed Banking Studies</h2>
+                  <p className="text-sm text-muted-foreground">3 studies — seed conservation and arid-region food security</p>
+                </div>
+              </div>
+              <div className="space-y-3">
+                {SEED_BANKING_STUDIES.map((s) => (
+                  <Card key={s.title} className="hover:shadow-md transition-shadow">
+                    <CardHeader className="pb-2">
+                      <div className="flex items-start justify-between gap-3">
+                        <CardTitle className="text-sm font-semibold leading-snug flex-1">{s.title}</CardTitle>
+                        <Badge variant="outline" className="text-xs shrink-0">{s.year}</Badge>
+                      </div>
+                      <CardDescription>{s.authors} — <span className="italic">{s.journal}</span></CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-muted-foreground">📌 {s.relevance}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </TabsContent>
+
+          {/* ── Gaps & Recommendations ── */}
+          <TabsContent value="gaps" className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="border-destructive/20">
+                <CardHeader>
+                  <CardTitle className="text-base text-destructive/80">Research Gaps in Saudi Agriculture</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm text-muted-foreground">
+                  {[
+                    "Limited multi-institutional collaborative studies",
+                    "Minimal SNP panel development for Saudi crop varieties",
+                    "Few milk production trait studies in crops (focus on animal genomics)",
+                    "Limited genomic resource databases beyond literature",
+                    "Small sample sizes in some vegetable studies",
+                  ].map((gap) => (
+                    <div key={gap} className="flex gap-2">
+                      <span className="text-destructive shrink-0">•</span>
+                      <span>{gap}</span>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+
+              <Card className="border-primary/20">
+                <CardHeader>
+                  <CardTitle className="text-base">Partner Institutions</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2 text-sm">
                     {[
-                      "King Saud University",
-                      "King Abdulaziz University",
-                      "Qassim University",
-                      "King Abdullah University of Science and Technology (KAUST)",
-                      "King Abdulaziz City for Science and Technology (KACST)",
-                      "International Center for Agricultural Research in the Dry Areas (ICARDA)",
-                      "International Coffee Organization (ICO)",
-                      "Food and Agriculture Organization (FAO)",
-                    ].map((institution, idx) => (
-                      <div key={idx} className="flex items-center gap-2 p-2 border-l-2 border-primary pl-3">
-                        <span className="text-foreground">{institution}</span>
+                      "King Saud University", "King Abdulaziz University", "Qassim University",
+                      "KAUST", "KACST", "ICARDA", "ICO", "FAO",
+                    ].map((inst) => (
+                      <div key={inst} className="flex items-center gap-2 p-1.5 border-l-2 border-primary pl-3">
+                        <span className="text-foreground">{inst}</span>
                       </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
             </div>
+
+            <Card className="border-primary/20">
+              <CardHeader>
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Users className="h-5 w-5 text-primary" />
+                  Recommendations for Saudi Agricultural Genomics
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {RECOMMENDATIONS.map((r) => (
+                    <div key={r.num} className="flex items-start gap-3 p-3 border border-border rounded-lg hover:border-primary/40 transition-colors">
+                      <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">
+                        {r.num}
+                      </div>
+                      <div>
+                        <div className="font-medium text-sm">{r.title}</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">{r.detail}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <p className="text-xs text-muted-foreground text-right">
+              Source: Comprehensive literature search · 22 studies · 2009–2025
+            </p>
           </TabsContent>
         </Tabs>
       </div>
