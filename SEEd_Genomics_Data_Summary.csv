@@ -1,0 +1,75 @@
+SEEd Center - Genomics Raw Data Summary
+Generated: 2026-03-12
+
+=== OVERALL SUMMARY ===
+Category,Value
+Total Data Size,8.8 TB
+Total GBS Data Size,6.3 TB
+Total WGS Data Size,2.6 TB
+Total Files,110076
+Total Directories,2446
+Total FASTQ Files,3756
+Total VCF Files,222
+Total BAM Files,217
+Total PLINK BED Files,413
+Total PLINK BIM Files,406
+Total PLINK FAM Files,415
+Total GFF Files,13257
+Total FASTA/FNA Files,13360
+Total FAA Files,13261
+Total GBS Crops,4
+Total WGS Crops,26
+Total Unique Crops (combined),28
+
+=== GBS DATA - PER CROP DETAIL ===
+Crop,Scientific Name,Sequencing Type,FASTQ Files,VCF Files,BAM Files,Estimated Samples,Disk Usage
+Barley,Hordeum vulgare,GBS,182,5,0,~182,313G
+Faba Bean,Vicia faba,GBS,42,13,0,~42,125G
+Oat,Avena sativa,GBS,4,1,0,~4,29G
+Wheat (all sub-species combined),Triticum spp.,GBS,2912,135,217,~2912,5.8T
+
+=== GBS WHEAT SUB-SPECIES ===
+Sub-species,Directory
+Triticum aestivum (Bread Wheat),Wheat-Triticum_aestivum
+Triticum durum (Durum Wheat),Wheat-Triticum-durum
+Triticum monococcum (Einkorn),Wheat-Triticum-monococcum
+Triticum aethiopicum,Triticum_aethiopicum_L
+Triticale (Wheat-Rye hybrid),Wheat-Triticale
+
+=== WGS DATA - PER CROP DETAIL ===
+Crop,Scientific Name,Sequencing Type,FASTQ Files,VCF Files,BAM Files,Estimated Samples,Disk Usage
+Apricot (armeniaca),Prunus armeniaca,WGS,0,1,0,-,2.2G
+Apricot,Prunus armeniaca,WGS,8,1,0,~8,29G
+Asparagus Bean,Vigna unguiculata ssp. sesquipedalis,WGS,14,4,0,~14,50G
+Chick Pea,Cicer arietinum,WGS,10,2,0,~10,23G
+Coffee,Coffea spp.,WGS,172,0,0,~172,866G
+Fenugreek,Trigonella foenum-graecum,WGS,2,0,0,~2,10G
+Fig,Ficus carica,WGS,24,0,0,~24,68G
+Grape,Vitis vinifera,WGS,8,0,0,~8,30G
+Guar,Cyamopsis tetragonoloba,WGS,4,0,0,~4,12G
+Guava,Psidium guajava,WGS,2,1,0,~2,12G
+Hot Pepper,Capsicum annuum,WGS,20,2,0,~20,32G
+Lemon,Citrus limon,WGS,2,0,0,~2,6.4G
+Mango,Mangifera indica,WGS,1,7,0,~1,95G
+Millet,Pennisetum typhoideum,WGS,72,0,0,~72,526G
+NemaGuard (Peach rootstock),Prunus persica,WGS,2,0,0,~2,5.4G
+Okra,Abelmoschus esculentus,WGS,38,0,0,~38,110G
+Papaya,Carica papaya,WGS,17,7,0,~17,37G
+Peach,Prunus persica,WGS,10,0,0,~10,30G
+Plum,Prunus domestica,WGS,8,0,0,~8,24G
+Pomegranate,Punica granatum,WGS,16,0,0,~16,49G
+Pumpkin,Cucurbita spp.,WGS,10,0,0,~10,26G
+Quince,Cydonia oblonga,WGS,2,0,0,~2,5.4G
+Sesamum (Sesame),Sesamum indicum,WGS,0,15,0,-,24G
+Sorghum,Sorghum bicolor,WGS,174,9,0,~174,525G
+Last-Batch-Output (mixed),Multiple,WGS,0,17,0,-,31G
+
+=== CROP CATEGORY SUMMARY ===
+Category,Crops,Count
+Cereals,"Wheat, Barley, Oat, Sorghum, Millet",5
+Legumes,"Faba Bean, Chick Pea, Asparagus Bean, Guar, Fenugreek",5
+Fruits,"Apricot, Fig, Grape, Guava, Mango, Papaya, Peach, Plum, Pomegranate, Quince, Lemon",11
+Vegetables,"Hot Pepper, Okra, Pumpkin",3
+Industrial/Oil Crops,"Coffee, Sesame",2
+Rootstock,NemaGuard,1
+
