@@ -3,9 +3,7 @@ import {
   Home,
   Database,
   Dna,
-  Sprout,
   BookOpen,
-  Users,
   Mail,
   Menu,
   X,
@@ -22,9 +20,7 @@ const navItems = [
   { path: "/centers", labelKey: "nav.centers", icon: Building2 },
   { path: "/inventory", labelKey: "nav.inventory", icon: Package },
   { path: "/genomics", labelKey: "nav.genomics", icon: Dna },
-  { path: "/exchange", labelKey: "nav.exchange", icon: Sprout },
   { path: "/research", labelKey: "nav.research", icon: BookOpen },
-  { path: "/community", labelKey: "nav.community", icon: Users },
   { path: "/contact", labelKey: "nav.contact", icon: Mail },
 ];
 

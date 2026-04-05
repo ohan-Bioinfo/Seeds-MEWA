@@ -198,4 +198,59 @@
     background-size: cover;
     background-position: center;
   }
+
+  /* Glass morphism cards */
+  .glass-card {
+    background: oklch(1 0 0 / 70%);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(1 0 0 / 30%);
+  }
+
+  .dark .glass-card {
+    background: oklch(0.2 0.03 155 / 70%);
+    border-color: oklch(1 0 0 / 10%);
+  }
+
+  /* Smooth chart containers */
+  .recharts-wrapper {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  }
+
+  .recharts-default-tooltip {
+    border-radius: 0.5rem !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: 0 4px 12px oklch(0 0 0 / 8%) !important;
+  }
+
+  .recharts-legend-item-text {
+    font-size: 0.75rem !important;
+    color: var(--muted-foreground) !important;
+  }
+
+  /* Animated gradient border for KPI cards on hover */
+  .kpi-glow {
+    position: relative;
+  }
+
+  .kpi-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--mewa-green), var(--mewa-gold), var(--mewa-green));
+    background-size: 200% 200%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .kpi-glow:hover::after {
+    opacity: 1;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
 }

@@ -89,8 +89,8 @@ export default function PageLayout({
                   </a>
                 </li>
                 <li>
-                  <a href="/exchange" className="hover:text-primary-foreground transition-colors">
-                    {t("nav.exchange")}
+                  <a href="/centers" className="hover:text-primary-foreground transition-colors">
+                    {t("nav.centers")}
                   </a>
                 </li>
                 <li>

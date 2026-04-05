@@ -7,15 +7,16 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import GenomicsHub from "./pages/GenomicsHub";
-import SeedersExchange from "./pages/SeedersExchange";
+// SeedersExchange merged into Centers
 import ResearchHub from "./pages/ResearchHub";
-import Community from "./pages/Community";
+// Community merged into ResearchHub
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import DataCatalog from "./pages/DataCatalog";
 import GeneticFingerprints from "./pages/GeneticFingerprints";
 import Centers from "./pages/Centers";
 import InventoryTracking from "./pages/InventoryTracking";
+// SubmitData merged into GenomicsHub
 
 function Router() {
   return (
@@ -26,9 +27,10 @@ function Router() {
       <Route path={"/centers"} component={Centers} />
       <Route path={"/inventory"} component={InventoryTracking} />
       <Route path={"/genomics"} component={GenomicsHub} />
-      <Route path={"/exchange"} component={SeedersExchange} />
+      {/* Exchange merged into /centers */}
       <Route path={"/research"} component={ResearchHub} />
-      <Route path={"/community"} component={Community} />
+      {/* Submit merged into /genomics */}
+      {/* Community merged into /research */}
       <Route path={"/contact"} component={Contact} />
       <Route path={"/about"} component={About} />
       <Route path={"/404"} component={NotFound} />
