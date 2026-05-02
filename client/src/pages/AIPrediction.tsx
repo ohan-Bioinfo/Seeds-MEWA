@@ -222,6 +222,37 @@ export default function AIPrediction() {
   return (
     <PageLayout>
       {/* full dark wrapper */}
+      {/* ── Floating PROTOTYPE stamp ─────────────────────────────────────── */}
+      <motion.div
+        className="fixed bottom-6 right-6 z-50 select-none pointer-events-none"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <motion.div
+          animate={{ boxShadow: [`0 0 12px ${C.cyan}50`, `0 0 28px ${C.cyan}80`, `0 0 12px ${C.cyan}50`] }}
+          transition={{ duration: 3, repeat: Infinity }}
+          style={{
+            background: "rgba(2,8,23,0.92)",
+            border: `1.5px solid ${C.cyan}60`,
+            borderRadius: 10,
+            padding: "8px 14px",
+            backdropFilter: "blur(16px)",
+            transform: "rotate(-2deg)",
+          }}
+        >
+          <div className="flex items-center gap-2">
+            <Pulse color={C.cyan} />
+            <span className="font-mono text-[11px] font-bold tracking-widest uppercase" style={{ color: C.cyan }}>
+              PROTOTYPE v0.1
+            </span>
+          </div>
+          <div className="mt-0.5 text-[8px] font-mono text-center tracking-widest" style={{ color: `${C.cyan}55` }}>
+            AI · SEEd Center · 2026
+          </div>
+        </motion.div>
+      </motion.div>
+
       <div style={{ background: "linear-gradient(135deg, #020817 0%, #0d0a1a 40%, #020c17 100%)", minHeight: "100vh" }}>
 
         {/* ── Hero ────────────────────────────────────────────────────────── */}
@@ -246,6 +277,17 @@ export default function AIPrediction() {
           <div className="container relative z-10">
             <FadeUp>
               <div className={`flex items-center gap-2 mb-6 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
+                {/* PROTOTYPE stamp */}
+                <motion.span
+                  animate={{ borderColor: [`${C.cyan}40`, `${C.cyan}90`, `${C.cyan}40`] }}
+                  transition={{ duration: 2.5, repeat: Infinity }}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-[11px] font-mono font-black tracking-[0.2em] uppercase"
+                  style={{ background: `${C.cyan}0d`, border: `1.5px solid ${C.cyan}50`, color: C.cyan, letterSpacing: "0.18em" }}
+                >
+                  <Shield className="w-3.5 h-3.5" />
+                  PROTOTYPE
+                  <span className="text-[9px] font-semibold px-1 py-0.5 rounded" style={{ background: `${C.cyan}20`, color: `${C.cyan}cc` }}>v0.1</span>
+                </motion.span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold" style={{ background: `${C.amber}18`, border: `1px solid ${C.amber}40`, color: C.amber }}>
                   <Pulse color={C.amber} />
                   {isRTL ? "تحت التطوير" : "Under Development"}
