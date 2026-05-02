@@ -1,0 +1,195 @@
+{
+  "categories": [
+    "بري",
+    "بستانية",
+    "حقلي",
+    "خضر",
+    "طبي"
+  ],
+  "sources_top": [
+    {
+      "value": "CIMMYT",
+      "count": 1047
+    },
+    {
+      "value": "Farm",
+      "count": 818
+    },
+    {
+      "value": "Market",
+      "count": 452
+    },
+    {
+      "value": "ACSAD",
+      "count": 295
+    },
+    {
+      "value": "Agri. Res. Center, Gizan",
+      "count": 106
+    },
+    {
+      "value": "Dr Salem alghamdy",
+      "count": 99
+    },
+    {
+      "value": "ICRISAT",
+      "count": 49
+    },
+    {
+      "value": "Agri. Res. Center Al-Jauf",
+      "count": 39
+    },
+    {
+      "value": "مزرعة عبد الكريم الزهراني",
+      "count": 37
+    },
+    {
+      "value": "Directorate of Agriculture, Hail",
+      "count": 26
+    },
+    {
+      "value": "Directorate of Agriculture Al-Qaseem",
+      "count": 21
+    },
+    {
+      "value": "Date-palm Res. Center",
+      "count": 19
+    },
+    {
+      "value": "Field",
+      "count": 19
+    },
+    {
+      "value": "Al-Khalaf Farm",
+      "count": 19
+    },
+    {
+      "value": "Agri. Directorate",
+      "count": 18
+    }
+  ],
+  "regions_top": [
+    {
+      "value": "45 IBWSN",
+      "count": 333
+    },
+    {
+      "value": "jazan",
+      "count": 208
+    },
+    {
+      "value": "Mecca",
+      "count": 197
+    },
+    {
+      "value": "Al-Baha",
+      "count": 169
+    },
+    {
+      "value": "Eastern Province",
+      "count": 155
+    },
+    {
+      "value": "44 IDSN",
+      "count": 154
+    },
+    {
+      "value": "7 STEMRRSN",
+      "count": 143
+    },
+    {
+      "value": "Al-Qaseem",
+      "count": 129
+    },
+    {
+      "value": "aseer",
+      "count": 128
+    },
+    {
+      "value": "6 STEMRRSN",
+      "count": 123
+    },
+    {
+      "value": "Tabuk",
+      "count": 109
+    },
+    {
+      "value": "taif",
+      "count": 102
+    },
+    {
+      "value": "Northern Province",
+      "count": 82
+    },
+    {
+      "value": "Riyadh",
+      "count": 70
+    },
+    {
+      "value": "نسخة 2022/2023",
+      "count": 67
+    }
+  ],
+  "families_top": [
+    {
+      "value": "Poaceae",
+      "count": 1870
+    },
+    {
+      "value": "Fabaceae",
+      "count": 306
+    },
+    {
+      "value": "Cucurbitaceae",
+      "count": 115
+    },
+    {
+      "value": "Rubiaceae",
+      "count": 92
+    },
+    {
+      "value": "Amaranthaceae",
+      "count": 89
+    },
+    {
+      "value": "Apiaceae",
+      "count": 87
+    },
+    {
+      "value": "Pedaliaceae",
+      "count": 86
+    },
+    {
+      "value": "Brassicaceae",
+      "count": 83
+    },
+    {
+      "value": "Anacardiaceae",
+      "count": 79
+    },
+    {
+      "value": "Asteraceae",
+      "count": 74
+    },
+    {
+      "value": "Malvaceae",
+      "count": 55
+    },
+    {
+      "value": "Rosaceae",
+      "count": 50
+    },
+    {
+      "value": "Solanaceae",
+      "count": 46
+    },
+    {
+      "value": "Amaryllidaceae",
+      "count": 46
+    },
+    {
+      "value": "Moraceae",
+      "count": 42
+    }
+  ]
+}

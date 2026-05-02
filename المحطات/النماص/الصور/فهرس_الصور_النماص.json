@@ -1,0 +1,50 @@
+{
+  "المحطة": "النماص",
+  "المعرف": "namas",
+  "المصدر": "تقرير النماص من بداية المشروع.docx",
+  "عدد الصور": 6,
+  "الصور": [
+    {
+      "filename": "001.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات بالنماص — موقــع المحطـة : (1)",
+      "context_before": "محطة البذور والتقاوي والشتلات بالنماص",
+      "context_after": "موقــع المحطـة :",
+      "source_media_path": "word/media/image1.jpeg"
+    },
+    {
+      "filename": "002.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات بالنماص — موقــع المحطـة : (2)",
+      "context_before": "محطة البذور والتقاوي والشتلات بالنماص",
+      "context_after": "موقــع المحطـة :",
+      "source_media_path": "word/media/image2.jpeg"
+    },
+    {
+      "filename": "003.jpg",
+      "caption": "موقــع المحطـة : — مساحات المحطة:",
+      "context_before": "موقــع المحطـة :",
+      "context_after": "مساحات المحطة:",
+      "source_media_path": "word/media/image3.jpeg"
+    },
+    {
+      "filename": "004.jpg",
+      "caption": "مساحات المحطة: — المساحة الكلية (2.98) هكتار                      المساحة المستغلة (2) هكتار (1)",
+      "context_before": "مساحات المحطة:",
+      "context_after": "المساحة الكلية (2.98) هكتار                      المساحة المستغلة (2) هكتار",
+      "source_media_path": "word/media/image4.jpeg"
+    },
+    {
+      "filename": "005.jpg",
+      "caption": "مساحات المحطة: — المساحة الكلية (2.98) هكتار                      المساحة المستغلة (2) هكتار (2)",
+      "context_before": "مساحات المحطة:",
+      "context_after": "المساحة الكلية (2.98) هكتار                      المساحة المستغلة (2) هكتار",
+      "source_media_path": "word/media/image5.jpeg"
+    },
+    {
+      "filename": "006.jpg",
+      "caption": "مساحات المحطة: — المساحة الكلية (2.98) هكتار                      المساحة المستغلة (2) هكتار (3)",
+      "context_before": "مساحات المحطة:",
+      "context_after": "المساحة الكلية (2.98) هكتار                      المساحة المستغلة (2) هكتار",
+      "source_media_path": "word/media/image6.jpeg"
+    }
+  ]
+}

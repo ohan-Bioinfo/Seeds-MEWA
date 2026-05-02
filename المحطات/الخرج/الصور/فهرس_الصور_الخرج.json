@@ -1,0 +1,106 @@
+{
+  "المحطة": "الخرج",
+  "المعرف": "kharj",
+  "المصدر": "تقرير الخرج من بداية المشروع.docx",
+  "عدد الصور": 14,
+  "الصور": [
+    {
+      "filename": "001.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات بالخرج — موقع المحطة (1)",
+      "context_before": "محطة البذور والتقاوي والشتلات بالخرج",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image1.jpeg"
+    },
+    {
+      "filename": "002.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات بالخرج — موقع المحطة (2)",
+      "context_before": "محطة البذور والتقاوي والشتلات بالخرج",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image2.jpeg"
+    },
+    {
+      "filename": "003.jpg",
+      "caption": "مساحات المحطة — المساحة الكلية (8.9) هكتار                      المساحة المستغلة (2) هكتار (1)",
+      "context_before": "مساحات المحطة",
+      "context_after": "المساحة الكلية (8.9) هكتار                      المساحة المستغلة (2) هكتار",
+      "source_media_path": "word/media/image3.jpeg"
+    },
+    {
+      "filename": "004.jpg",
+      "caption": "مساحات المحطة — المساحة الكلية (8.9) هكتار                      المساحة المستغلة (2) هكتار (2)",
+      "context_before": "مساحات المحطة",
+      "context_after": "المساحة الكلية (8.9) هكتار                      المساحة المستغلة (2) هكتار",
+      "source_media_path": "word/media/image4.jpeg"
+    },
+    {
+      "filename": "005.jpg",
+      "caption": "صور من الزراعة الشتوية — خريطة المحاصيل الشتوية (1)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "خريطة المحاصيل الشتوية",
+      "source_media_path": "word/media/image5.jpeg"
+    },
+    {
+      "filename": "006.jpg",
+      "caption": "صور من الزراعة الشتوية — خريطة المحاصيل الشتوية (2)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "خريطة المحاصيل الشتوية",
+      "source_media_path": "word/media/image6.jpeg"
+    },
+    {
+      "filename": "007.jpg",
+      "caption": "صور من الزراعة الشتوية — خريطة المحاصيل الشتوية (3)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "خريطة المحاصيل الشتوية",
+      "source_media_path": "word/media/image7.jpeg"
+    },
+    {
+      "filename": "008.jpg",
+      "caption": "بمساحة (90×40) م — المحاصيل الصيفية",
+      "context_before": "بمساحة (90×40) م",
+      "context_after": "المحاصيل الصيفية",
+      "source_media_path": "word/media/image8.jpeg"
+    },
+    {
+      "filename": "009.jpg",
+      "caption": "صور من الزراعة الصيفية: — خريطة الحقل الصيفي (1)",
+      "context_before": "صور من الزراعة الصيفية:",
+      "context_after": "خريطة الحقل الصيفي",
+      "source_media_path": "word/media/image9.jpeg"
+    },
+    {
+      "filename": "010.jpg",
+      "caption": "صور من الزراعة الصيفية: — خريطة الحقل الصيفي (2)",
+      "context_before": "صور من الزراعة الصيفية:",
+      "context_after": "خريطة الحقل الصيفي",
+      "source_media_path": "word/media/image10.jpeg"
+    },
+    {
+      "filename": "011.jpg",
+      "caption": "صور من الزراعة الصيفية: — خريطة الحقل الصيفي (3)",
+      "context_before": "صور من الزراعة الصيفية:",
+      "context_after": "خريطة الحقل الصيفي",
+      "source_media_path": "word/media/image11.jpeg"
+    },
+    {
+      "filename": "012.png",
+      "caption": "بمساحة (50×40) — حقول الأمهات:",
+      "context_before": "بمساحة (50×40)",
+      "context_after": "حقول الأمهات:",
+      "source_media_path": "word/media/image12.png"
+    },
+    {
+      "filename": "013.jpg",
+      "caption": "صورة جوية لحقل الأمهات — أنواع الأمهات:",
+      "context_before": "صورة جوية لحقل الأمهات",
+      "context_after": "أنواع الأمهات:",
+      "source_media_path": "word/media/image13.jpeg"
+    },
+    {
+      "filename": "014.png",
+      "caption": "بمساحة 170×40 — البنية التحتية:",
+      "context_before": "بمساحة 170×40",
+      "context_after": "البنية التحتية:",
+      "source_media_path": "word/media/image14.png"
+    }
+  ]
+}

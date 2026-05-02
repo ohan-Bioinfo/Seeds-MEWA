@@ -1,0 +1,43 @@
+{
+  "المحطة": "جازان",
+  "المعرف": "jazan",
+  "المصدر": "تقرير جازان من بداية المشروع.docx",
+  "عدد الصور": 5,
+  "الصور": [
+    {
+      "filename": "001.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات جازان — موقع المحطة (1)",
+      "context_before": "محطة البذور والتقاوي والشتلات جازان",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image1.jpeg"
+    },
+    {
+      "filename": "002.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات جازان — موقع المحطة (2)",
+      "context_before": "محطة البذور والتقاوي والشتلات جازان",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image2.jpeg"
+    },
+    {
+      "filename": "003.jpg",
+      "caption": "مساحات المحطة — المساحة الكلية (7200) م2               المساحة المستغلة (7200) م2 (1)",
+      "context_before": "مساحات المحطة",
+      "context_after": "المساحة الكلية (7200) م2               المساحة المستغلة (7200) م2",
+      "source_media_path": "word/media/image3.jpeg"
+    },
+    {
+      "filename": "004.jpg",
+      "caption": "مساحات المحطة — المساحة الكلية (7200) م2               المساحة المستغلة (7200) م2 (2)",
+      "context_before": "مساحات المحطة",
+      "context_after": "المساحة الكلية (7200) م2               المساحة المستغلة (7200) م2",
+      "source_media_path": "word/media/image4.jpeg"
+    },
+    {
+      "filename": "005.png",
+      "caption": "خريطة حقل الأمهات — البنية التحتية:",
+      "context_before": "خريطة حقل الأمهات",
+      "context_after": "البنية التحتية:",
+      "source_media_path": "word/media/image5.png"
+    }
+  ]
+}

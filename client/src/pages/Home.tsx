@@ -323,7 +323,7 @@ export default function Home() {
               {t("home.badge.cropsWithData")}
             </Badge>
             <Badge className="bg-white/15 border-white/25 text-white backdrop-blur-sm hover:bg-white/20 transition-colors">
-              <MapPin className="w-3 h-3 me-1.5" />9{" "}
+              <MapPin className="w-3 h-3 me-1.5" />10{" "}
               {t("home.badge.saudiRegions")}
             </Badge>
           </motion.div>
@@ -349,14 +349,14 @@ export default function Home() {
           />
           <KpiCard
             icon={Globe}
-            value={9}
+            value={10}
             label={t("home.kpi.saudiRegions")}
             color="#C0392B"
             delay={0.2}
           />
           <KpiCard
             icon={HardDrive}
-            value={8}
+            value={9}
             suffix={t("home.kpi.tbData")}
             label={t("home.kpi.genomicData")}
             color="#6B4423"

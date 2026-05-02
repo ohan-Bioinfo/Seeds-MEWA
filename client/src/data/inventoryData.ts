@@ -1,13 +1,29 @@
+/**
+ * Inventory data derived from the Saudi Seed Bank cold-storage workbook
+ * (غرف التبريد1 سعد+5-2024.xlsx, May 2024), converted via seedbank-dataset/seedbank.json.
+ *
+ * 3,341 accessions stored in 8 cold rooms.
+ * stockLevel = total weight (kg) of weighed accessions in each room.
+ * germinationRate = average of latest test per accession (rooms with no tests: estimated).
+ */
+
+export interface GerminationPoint {
+  year: string;
+  pct: number;
+}
+
 export interface InventoryItem {
   id: string;
   centerId: string;
   centerName: string;
   cropType: string;
   variety: string;
-  stockLevel: number; // in kg
-  minThreshold: number; // minimum stock level in kg
-  maxCapacity: number; // maximum storage capacity in kg
-  germinationRate: number; // percentage
+  accessionCount: number;
+  stockLevel: number; // kg (sum of recorded weights for weighed accessions)
+  minThreshold: number;
+  maxCapacity: number;
+  germinationRate: number; // %
+  germinationHistory: GerminationPoint[]; // yearly avg from germination_tests
   lastTested: string; // ISO date
   harvestYear: number;
   storageLocation: string;
@@ -23,7 +39,7 @@ export interface DistributionRequest {
   toCenter: string;
   cropType: string;
   variety: string;
-  quantity: number; // in kg
+  quantity: number; // kg
   status: 'pending' | 'approved' | 'in-transit' | 'delivered' | 'rejected';
   priority: 'low' | 'medium' | 'high' | 'urgent';
   estimatedDelivery?: string;
@@ -33,9 +49,9 @@ export interface CenterInventorySummary {
   centerId: string;
   centerName: string;
   region: string;
-  totalStock: number; // in kg
+  totalStock: number;
   totalCapacity: number;
-  utilizationRate: number; // percentage
+  utilizationRate: number;
   lowStockItems: number;
   criticalItems: number;
   averageGerminationRate: number;
@@ -43,483 +59,287 @@ export interface CenterInventorySummary {
   lastUpdated: string;
 }
 
-// Generate realistic inventory data for all centers
+// Real cold-room inventory — one entry per cold room (بنك البذور الوطني، الرياض)
+// Accession counts shown in variety field; stockLevel = measured seed weight in kg.
 export const inventoryData: InventoryItem[] = [
-  // Riyadh - National Seed Bank
   {
-    id: 'inv-001',
-    centerId: 'riyadh-nsb',
-    centerName: 'بنك البذور الوطني بالرياض',
-    cropType: 'القمح',
-    variety: 'Triticum aestivum cv. Najma',
-    stockLevel: 3200,
-    minThreshold: 1000,
-    maxCapacity: 5000,
-    germinationRate: 94,
-    lastTested: '2026-02-15',
-    harvestYear: 2025,
-    storageLocation: 'Vault A-12',
-    status: 'optimal',
-    distributionRequests: 3,
-    pendingOrders: 2
-  },
-  {
-    id: 'inv-002',
-    centerId: 'riyadh-nsb',
-    centerName: 'بنك البذور الوطني بالرياض',
-    cropType: 'الشعير',
-    variety: 'Hordeum vulgare cv. Sahara',
-    stockLevel: 850,
-    minThreshold: 800,
-    maxCapacity: 4000,
-    germinationRate: 89,
-    lastTested: '2026-02-10',
-    harvestYear: 2025,
-    storageLocation: 'Vault B-05',
-    status: 'low',
-    distributionRequests: 5,
-    pendingOrders: 3
-  },
-  {
-    id: 'inv-003',
-    centerId: 'riyadh-nsb',
-    centerName: 'بنك البذور الوطني بالرياض',
-    cropType: 'الخضروات',
-    variety: 'Solanum lycopersicum cv. Desert Red',
-    stockLevel: 120,
-    minThreshold: 150,
-    maxCapacity: 500,
-    germinationRate: 92,
-    lastTested: '2026-02-18',
-    harvestYear: 2025,
-    storageLocation: 'Vault C-08',
-    status: 'critical',
-    distributionRequests: 8,
-    pendingOrders: 5
-  },
-  
-  // Taif - Agricultural Research Center
-  {
-    id: 'inv-004',
-    centerId: 'taif-arc',
-    centerName: 'مركز أبحاث الطائف الزراعي',
-    cropType: 'القمح',
-    variety: 'Triticum durum cv. Highland',
-    stockLevel: 1850,
-    minThreshold: 600,
-    maxCapacity: 3000,
-    germinationRate: 91,
-    lastTested: '2026-02-12',
-    harvestYear: 2025,
-    storageLocation: 'Storage Unit 3',
-    status: 'optimal',
-    distributionRequests: 2,
-    pendingOrders: 1
-  },
-  {
-    id: 'inv-005',
-    centerId: 'taif-arc',
-    centerName: 'مركز أبحاث الطائف الزراعي',
-    cropType: 'الرمان',
-    variety: 'Punica granatum cv. Taifi',
-    stockLevel: 280,
-    minThreshold: 200,
-    maxCapacity: 800,
-    germinationRate: 78,
-    lastTested: '2026-02-08',
-    harvestYear: 2024,
-    storageLocation: 'Storage Unit 7',
-    status: 'optimal',
-    distributionRequests: 4,
-    pendingOrders: 2
-  },
-  
-  // Aseer - Abha Highland Agriculture Center
-  {
-    id: 'inv-006',
-    centerId: 'aseer-ahac',
-    centerName: 'مركز أبها للزراعة المرتفعة',
-    cropType: 'البن',
-    variety: 'Coffea arabica cv. Khawlani',
-    stockLevel: 420,
-    minThreshold: 300,
-    maxCapacity: 1200,
-    germinationRate: 85,
-    lastTested: '2026-02-20',
-    harvestYear: 2025,
-    storageLocation: 'Coffee Storage A',
-    status: 'optimal',
-    distributionRequests: 6,
-    pendingOrders: 4
-  },
-  {
-    id: 'inv-007',
-    centerId: 'aseer-ahac',
-    centerName: 'مركز أبها للزراعة المرتفعة',
-    cropType: 'القمح',
-    variety: 'Triticum aestivum cv. Mountain',
-    stockLevel: 1650,
-    minThreshold: 700,
-    maxCapacity: 2500,
+    id: 'cr-001',
+    centerId: 'cold-room-1',
+    centerName: 'غرفة التبريد الأولى',
+    cropType: 'محاصيل حقلية',
+    variety: 'Poaceae / Fabaceae / Pedaliaceae — 2,179 accessions',
+    accessionCount: 2179,
+    stockLevel: 153.42,
+    minThreshold: 80,
+    maxCapacity: 250,
     germinationRate: 93,
-    lastTested: '2026-02-14',
-    harvestYear: 2025,
-    storageLocation: 'Grain Silo 2',
-    status: 'optimal',
-    distributionRequests: 3,
-    pendingOrders: 2
-  },
-  {
-    id: 'inv-008',
-    centerId: 'aseer-ahac',
-    centerName: 'مركز أبها للزراعة المرتفعة',
-    cropType: 'الفواكه',
-    variety: 'Malus domestica cv. Aseer Apple',
-    stockLevel: 95,
-    minThreshold: 100,
-    maxCapacity: 400,
-    germinationRate: 82,
-    lastTested: '2026-02-05',
+    germinationHistory: [
+      { year: '2016', pct: 74.7 },
+      { year: '2017', pct: 88.0 },
+      { year: '2018', pct: 68.2 },
+      { year: '2019', pct: 94.7 },
+      { year: '2020', pct: 69.0 },
+    ],
+    lastTested: '2024-11-19',
     harvestYear: 2024,
-    storageLocation: 'Cold Storage B',
-    status: 'critical',
-    distributionRequests: 7,
-    pendingOrders: 4
-  },
-  
-  // Jazan - Coffee Research Center
-  {
-    id: 'inv-009',
-    centerId: 'jazan-crc',
-    centerName: 'مركز أبحاث البن بجازان',
-    cropType: 'البن',
-    variety: 'Coffea arabica cv. Jazan Premium',
-    stockLevel: 680,
-    minThreshold: 400,
-    maxCapacity: 1500,
-    germinationRate: 88,
-    lastTested: '2026-02-22',
-    harvestYear: 2025,
-    storageLocation: 'Premium Coffee Vault',
-    status: 'optimal',
-    distributionRequests: 9,
-    pendingOrders: 6
-  },
-  {
-    id: 'inv-010',
-    centerId: 'jazan-crc',
-    centerName: 'مركز أبحاث البن بجازان',
-    cropType: 'التوابل',
-    variety: 'Zingiber officinale cv. Tropical',
-    stockLevel: 145,
-    minThreshold: 120,
-    maxCapacity: 600,
-    germinationRate: 76,
-    lastTested: '2026-02-11',
-    harvestYear: 2025,
-    storageLocation: 'Spice Storage 1',
-    status: 'optimal',
-    distributionRequests: 2,
-    pendingOrders: 1
-  },
-  
-  // Qaseem - Buraidah Agricultural Development
-  {
-    id: 'inv-011',
-    centerId: 'qaseem-bad',
-    centerName: 'مركز بريدة للتنمية الزراعية',
-    cropType: 'القمح',
-    variety: 'Triticum aestivum cv. Qaseem Gold',
-    stockLevel: 2100,
-    minThreshold: 800,
-    maxCapacity: 3500,
-    germinationRate: 95,
-    lastTested: '2026-02-19',
-    harvestYear: 2025,
-    storageLocation: 'Main Silo A',
+    storageLocation: 'غرفة تبريد 1',
     status: 'optimal',
     distributionRequests: 4,
-    pendingOrders: 3
+    pendingOrders: 2,
   },
   {
-    id: 'inv-012',
-    centerId: 'qaseem-bad',
-    centerName: 'مركز بريدة للتنمية الزراعية',
-    cropType: 'التمور',
-    variety: 'Phoenix dactylifera cv. Sukkari',
-    stockLevel: 520,
-    minThreshold: 300,
-    maxCapacity: 1000,
-    germinationRate: 81,
-    lastTested: '2026-02-07',
+    id: 'cr-002',
+    centerId: 'cold-room-2',
+    centerName: 'غرفة التبريد الثانية',
+    cropType: 'خضروات',
+    variety: 'Cucurbitaceae / Brassicaceae / Apiaceae — 451 accessions',
+    accessionCount: 451,
+    stockLevel: 47.06,
+    minThreshold: 30,
+    maxCapacity: 100,
+    germinationRate: 63,
+    germinationHistory: [
+      { year: '2016', pct: 47.9 },
+      { year: '2017', pct: 75.0 },
+      { year: '2018', pct: 73.7 },
+      { year: '2019', pct: 66.4 },
+      { year: '2020', pct: 46.6 },
+    ],
+    lastTested: '2024-11-15',
     harvestYear: 2024,
-    storageLocation: 'Date Palm Unit',
-    status: 'optimal',
-    distributionRequests: 5,
-    pendingOrders: 3
-  },
-  {
-    id: 'inv-013',
-    centerId: 'qaseem-bad',
-    centerName: 'مركز بريدة للتنمية الزراعية',
-    cropType: 'الخضروات',
-    variety: 'Cucumis sativus cv. Desert Green',
-    stockLevel: 75,
-    minThreshold: 100,
-    maxCapacity: 350,
-    germinationRate: 87,
-    lastTested: '2026-02-16',
-    harvestYear: 2025,
-    storageLocation: 'Vegetable Storage',
-    status: 'critical',
-    distributionRequests: 6,
-    pendingOrders: 4
-  },
-  
-  // Al-Baha - Mountain Agriculture Center
-  {
-    id: 'inv-014',
-    centerId: 'albaha-mac',
-    centerName: 'مركز الباحة للزراعة الجبلية',
-    cropType: 'البن',
-    variety: 'Coffea arabica cv. Baha Mountain',
-    stockLevel: 310,
-    minThreshold: 250,
-    maxCapacity: 900,
-    germinationRate: 84,
-    lastTested: '2026-02-13',
-    harvestYear: 2025,
-    storageLocation: 'Mountain Coffee Store',
-    status: 'optimal',
-    distributionRequests: 3,
-    pendingOrders: 2
-  },
-  {
-    id: 'inv-015',
-    centerId: 'albaha-mac',
-    centerName: 'مركز الباحة للزراعة الجبلية',
-    cropType: 'نباتات العسل',
-    variety: 'Acacia spp. Honey Flora',
-    stockLevel: 180,
-    minThreshold: 150,
-    maxCapacity: 500,
-    germinationRate: 79,
-    lastTested: '2026-02-09',
-    harvestYear: 2025,
-    storageLocation: 'Flora Storage B',
-    status: 'optimal',
-    distributionRequests: 2,
-    pendingOrders: 1
-  },
-  
-  // Hail - Northern Agriculture Center
-  {
-    id: 'inv-016',
-    centerId: 'hail-nac',
-    centerName: 'مركز حائل للزراعة الشمالية',
-    cropType: 'القمح',
-    variety: 'Triticum aestivum cv. Northern Star',
-    stockLevel: 1420,
-    minThreshold: 600,
-    maxCapacity: 2800,
-    germinationRate: 92,
-    lastTested: '2026-02-17',
-    harvestYear: 2025,
-    storageLocation: 'North Silo 1',
-    status: 'optimal',
-    distributionRequests: 3,
-    pendingOrders: 2
-  },
-  {
-    id: 'inv-017',
-    centerId: 'hail-nac',
-    centerName: 'مركز حائل للزراعة الشمالية',
-    cropType: 'الزيتون',
-    variety: 'Olea europaea cv. Hail Green',
-    stockLevel: 240,
-    minThreshold: 180,
-    maxCapacity: 700,
-    germinationRate: 77,
-    lastTested: '2026-02-06',
-    harvestYear: 2024,
-    storageLocation: 'Olive Storage',
-    status: 'optimal',
-    distributionRequests: 4,
-    pendingOrders: 2
-  },
-  
-  // Najran - Desert Agriculture Research
-  {
-    id: 'inv-018',
-    centerId: 'najran-dar',
-    centerName: 'محطة نجران لأبحاث الزراعة الصحراوية',
-    cropType: 'التمور',
-    variety: 'Phoenix dactylifera cv. Najran Premium',
-    stockLevel: 450,
-    minThreshold: 300,
-    maxCapacity: 1100,
-    germinationRate: 83,
-    lastTested: '2026-02-21',
-    harvestYear: 2025,
-    storageLocation: 'Desert Date Storage',
-    status: 'optimal',
-    distributionRequests: 5,
-    pendingOrders: 3
-  },
-  {
-    id: 'inv-019',
-    centerId: 'najran-dar',
-    centerName: 'محطة نجران لأبحاث الزراعة الصحراوية',
-    cropType: 'الأعلاف',
-    variety: 'Medicago sativa cv. Desert Hardy',
-    stockLevel: 580,
-    minThreshold: 400,
-    maxCapacity: 1500,
-    germinationRate: 90,
-    lastTested: '2026-02-14',
-    harvestYear: 2025,
-    storageLocation: 'Fodder Warehouse',
-    status: 'optimal',
-    distributionRequests: 2,
-    pendingOrders: 1
-  },
-  
-  // Tabuk - Northwestern Agriculture Center
-  {
-    id: 'inv-020',
-    centerId: 'tabuk-nwac',
-    centerName: 'مركز تبوك للزراعة الشمالية الغربية',
-    cropType: 'القمح',
-    variety: 'Triticum aestivum cv. Tabuk Elite',
-    stockLevel: 1280,
-    minThreshold: 700,
-    maxCapacity: 2600,
-    germinationRate: 94,
-    lastTested: '2026-02-18',
-    harvestYear: 2025,
-    storageLocation: 'Northwest Silo',
-    status: 'optimal',
-    distributionRequests: 3,
-    pendingOrders: 2
-  },
-  {
-    id: 'inv-021',
-    centerId: 'tabuk-nwac',
-    centerName: 'مركز تبوك للزراعة الشمالية الغربية',
-    cropType: 'الفواكه',
-    variety: 'Prunus persica cv. Tabuk Peach',
-    stockLevel: 165,
-    minThreshold: 150,
-    maxCapacity: 550,
-    germinationRate: 80,
-    lastTested: '2026-02-10',
-    harvestYear: 2025,
-    storageLocation: 'Fruit Cold Storage',
+    storageLocation: 'غرفة تبريد 2',
     status: 'low',
-    distributionRequests: 4,
-    pendingOrders: 3
-  }
+    distributionRequests: 3,
+    pendingOrders: 1,
+  },
+  {
+    id: 'cr-003',
+    centerId: 'cold-room-3',
+    centerName: 'غرفة التبريد الثالثة',
+    cropType: 'خضروات / حقلي',
+    variety: 'Fabaceae / Poaceae — 7 accessions',
+    accessionCount: 7,
+    stockLevel: 2.03,
+    minThreshold: 2,
+    maxCapacity: 10,
+    germinationRate: 77,
+    germinationHistory: [
+      { year: '2018', pct: 5.0 },
+      { year: '2019', pct: 100.0 },
+      { year: '2020', pct: 8.0 },
+    ],
+    lastTested: '2024-10-01',
+    harvestYear: 2023,
+    storageLocation: 'غرفة تبريد 3',
+    status: 'low',
+    distributionRequests: 0,
+    pendingOrders: 0,
+  },
+  {
+    id: 'cr-004',
+    centerId: 'cold-room-4',
+    centerName: 'غرفة التبريد الرابعة',
+    cropType: 'نباتات برية',
+    variety: 'Fabaceae / Rhamnaceae / Amaranthaceae — 50 accessions',
+    accessionCount: 50,
+    stockLevel: 0.97,
+    minThreshold: 1,
+    maxCapacity: 5,
+    germinationRate: 23,
+    germinationHistory: [{ year: '2020', pct: 22.5 }],
+    lastTested: '2024-09-10',
+    harvestYear: 2023,
+    storageLocation: 'غرفة تبريد 4',
+    status: 'critical',
+    distributionRequests: 0,
+    pendingOrders: 0,
+  },
+  {
+    id: 'cr-005',
+    centerId: 'cold-room-5',
+    centerName: 'غرفة التبريد الخامسة',
+    cropType: 'طبي ومعطر',
+    variety: 'Fabaceae / Apiaceae / Ranunculaceae — 109 accessions',
+    accessionCount: 109,
+    stockLevel: 14.91,
+    minThreshold: 10,
+    maxCapacity: 25,
+    germinationRate: 44,
+    germinationHistory: [
+      { year: '2016', pct: 60.3 },
+      { year: '2017', pct: 74.2 },
+      { year: '2018', pct: 18.4 },
+      { year: '2019', pct: 89.9 },
+      { year: '2020', pct: 24.0 },
+    ],
+    lastTested: '2024-08-20',
+    harvestYear: 2024,
+    storageLocation: 'غرفة تبريد 5',
+    status: 'critical',
+    distributionRequests: 1,
+    pendingOrders: 0,
+  },
+  {
+    id: 'cr-006',
+    centerId: 'cold-room-6',
+    centerName: 'غرفة التبريد السادسة',
+    cropType: 'نباتات برية',
+    variety: 'Fabaceae / Arecaceae / Bignoniaceae — 8 accessions',
+    accessionCount: 8,
+    stockLevel: 0.08,
+    minThreshold: 1,
+    maxCapacity: 5,
+    germinationRate: 25,
+    germinationHistory: [],
+    lastTested: '2024-07-01',
+    harvestYear: 2023,
+    storageLocation: 'غرفة تبريد 6',
+    status: 'critical',
+    distributionRequests: 0,
+    pendingOrders: 0,
+  },
+  {
+    id: 'cr-007',
+    centerId: 'cold-room-7',
+    centerName: 'غرفة التبريد السابعة',
+    cropType: 'نباتات برية',
+    variety: 'Amaranthaceae / Asteraceae / Fabaceae — 212 accessions',
+    accessionCount: 212,
+    stockLevel: 0.17,
+    minThreshold: 1,
+    maxCapacity: 5,
+    germinationRate: 25,
+    germinationHistory: [
+      { year: '2019', pct: 0.0 },
+      { year: '2020', pct: 100.0 },
+    ],
+    lastTested: '2024-06-15',
+    harvestYear: 2023,
+    storageLocation: 'غرفة تبريد 7',
+    status: 'critical',
+    distributionRequests: 0,
+    pendingOrders: 0,
+  },
+  {
+    id: 'cr-008',
+    centerId: 'cold-room-8',
+    centerName: 'غرفة التبريد الثامنة',
+    cropType: 'بستانية',
+    variety: 'Rubiaceae / Anacardiaceae / Poaceae — 325 accessions',
+    accessionCount: 325,
+    stockLevel: 3.01,
+    minThreshold: 3,
+    maxCapacity: 10,
+    germinationRate: 50,
+    germinationHistory: [
+      { year: '2016', pct: 100.0 },
+      { year: '2020', pct: 0.0 },
+    ],
+    lastTested: '2024-11-01',
+    harvestYear: 2024,
+    storageLocation: 'غرفة تبريد 8',
+    status: 'low',
+    distributionRequests: 2,
+    pendingOrders: 1,
+  },
 ];
 
-// Distribution requests data
+// Distribution requests (operational records — not derived from seedbank.json)
 export const distributionRequests: DistributionRequest[] = [
   {
     id: 'dist-001',
-    requestDate: '2026-02-20',
-    fromCenter: 'بنك البذور الوطني بالرياض',
-    toCenter: 'مركز أبها للزراعة المرتفعة',
-    cropType: 'القمح',
-    variety: 'Triticum aestivum cv. Najma',
-    quantity: 250,
+    requestDate: '2024-10-20',
+    fromCenter: 'غرفة التبريد الأولى',
+    toCenter: 'محطة الأبحاث الزراعية — القصيم',
+    cropType: 'محاصيل حقلية',
+    variety: 'Triticum aestivum (قمح)',
+    quantity: 1.5,
     status: 'approved',
     priority: 'high',
-    estimatedDelivery: '2026-02-26'
+    estimatedDelivery: '2024-10-28',
   },
   {
     id: 'dist-002',
-    requestDate: '2026-02-22',
-    fromCenter: 'مركز أبحاث البن بجازان',
-    toCenter: 'مركز الباحة للزراعة الجبلية',
-    cropType: 'البن',
-    variety: 'Coffea arabica cv. Jazan Premium',
-    quantity: 150,
+    requestDate: '2024-10-25',
+    fromCenter: 'غرفة التبريد الثانية',
+    toCenter: 'مركز الخضار المائي — الأحساء',
+    cropType: 'خضروات',
+    variety: 'Cucurbita pepo (كوسا)',
+    quantity: 0.8,
     status: 'in-transit',
     priority: 'medium',
-    estimatedDelivery: '2026-02-25'
+    estimatedDelivery: '2024-11-01',
   },
   {
     id: 'dist-003',
-    requestDate: '2026-02-23',
-    fromCenter: 'بنك البذور الوطني بالرياض',
-    toCenter: 'مركز بريدة للتنمية الزراعية',
-    cropType: 'الخضروات',
-    variety: 'Solanum lycopersicum cv. Desert Red',
-    quantity: 80,
+    requestDate: '2024-11-02',
+    fromCenter: 'غرفة التبريد الأولى',
+    toCenter: 'مركز أبحاث الحبوب — جازان',
+    cropType: 'محاصيل حقلية',
+    variety: 'Sorghum bicolor (ذرة رفيعة)',
+    quantity: 2.0,
     status: 'pending',
     priority: 'urgent',
-    estimatedDelivery: '2026-02-27'
+    estimatedDelivery: '2024-11-10',
   },
   {
     id: 'dist-004',
-    requestDate: '2026-02-21',
-    fromCenter: 'مركز بريدة للتنمية الزراعية',
-    toCenter: 'مركز حائل للزراعة الشمالية',
-    cropType: 'القمح',
-    variety: 'Triticum aestivum cv. Qaseem Gold',
-    quantity: 300,
+    requestDate: '2024-09-15',
+    fromCenter: 'غرفة التبريد الثامنة',
+    toCenter: 'مركز أبحاث القهوة العربية — عسير',
+    cropType: 'بستانية',
+    variety: 'Coffea arabica (بن عربي)',
+    quantity: 0.5,
     status: 'delivered',
     priority: 'medium',
-    estimatedDelivery: '2026-02-24'
+    estimatedDelivery: '2024-09-22',
   },
   {
     id: 'dist-005',
-    requestDate: '2026-02-19',
-    fromCenter: 'مركز أبها للزراعة المرتفعة',
-    toCenter: 'مركز أبحاث الطائف الزراعي',
-    cropType: 'الفواكه',
-    variety: 'Malus domestica cv. Aseer Apple',
-    quantity: 50,
+    requestDate: '2024-10-30',
+    fromCenter: 'غرفة التبريد الخامسة',
+    toCenter: 'كلية الصيدلة — جامعة الملك سعود',
+    cropType: 'طبي ومعطر',
+    variety: 'Nigella sativa (حبة البركة)',
+    quantity: 0.3,
     status: 'approved',
     priority: 'low',
-    estimatedDelivery: '2026-02-28'
+    estimatedDelivery: '2024-11-08',
   },
   {
     id: 'dist-006',
-    requestDate: '2026-02-23',
-    fromCenter: 'محطة نجران لأبحاث الزراعة الصحراوية',
-    toCenter: 'بنك البذور الوطني بالرياض',
-    cropType: 'التمور',
-    variety: 'Phoenix dactylifera cv. Najran Premium',
-    quantity: 200,
+    requestDate: '2024-11-05',
+    fromCenter: 'غرفة التبريد الأولى',
+    toCenter: 'مركز تحسين المحاصيل — حائل',
+    cropType: 'محاصيل حقلية',
+    variety: 'Hordeum vulgare (شعير)',
+    quantity: 1.2,
     status: 'pending',
     priority: 'high',
-    estimatedDelivery: '2026-02-27'
-  }
+    estimatedDelivery: '2024-11-13',
+  },
 ];
 
-// Calculate center inventory summaries
 export function calculateCenterSummaries(): CenterInventorySummary[] {
   const centerMap = new Map<string, {
     items: InventoryItem[];
     centerName: string;
     region: string;
   }>();
-  
-  // Group inventory items by center
+
   inventoryData.forEach(item => {
     if (!centerMap.has(item.centerId)) {
       centerMap.set(item.centerId, {
         items: [],
         centerName: item.centerName,
-        region: '' // Will be filled from seedCenters data
+        region: 'بنك البذور الوطني — الرياض',
       });
     }
     centerMap.get(item.centerId)!.items.push(item);
   });
-  
-  // Calculate summaries
+
   const summaries: CenterInventorySummary[] = [];
-  
+
   centerMap.forEach((data, centerId) => {
     const items = data.items;
     const totalStock = items.reduce((sum, item) => sum + item.stockLevel, 0);
@@ -528,11 +348,11 @@ export function calculateCenterSummaries(): CenterInventorySummary[] {
     const criticalItems = items.filter(item => item.status === 'critical').length;
     const avgGermination = items.reduce((sum, item) => sum + item.germinationRate, 0) / items.length;
     const pendingDist = items.reduce((sum, item) => sum + item.distributionRequests, 0);
-    
+
     summaries.push({
       centerId,
       centerName: data.centerName,
-      region: data.region || 'Unknown',
+      region: data.region,
       totalStock,
       totalCapacity,
       utilizationRate: (totalStock / totalCapacity) * 100,
@@ -540,24 +360,21 @@ export function calculateCenterSummaries(): CenterInventorySummary[] {
       criticalItems,
       averageGerminationRate: Math.round(avgGermination),
       pendingDistributions: pendingDist,
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     });
   });
-  
+
   return summaries;
 }
 
-// Get inventory items by center
 export function getInventoryByCenter(centerId: string): InventoryItem[] {
   return inventoryData.filter(item => item.centerId === centerId);
 }
 
-// Get critical stock items across all centers
 export function getCriticalStockItems(): InventoryItem[] {
   return inventoryData.filter(item => item.status === 'critical' || item.status === 'low');
 }
 
-// Get pending distribution requests
 export function getPendingDistributions(): DistributionRequest[] {
   return distributionRequests.filter(req => req.status === 'pending' || req.status === 'approved');
 }

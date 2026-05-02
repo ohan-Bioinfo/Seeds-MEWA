@@ -1,0 +1,106 @@
+{
+  "المحطة": "الأحساء",
+  "المعرف": "ahsa",
+  "المصدر": "تقرير محطة الاحساء من بداية المشروع.docx",
+  "عدد الصور": 14,
+  "الصور": [
+    {
+      "filename": "001.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات في الاحساء — موقع المحطة (1)",
+      "context_before": "محطة البذور والتقاوي والشتلات في الاحساء",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image1.jpeg"
+    },
+    {
+      "filename": "002.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات في الاحساء — موقع المحطة (2)",
+      "context_before": "محطة البذور والتقاوي والشتلات في الاحساء",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image2.jpeg"
+    },
+    {
+      "filename": "003.jpg",
+      "caption": "مساحات المحطة — المساحة المستخدمة (0.5) هكتار                      المساحة الكلية (10) هكتار (1)",
+      "context_before": "مساحات المحطة",
+      "context_after": "المساحة المستخدمة (0.5) هكتار                      المساحة الكلية (10) هكتار",
+      "source_media_path": "word/media/image3.jpeg"
+    },
+    {
+      "filename": "004.jpg",
+      "caption": "مساحات المحطة — المساحة المستخدمة (0.5) هكتار                      المساحة الكلية (10) هكتار (2)",
+      "context_before": "مساحات المحطة",
+      "context_after": "المساحة المستخدمة (0.5) هكتار                      المساحة الكلية (10) هكتار",
+      "source_media_path": "word/media/image4.jpeg"
+    },
+    {
+      "filename": "005.jpg",
+      "caption": "مساحات المحطة — المساحة المستخدمة (0.5) هكتار                      المساحة الكلية (10) هكتار (3)",
+      "context_before": "مساحات المحطة",
+      "context_after": "المساحة المستخدمة (0.5) هكتار                      المساحة الكلية (10) هكتار",
+      "source_media_path": "word/media/image5.jpeg"
+    },
+    {
+      "filename": "006.jpg",
+      "caption": "صور من الزراعة الشتوية — المحاصيل الشتوية (1)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "المحاصيل الشتوية",
+      "source_media_path": "word/media/image6.jpeg"
+    },
+    {
+      "filename": "007.jpg",
+      "caption": "صور من الزراعة الشتوية — المحاصيل الشتوية (2)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "المحاصيل الشتوية",
+      "source_media_path": "word/media/image7.jpeg"
+    },
+    {
+      "filename": "008.jpg",
+      "caption": "صور من الزراعة الشتوية — المحاصيل الشتوية (3)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "المحاصيل الشتوية",
+      "source_media_path": "word/media/image8.jpeg"
+    },
+    {
+      "filename": "009.jpg",
+      "caption": "بمساحة (44.8×52.1) م — 2- المحاصيل الصيفية",
+      "context_before": "بمساحة (44.8×52.1) م",
+      "context_after": "2- المحاصيل الصيفية",
+      "source_media_path": "word/media/image9.jpg"
+    },
+    {
+      "filename": "010.jpg",
+      "caption": "صور من الزراعة الصيفية: — الحقل الصيفي (1)",
+      "context_before": "صور من الزراعة الصيفية:",
+      "context_after": "الحقل الصيفي",
+      "source_media_path": "word/media/image10.jpeg"
+    },
+    {
+      "filename": "011.jpg",
+      "caption": "صور من الزراعة الصيفية: — الحقل الصيفي (2)",
+      "context_before": "صور من الزراعة الصيفية:",
+      "context_after": "الحقل الصيفي",
+      "source_media_path": "word/media/image11.jpeg"
+    },
+    {
+      "filename": "012.jpg",
+      "caption": "صور من الزراعة الصيفية: — الحقل الصيفي (3)",
+      "context_before": "صور من الزراعة الصيفية:",
+      "context_after": "الحقل الصيفي",
+      "source_media_path": "word/media/image12.jpeg"
+    },
+    {
+      "filename": "013.jpg",
+      "caption": "بمساحة (43×52) — حقول الأمهات:",
+      "context_before": "بمساحة (43×52)",
+      "context_after": "حقول الأمهات:",
+      "source_media_path": "word/media/image13.jpg"
+    },
+    {
+      "filename": "014.jpg",
+      "caption": "صورة جوية لحقل الأمهات تتضمن الخريطة: — البنية التحتية:",
+      "context_before": "صورة جوية لحقل الأمهات تتضمن الخريطة:",
+      "context_after": "البنية التحتية:",
+      "source_media_path": "word/media/image14.jpg"
+    }
+  ]
+}

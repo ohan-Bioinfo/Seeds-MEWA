@@ -1,0 +1,106 @@
+{
+  "المحطة": "الباحة",
+  "المعرف": "baha",
+  "المصدر": "تقرير الباحة من بداية المشروع.docx",
+  "عدد الصور": 14,
+  "الصور": [
+    {
+      "filename": "001.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات بالباحة — موقع المحطة (1)",
+      "context_before": "محطة البذور والتقاوي والشتلات بالباحة",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image1.jpeg"
+    },
+    {
+      "filename": "002.jpg",
+      "caption": "محطة البذور والتقاوي والشتلات بالباحة — موقع المحطة (2)",
+      "context_before": "محطة البذور والتقاوي والشتلات بالباحة",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image2.jpeg"
+    },
+    {
+      "filename": "003.jpg",
+      "caption": "20°15'21.5\"N 41°39'04.6\"E — مساحةالمحطة:",
+      "context_before": "20°15'21.5\"N 41°39'04.6\"E",
+      "context_after": "مساحةالمحطة:",
+      "source_media_path": "word/media/image3.emf"
+    },
+    {
+      "filename": "004.jpg",
+      "caption": "المساحة الكلية (73000 ) م٢ — اولاً: المحاصيل الحقلية",
+      "context_before": "المساحة الكلية (73000 ) م٢",
+      "context_after": "اولاً: المحاصيل الحقلية",
+      "source_media_path": "word/media/image4.jpeg"
+    },
+    {
+      "filename": "005.jpg",
+      "caption": "صور من الزراعة الشتوية — خريطة المحاصيل الشتوية (1)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "خريطة المحاصيل الشتوية",
+      "source_media_path": "word/media/image5.jpeg"
+    },
+    {
+      "filename": "006.jpg",
+      "caption": "صور من الزراعة الشتوية — خريطة المحاصيل الشتوية (2)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "خريطة المحاصيل الشتوية",
+      "source_media_path": "word/media/image6.jpeg"
+    },
+    {
+      "filename": "007.png",
+      "caption": "بمساحة (36×14) م — حقول الأمهات: (1)",
+      "context_before": "بمساحة (36×14) م",
+      "context_after": "حقول الأمهات:",
+      "source_media_path": "word/media/image7.png"
+    },
+    {
+      "filename": "008.png",
+      "caption": "بمساحة (36×14) م — حقول الأمهات: (2)",
+      "context_before": "بمساحة (36×14) م",
+      "context_after": "حقول الأمهات:",
+      "source_media_path": "word/media/image8.png"
+    },
+    {
+      "filename": "009.png",
+      "caption": "بمساحة 5000 م2 — حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة (1)",
+      "context_before": "بمساحة 5000 م2",
+      "context_after": "حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة",
+      "source_media_path": "word/media/image9.png"
+    },
+    {
+      "filename": "010.png",
+      "caption": "بمساحة 5000 م2 — حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة (2)",
+      "context_before": "بمساحة 5000 م2",
+      "context_after": "حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة",
+      "source_media_path": "word/media/image10.png"
+    },
+    {
+      "filename": "011.png",
+      "caption": "بمساحة 5000 م2 — حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة (3)",
+      "context_before": "بمساحة 5000 م2",
+      "context_after": "حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة",
+      "source_media_path": "word/media/image11.png"
+    },
+    {
+      "filename": "012.jpg",
+      "caption": "حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة — ثانياً: البنية التحتية للمحطة (1)",
+      "context_before": "حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة",
+      "context_after": "ثانياً: البنية التحتية للمحطة",
+      "source_media_path": "word/media/image12.jpeg"
+    },
+    {
+      "filename": "013.jpg",
+      "caption": "حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة — ثانياً: البنية التحتية للمحطة (2)",
+      "context_before": "حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة",
+      "context_after": "ثانياً: البنية التحتية للمحطة",
+      "source_media_path": "word/media/image13.jpeg"
+    },
+    {
+      "filename": "014.jpg",
+      "caption": "حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة — ثانياً: البنية التحتية للمحطة (3)",
+      "context_before": "حقل الأمهات للفاكهه بمحطة البذور والتقاوي والشتلات بالباحة",
+      "context_after": "ثانياً: البنية التحتية للمحطة",
+      "source_media_path": "word/media/image14.jpeg"
+    }
+  ]
+}

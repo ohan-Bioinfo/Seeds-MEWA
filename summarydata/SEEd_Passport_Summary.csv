@@ -1,0 +1,236 @@
+SEEd Center - Passport Data Summary per Crop
+Generated: 2026-03-12
+Note: Only crops with passport/accession data are included
+
+========================================
+CROP 1: BARLEY (Hordeum vulgare) - GBS
+========================================
+Passport File,GBS/Barley-Hordeum_vulgare/analysis/Iter2/02.diversity/PCA/Barley-Passport.csv
+Total Accessions,93 (coded BA1-BA94)
+Passport Fields,"Accession, AccessionBankID, Source-or-DonorName, Local-Names, Collection-Country, Collection-Site, Place-of-Collection"
+
+Country of Origin,Count
+Syria,55
+Saudi Arabia,37
+Unknown/NA,2
+
+Source/Donor,Count
+ACSAD (Arab Center for Dry Areas),37
+Farm (local),22
+Market (local),9
+ICARDA (various lines),16
+Agri. Research Center/Directorate,3
+Unknown/NA,2
+
+Collection Sites (Saudi Arabia),"Buraidah, Unaizah, Al-Bakariah, Al-Qawara, Al-Kharj, Riyadh, Balsamer, Al-Nimas, Wadi Dawasir, Jazan, Hail, Najran, Taima, Beni-Malak, Taif, Aseer, Al-Baha, Tabuk"
+Notes,"Mix of Saudi Arabian landraces and introduced lines from Syria (ACSAD, ICARDA). Includes local Arabic-named varieties."
+
+========================================
+CROP 2: WHEAT - Bread Wheat (Triticum aestivum) - GBS
+========================================
+Passport File,GBS/Wheat/Wheat-Triticum_aestivum/analysis/Iter-5/passport.csv
+Total Accessions,563 (coded W129-W692+ and Y-series)
+Passport Fields,"Sent Code, Accession Bank ID, Genus, Species, Scientific Name, Source or Donor Name, Local Names, Collection Country, Collection Site, Place of collection"
+
+Country of Origin,Count
+Mexico (CIMMYT),340
+Saudi Arabia,100
+Morocco (ICARDA),23
+ACSAD,17
+NA/Unknown,48
+Syria,1
+Other,34
+
+Source/Donor,Count
+CIMMYT (Mexico),370
+Farm (local),93
+Market (local),37
+ACSAD,20
+ICARDA (various),26
+Agri. Research/Directorate,5
+Other,12
+
+Notes,"Largest GBS collection. Heavily dominated by CIMMYT international breeding lines (66%). Saudi landraces (~18%) collected across multiple provinces. Local Arabic names preserved."
+
+========================================
+CROP 3: FABA BEAN (Vicia faba) - GBS
+========================================
+Passport File,GBS/Faba-Bean-Vicia-/Analysis/02.Analysis.local/iter-3/passport.csv
+Total Accessions,22 (coded F1-F23)
+Passport Fields,"Sr. No., Sent Code, Accession Bank ID, Genus, Species, Scientific Name, Source or Donor Name, Local Names, Collection Country, Collection Site, Place of collection"
+
+Country of Origin,Count
+Saudi Arabia,12
+Egypt,3
+Sudan,2
+Australia,2
+Spain,1
+Unknown,2
+
+Source/Donor,Count
+Dr Salem Alghamdy (KSU),20
+Market,3
+
+Collection Sites (Saudi Arabia),"KSA (general), Al-Hasa, Najd, Riyadh"
+Local Names,"hassawy_3, hassawy1, Misr_3, L53_D, luz_x_G716, ksu series (breeding lines), sakha-1_x_luz, sakha-2, luz, Firod, gazira-1/2, PBA, Giza-Blanka, TW-3, TW-4"
+Notes,"Small collection, primarily from KSU breeding program (Dr Salem Alghamdy). Mix of Saudi landraces and international varieties (Egypt, Sudan, Australia, Spain)."
+
+========================================
+CROP 4: COFFEE (Coffea arabica) - WGS
+========================================
+Passport File,WGS/Last-Batch-Output/Last-Batch-Output/Coffee-86/Analysis/metadata/Passport-v2.csv
+Total Accessions,77 (coded C105-C181+)
+Passport Fields,"Bank Code, Lab Code, Genus, Species, Scientific Name, Source or Donor Name, Local Names, Collection Country, Collection Site, Place of collection"
+
+Country of Origin,Count
+Saudi Arabia,75
+Unknown,3
+
+Source/Donor,Count
+Palladium project 2022-2024,75
+Unknown,3
+
+Collection Sites,Count
+Jazan,35
+Aseer,28
+Al-Baha,12
+Unknown,3
+
+Local Names,"بن خولانى (Khawlani coffee)"
+Notes,"Exclusively Saudi Arabian Coffea arabica. Collected through Palladium project (2022-2024). Sourced from the traditional coffee-growing southwestern regions (Jazan, Aseer, Al-Baha). All identified as Khawlani variety."
+
+========================================
+CROP 5: MILLET (Pennisetum typhoideum) - WGS
+========================================
+Passport File,WGS/Last-Batch-Output/Millet-57/analysis-Local/passport.csv
+Total Accessions,59 (coded PM1-PM60)
+QC Status: 57 PASSED / 3 Did not pass QC
+Passport Fields,"Sample, Scientific Name, Code, Status, Accession Bank ID, Genus, Species, Source or Donor Name, Collection Country, Collection Site, Place of collection"
+
+Country of Origin,Count
+Saudi Arabia,59 (all accessions)
+
+Source/Donor,Count
+Farm (local),39
+Agri. Research Center Gizan,9
+Directorate of Agriculture Al-Qaseem,3
+Market,2
+Named individuals,2
+Unknown,5
+
+Collection Sites,Count
+Jazan,10
+Al-Baha,10
+Al-Qaseem,4
+Mecca/Taif,4
+Southern province,4
+Western province,3
+Riyadh,3
+Aseer,3
+Eastern Province,2
+Medina,1
+Other,6
+Unknown,6
+
+Notes,"100% Saudi Arabian landraces. Broad geographic coverage across major agricultural regions. Traditional farming variety."
+
+========================================
+CROP 6: SORGHUM (Sorghum bicolor) - WGS
+========================================
+Passport File,WGS/Sorghum-Sorghum.bicolor.L./Sorghum/Archive/Iter-5/Info/passport_info.txt
+Total Accessions,85 (coded SO1-SO89)
+Passport Fields,"SampleCode, Location"
+
+Collection Sites,Count
+Al-Kharj,72
+Jazan/Jizan,14
+
+Notes,"Simplified passport with only sample code and location. Predominantly from Al-Kharj region (85%). All Saudi Arabian accessions."
+
+========================================
+CROP 7: SESAME (Sesamum indicum) - WGS
+========================================
+Passport File,WGS/Sesamum/ORIGING/Iter-1SNP-INDEL/PCA/Sesamum-Passport-informatiom.csv
+Total Accessions,62 (coded SE1-SE61+)
+Passport Fields,"Sr. No., Sent Code, Accession Bank ID, Genus, Species, Scientific Name, Family name, Source or Donor Name, Collection Site, Place of Coll., Date"
+
+Source/Donor,Count
+Unknown,50
+Farm,9
+Agri. Research Center Gizan,4
+
+Collection Sites,Count
+Unknown (likely Yemen),49
+Jazan,6
+Gizan,4
+Al-Baha,2
+Aseer,1
+Eastern Province,1
+
+Notes,"Large portion (49/62) from unknown/unspecified sources - based on place names these appear to be from Yemen (Marib, Al-Hudaydah, Taiz, Abyan, Lahj, Al-Gawf). Saudi accessions from southwestern agricultural regions. Collection dates from 2011."
+
+========================================
+CROP 8: MANGO (Mangifera indica) - WGS
+========================================
+Passport File,WGS/Mangifera_indica/Analysis/002.SNP-QC/QC/Arch/QC-5/PCA/arc/passport.csv
+Total Accessions,63 (coded M1-M63+)
+Passport Fields,"Sent Code, Local Names, Country of Origin"
+
+Country of Origin,Count
+Saudi Arabia (KSA),22
+Egypt,12
+India,8
+USA,7
+Thailand,3
+Indonesia,2
+NA/Unknown,2
+Yemen,1
+Sudan,1
+South Africa,1
+Philippines,1
+Pakistan,1
+Jamaica,1
+Cuba,1
+Bangladesh,1
+
+Notes,"Most diverse international collection - 14 countries represented. Mix of local Saudi varieties and global cultivars. Largest collection from KSA (35%), Egypt (19%), and India (13%)."
+
+========================================
+SUMMARY: CROPS WITHOUT PASSPORT DATA
+========================================
+Crop,Sequencing Type,Status
+Oat (Avena sativa),GBS,No passport file found
+Wheat - Triticum durum,GBS,No passport (has accession list only)
+Wheat - Triticum monococcum,GBS,No passport file found
+Wheat - Triticum aethiopicum,GBS,No passport file found
+Wheat - Triticale,GBS,No passport file found
+Apricot (armeniaca),WGS,No passport file found
+Apricot,WGS,No passport file found
+Asparagus Bean,WGS,No passport file found
+Chick Pea,WGS,No passport file found
+Fenugreek,WGS,No passport file found
+Fig,WGS,No passport file found
+Grape,WGS,No passport file found
+Guar,WGS,No passport file found
+Guava,WGS,No passport file found
+Hot Pepper,WGS,No passport file found
+Lemon,WGS,No passport file found
+NemaGuard,WGS,No passport file found
+Okra,WGS,No passport file found
+Papaya,WGS,No passport file found
+Peach,WGS,No passport file found
+Plum,WGS,No passport file found
+Pomegranate,WGS,No passport file found
+Pumpkin,WGS,No passport file found
+Quince,WGS,No passport file found
+
+========================================
+OVERALL PASSPORT STATISTICS
+========================================
+Metric,Value
+Crops with passport data,8 out of 28
+Total accessions with passport,1024
+Accessions from Saudi Arabia,~448 (44%)
+Accessions from International sources,~576 (56%)
+Most represented international sources,"CIMMYT (Mexico), ACSAD (Syria), ICARDA, Egypt, India"
+Key Saudi collection regions,"Jazan, Aseer, Al-Baha, Al-Kharj, Riyadh, Mecca/Taif, Al-Qaseem, Najran, Hail, Eastern Province"

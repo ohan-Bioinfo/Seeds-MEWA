@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/seedbank.schema.json",
+  "title": "Saudi Seed Bank Accession (SAG)",
+  "description": "One record per accession in the cold-storage seed bank. Source workbook: غرف التبريد سعد (cold rooms, Saad), May 2024 snapshot.",
+  "type": "object",
+  "required": ["sag", "names", "taxonomy", "category", "collection", "germination_tests", "flags"],
+  "properties": {
+    "sag": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Saudi Arabian Genebank accession number. Globally unique within this dataset."
+    },
+    "cold_room_code": {
+      "type": ["integer", "null"],
+      "minimum": 1,
+      "maximum": 8,
+      "description": "Internal cold-room storage code (1–8). Roughly maps to plant category but not strictly. رقم غرفة التبريد"
+    },
+    "names": {
+      "type": "object",
+      "properties": {
+        "local_ar": {"type": ["string", "null"], "description": "Local/cultivar name in Arabic. الاسم المحلي"},
+        "common_ar": {"type": ["string", "null"], "description": "Common Arabic name of the species. الاسم بالعربي"},
+        "common_en": {"type": ["string", "null"], "description": "Common English name."}
+      }
+    },
+    "taxonomy": {
+      "type": "object",
+      "properties": {
+        "family": {"type": ["string", "null"], "description": "Botanical family (e.g., Poaceae)."},
+        "genus": {"type": ["string", "null"]},
+        "species": {"type": ["string", "null"], "description": "Species epithet, sometimes with subspecies/variety qualifier."},
+        "scientific_name": {"type": ["string", "null"], "description": "Full binomial as recorded (often with author abbreviation)."}
+      }
+    },
+    "category": {
+      "type": "object",
+      "properties": {
+        "ar": {
+          "type": ["string", "null"],
+          "enum": ["حقلي", "خضر", "بستانية", "بري", "طبي", null],
+          "description": "Plant category, Arabic original."
+        },
+        "en": {
+          "type": ["string", "null"],
+          "enum": ["field_crop", "vegetable", "horticultural", "wild", "medicinal", null],
+          "description": "Plant category translated. حقلي=field_crop, خضر=vegetable, بستانية=horticultural, بري=wild, طبي=medicinal"
+        }
+      }
+    },
+    "collection": {
+      "type": "object",
+      "properties": {
+        "date_iso": {"type": ["string", "null"], "format": "date", "description": "Collection / registration date (Gregorian, ISO 8601)."},
+        "source": {"type": ["string", "null"], "description": "Where the seed came from: Market, Farm, Field, CIMMYT, ICARDA, ACSAD, ICRISAT, named institutions, individuals. Ditto marks (\\\") forward-filled from the previous row."},
+        "region": {"type": ["string", "null"], "description": "Region of collection (e.g., Al-Qaseem, Riyadh, Eastern Province). May contain international-nursery codes for accessions imported via CIMMYT/ICARDA — see flags.is_international_trial."},
+        "place": {"type": ["string", "null"], "description": "Specific place / city / country of collection."},
+        "donor": {"type": ["string", "null"], "description": "Named donor, if any. الموهب"}
+      }
+    },
+    "weight_g": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "Stored seed weight in grams. الوزن بالجرام"
+    },
+    "germination_tests": {
+      "type": "array",
+      "description": "Sequential germination viability tests (up to 6). Empty array if no test was recorded.",
+      "items": {
+        "type": "object",
+        "required": ["test_number"],
+        "properties": {
+          "test_number": {"type": "integer", "minimum": 1, "maximum": 6},
+          "germination_pct": {
+            "type": ["number", "null"],
+            "minimum": 0,
+            "description": "Germination rate as a percentage (typically 0–100). A handful of source rows have data-entry outliers >100 — preserved verbatim, not capped. نسبة الإنبات"
+          },
+          "germination_pct_raw": {"type": ["string", "null"], "description": "Original germination cell value as text (preserved before parsing)."},
+          "test_date": {
+            "type": ["object", "null"],
+            "properties": {
+              "iso": {"type": ["string", "null"], "format": "date", "description": "Test date in Gregorian ISO 8601 (converted from whatever the original was)."},
+              "original": {"type": ["string", "null"], "description": "Original cell value verbatim."},
+              "system": {
+                "type": "string",
+                "enum": ["gregorian", "hijri", "excel_serial", "year_only", "hijri_year_only", "hijri_invalid", "unparsed", "unknown_number", "unknown"],
+                "description": "Source date system before normalization. `year_only` = bare 4-digit year (defaulted to Jan 1)."
+              }
+            }
+          }
+        }
+      }
+    },
+    "flags": {
+      "type": "object",
+      "properties": {
+        "is_international_trial": {
+          "type": "boolean",
+          "description": "True if this accession came from an international nursery / breeding trial (CIMMYT, ICARDA, ICRISAT, ACSAD, IBWSN, IDSN, IDYN, STEMRRSN, ESWYT, HTWYT, SAWYT, etc.) rather than a Saudi field collection."
+        },
+        "is_backup_copy_label": {
+          "type": "boolean",
+          "description": "True if the Region cell carried a 'نسخة 20XX/20XX' (copy/backup) label rather than a real region."
+        },
+        "has_germination_data": {
+          "type": "boolean",
+          "description": "Convenience flag: at least one germination test recorded."
+        }
+      }
+    },
+    "raw": {
+      "type": "object",
+      "description": "Original cell values from the workbook, preserved verbatim. Use these if you ever need to audit the cleaning.",
+      "additionalProperties": true
+    }
+  }
+}

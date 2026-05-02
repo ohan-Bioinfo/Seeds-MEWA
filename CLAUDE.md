@@ -8,6 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 pnpm dev          # Start Vite dev server (port 3000, network accessible)
 pnpm build        # Build client (Vite) + server (ESBuild) → dist/
 pnpm start        # Run production server (NODE_ENV=production node dist/index.js)
+pnpm preview      # Preview production build locally
 pnpm check        # TypeScript type checking (tsc --noEmit)
 pnpm format       # Format code with Prettier
 ```
@@ -28,7 +29,7 @@ There are no automated tests configured despite Vitest being installed.
 ### Directory layout
 ```
 client/src/
-  pages/          # 12 route-level page components
+  pages/          # 13 route-level page components
   components/     # Reusable components
     ui/           # Shadcn/ui primitives (Button, Dialog, etc.)
   contexts/       # ThemeContext, LanguageContext (en/ar)
@@ -45,12 +46,13 @@ shared/
 ### Path aliases
 - `@/*` → `client/src/*`
 - `@shared/*` → `shared/*`
+- `@assets/*` → `attached_assets/*`
 
 ### Data loading
-`lib/dataLoader.ts` parses tab-separated CSV files (`wheatpassport.csv`, `coffeepassport.csv`) into `SeedPassport[]` objects entirely in the browser. There is no fetch to a backend API.
+`lib/dataLoader.ts` parses tab-separated CSV files (`wheatpassport.csv`, `CoffeePassport(1).csv`) located in `client/src/data/` into `SeedPassport[]` objects entirely in the browser. There is no fetch to a backend API. The `SeedPassport` type is in `client/src/types/data.ts` and includes `cropType: 'wheat' | 'coffee'`.
 
 ### Internationalization
-Custom context-based i18n system in `contexts/LanguageContext.tsx` with 375+ English/Arabic translation keys. Language auto-sets `document.dir` (RTL for Arabic) and persists to localStorage. All user-facing strings must go through the translation hook.
+Custom context-based i18n system in `contexts/LanguageContext.tsx` with 375+ English/Arabic translation keys. **Default language is Arabic** (RTL). Access translations via `const { t, language, dir } = useLanguage()`. `t('key')` falls back to English then the raw key. Language auto-sets `document.dir` and persists to localStorage. All user-facing strings must go through `t()`.
 
 ### Theme system
 MEWA institutional color palette defined as CSS variables in `client/src/index.css` (`--mewa-green`, `--mewa-gold`, etc.). Light theme is default; dark mode support exists via `<html class="dark">`. Theme stored in localStorage when `switchable: true` in ThemeContext.

@@ -43,7 +43,7 @@ export const CROP_META: Record<CropType, CropMeta> = {
     label: "Coffee",
     labelAr: "القهوة",
     scientificName: "Coffea arabica",
-    totalAccessions: 81, // 41 Jazan + 27 Aseer + 13 Al-Baha = 81 (all Saudi)
+    totalAccessions: 77, // 35 Jazan + 28 Aseer + 12 Al-Baha = 75 (Saudi); 2 unknown excluded
     sequencingType: "WGS",
     color: "#6B4423",
     icon: "☕",
@@ -128,35 +128,35 @@ export const REGION_CROP_DATA: RegionCropCounts[] = [
     region: "Jazan",
     crops: {
       wheat: 1,
-      coffee: 41,
+      coffee: 35,
       barley: 1,
       millet: 10,
       sorghum: 14,
       sesame: 10,
     },
-    total: 77,
+    total: 71,
   },
   {
     region: "Aseer",
     crops: {
       wheat: 24, // "aseer" + "Aseer" entries
-      coffee: 27, // 27 in Aseer (aseer site = 26, corrected to 27)
+      coffee: 28,
       barley: 2,
       millet: 3,
       sesame: 1,
     },
-    total: 57,
+    total: 58,
   },
   {
     region: "Al-Baha",
     crops: {
       wheat: 11,
-      coffee: 13,
+      coffee: 12,
       barley: 2,
       millet: 10,
       sesame: 2,
     },
-    total: 38,
+    total: 37,
   },
   {
     region: "Riyadh",

@@ -1,0 +1,120 @@
+{
+  "المحطة": "أبها",
+  "المعرف": "abha",
+  "المصدر": "تقرير أبها من بداية المشروع.docx",
+  "عدد الصور": 16,
+  "الصور": [
+    {
+      "filename": "001.png",
+      "caption": "2026 – 2025",
+      "context_before": null,
+      "context_after": "2026 – 2025",
+      "source_media_path": "word/media/image1.png"
+    },
+    {
+      "filename": "002.png",
+      "caption": "محطة البذور والتقاوي والشتلات بأبها — موقع المحطة (1)",
+      "context_before": "محطة البذور والتقاوي والشتلات بأبها",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image2.png"
+    },
+    {
+      "filename": "003.png",
+      "caption": "محطة البذور والتقاوي والشتلات بأبها — موقع المحطة (2)",
+      "context_before": "محطة البذور والتقاوي والشتلات بأبها",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image5.png"
+    },
+    {
+      "filename": "004.png",
+      "caption": "محطة البذور والتقاوي والشتلات بأبها — موقع المحطة (3)",
+      "context_before": "محطة البذور والتقاوي والشتلات بأبها",
+      "context_after": "موقع المحطة",
+      "source_media_path": "word/media/image3.png"
+    },
+    {
+      "filename": "005.png",
+      "caption": "مساحة المحطة — المساحة الكلية (18هكتار)                                              المساحة المستغلة (13هكتار) (1)",
+      "context_before": "مساحة المحطة",
+      "context_after": "المساحة الكلية (18هكتار)                                              المساحة المستغلة (13هكتار)",
+      "source_media_path": "word/media/image4.png"
+    },
+    {
+      "filename": "006.png",
+      "caption": "مساحة المحطة — المساحة الكلية (18هكتار)                                              المساحة المستغلة (13هكتار) (2)",
+      "context_before": "مساحة المحطة",
+      "context_after": "المساحة الكلية (18هكتار)                                              المساحة المستغلة (13هكتار)",
+      "source_media_path": "word/media/image6.png"
+    },
+    {
+      "filename": "007.png",
+      "caption": "صور من الزراعة الشتوية — خريطة المحاصيل الشتوية (1)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "خريطة المحاصيل الشتوية",
+      "source_media_path": "word/media/image7.png"
+    },
+    {
+      "filename": "008.png",
+      "caption": "صور من الزراعة الشتوية — خريطة المحاصيل الشتوية (2)",
+      "context_before": "صور من الزراعة الشتوية",
+      "context_after": "خريطة المحاصيل الشتوية",
+      "source_media_path": "word/media/image8.png"
+    },
+    {
+      "filename": "009.png",
+      "caption": "بمساحة (3296 م² ( — المحاصيل الصيفية (1)",
+      "context_before": "بمساحة (3296 م² (",
+      "context_after": "المحاصيل الصيفية",
+      "source_media_path": "word/media/image9.png"
+    },
+    {
+      "filename": "010.png",
+      "caption": "بمساحة (3296 م² ( — المحاصيل الصيفية (2)",
+      "context_before": "بمساحة (3296 م² (",
+      "context_after": "المحاصيل الصيفية",
+      "source_media_path": "word/media/image10.png"
+    },
+    {
+      "filename": "011.png",
+      "caption": "صور جوية لحقول الأمهات A، B، C — حقل A بمساحة (4528 م²)                  حقل B بمساحة (1555 م²)                حقل C بمساحة (1016 م² ( (1)",
+      "context_before": "صور جوية لحقول الأمهات A، B، C",
+      "context_after": "حقل A بمساحة (4528 م²)                  حقل B بمساحة (1555 م²)                حقل C بمساحة (1016 م² (",
+      "source_media_path": "word/media/image11.png"
+    },
+    {
+      "filename": "012.png",
+      "caption": "صور جوية لحقول الأمهات A، B، C — حقل A بمساحة (4528 م²)                  حقل B بمساحة (1555 م²)                حقل C بمساحة (1016 م² ( (2)",
+      "context_before": "صور جوية لحقول الأمهات A، B، C",
+      "context_after": "حقل A بمساحة (4528 م²)                  حقل B بمساحة (1555 م²)                حقل C بمساحة (1016 م² (",
+      "source_media_path": "word/media/image12.png"
+    },
+    {
+      "filename": "013.png",
+      "caption": "صور جوية لحقول الأمهات A، B، C — حقل A بمساحة (4528 م²)                  حقل B بمساحة (1555 م²)                حقل C بمساحة (1016 م² ( (3)",
+      "context_before": "صور جوية لحقول الأمهات A، B، C",
+      "context_after": "حقل A بمساحة (4528 م²)                  حقل B بمساحة (1555 م²)                حقل C بمساحة (1016 م² (",
+      "source_media_path": "word/media/image13.png"
+    },
+    {
+      "filename": "014.png",
+      "caption": "خريطة حقل الأمهات — البنية التحتية: (1)",
+      "context_before": "خريطة حقل الأمهات",
+      "context_after": "البنية التحتية:",
+      "source_media_path": "word/media/image14.png"
+    },
+    {
+      "filename": "015.png",
+      "caption": "خريطة حقل الأمهات — البنية التحتية: (2)",
+      "context_before": "خريطة حقل الأمهات",
+      "context_after": "البنية التحتية:",
+      "source_media_path": "word/media/image15.png"
+    },
+    {
+      "filename": "016.png",
+      "caption": "خريطة حقل الأمهات — البنية التحتية: (3)",
+      "context_before": "خريطة حقل الأمهات",
+      "context_after": "البنية التحتية:",
+      "source_media_path": "word/media/image16.png"
+    }
+  ]
+}

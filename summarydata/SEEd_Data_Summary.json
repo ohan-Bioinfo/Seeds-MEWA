@@ -1,0 +1,601 @@
+{
+  "metadata": {
+    "title": "SEEd Center - Genomics Raw Data Summary",
+    "generated": "2026-05-02",
+    "root_path": "/home/emz/Storage/Data/Plant/SEEd/Data/Raw-Data/",
+    "source_files": [
+      "SEEd_Genomics_Data_Summary.csv",
+      "SEEd_Passport_Summary.csv"
+    ]
+  },
+  "overall_summary": {
+    "total_data_size_TB": 8.8,
+    "gbs_data_size_TB": 6.3,
+    "wgs_data_size_TB": 2.6,
+    "total_files": 110076,
+    "total_directories": 2446,
+    "total_fastq_files": 3756,
+    "total_vcf_files": 222,
+    "total_bam_files": 217,
+    "total_plink_bed_files": 413,
+    "total_plink_bim_files": 406,
+    "total_plink_fam_files": 415,
+    "total_gff_files": 13257,
+    "total_fasta_fna_files": 13360,
+    "total_faa_files": 13261,
+    "total_gbs_crops": 4,
+    "total_wgs_crops": 26,
+    "total_unique_crops": 28
+  },
+  "gbs_crops": [
+    {
+      "crop": "Wheat (all sub-species)",
+      "scientific_name": "Triticum spp.",
+      "sequencing_type": "GBS",
+      "fastq_files": 2912,
+      "vcf_files": 135,
+      "bam_files": 217,
+      "estimated_samples": 2912,
+      "disk_usage": "5.8T",
+      "sub_species": [
+        "Triticum aestivum (Bread Wheat)",
+        "Triticum durum (Durum Wheat)",
+        "Triticum monococcum (Einkorn)",
+        "Triticum aethiopicum",
+        "Triticale (Wheat-Rye hybrid)"
+      ],
+      "passport_accessions": 563,
+      "passport_for": "Triticum aestivum",
+      "fingerprint_panel": {
+        "built": true,
+        "details": "T. aestivum 150-SNP panel; T. durum panel built; sub-species T. monococcum/aethiopicum/Triticale not yet"
+      }
+    },
+    {
+      "crop": "Barley",
+      "scientific_name": "Hordeum vulgare",
+      "sequencing_type": "GBS",
+      "fastq_files": 182,
+      "vcf_files": 5,
+      "bam_files": 0,
+      "estimated_samples": 182,
+      "disk_usage": "313G",
+      "passport_accessions": 93,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "core fingerprint panel + summary report (Iter2/03.fingerprinting)"
+      }
+    },
+    {
+      "crop": "Faba Bean",
+      "scientific_name": "Vicia faba",
+      "sequencing_type": "GBS",
+      "fastq_files": 42,
+      "vcf_files": 13,
+      "bam_files": 0,
+      "estimated_samples": 42,
+      "disk_usage": "125G",
+      "passport_accessions": 22,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "iter-3/03_Fingerprint with scripts, data, output, plots"
+      }
+    },
+    {
+      "crop": "Oat",
+      "scientific_name": "Avena sativa",
+      "sequencing_type": "GBS",
+      "fastq_files": 4,
+      "vcf_files": 1,
+      "bam_files": 0,
+      "estimated_samples": 4,
+      "disk_usage": "29G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    }
+  ],
+  "wgs_crops": [
+    {
+      "crop": "Coffee",
+      "scientific_name": "Coffea arabica",
+      "directory": "WGS/Last-Batch-Output/Last-Batch-Output/Coffee-86/",
+      "fastq_files": 172,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 172,
+      "disk_usage": "866G",
+      "passport_accessions": 77,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "150-SNP core panel + STEP5 report (Analysis/05_DNA_Fingerprinting)"
+      }
+    },
+    {
+      "crop": "Millet",
+      "scientific_name": "Pennisetum typhoideum",
+      "directory": "WGS/Last-Batch-Output/Millet-57/",
+      "fastq_files": 72,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 72,
+      "disk_usage": "526G",
+      "passport_accessions": 59,
+      "qc_passed": 57,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "150-SNP core panel (analysis-Local/04_DNA_Fingerprinting)"
+      }
+    },
+    {
+      "crop": "Sorghum",
+      "scientific_name": "Sorghum bicolor",
+      "directory": "WGS/Sorghum-Sorghum.bicolor.L./",
+      "fastq_files": 174,
+      "vcf_files": 9,
+      "bam_files": 0,
+      "estimated_samples": 174,
+      "disk_usage": "525G",
+      "passport_accessions": 85,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "Iter-5/Plnk/FingerPrint with 9 sub-steps + QR codes"
+      }
+    },
+    {
+      "crop": "Mango",
+      "scientific_name": "Mangifera indica",
+      "directory": "WGS/Mangifera_indica/",
+      "fastq_files": 1,
+      "vcf_files": 7,
+      "bam_files": 0,
+      "estimated_samples": 63,
+      "disk_usage": "95G",
+      "passport_accessions": 63,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "top-150 SNP panel + heatmaps (QC-5/FingerPrint)"
+      }
+    },
+    {
+      "crop": "Okra",
+      "scientific_name": "Abelmoschus esculentus",
+      "directory": "WGS/Okra/",
+      "fastq_files": 38,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 38,
+      "disk_usage": "110G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "fingerprint_output/publish/data/07.fingerprint"
+      }
+    },
+    {
+      "crop": "Fig",
+      "scientific_name": "Ficus carica",
+      "directory": "WGS/FIG/",
+      "fastq_files": 24,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 24,
+      "disk_usage": "68G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "fingerprint_output/publish/data/07.fingerprint"
+      }
+    },
+    {
+      "crop": "Pomegranate",
+      "scientific_name": "Punica granatum",
+      "directory": "WGS/Promegrante/",
+      "fastq_files": 16,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 16,
+      "disk_usage": "49G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Asparagus Bean",
+      "scientific_name": "Vigna unguiculata ssp. sesquipedalis",
+      "directory": "WGS/Aspragus-Bean/",
+      "fastq_files": 14,
+      "vcf_files": 4,
+      "bam_files": 0,
+      "estimated_samples": 14,
+      "disk_usage": "50G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "Last-Batch-Output/Asparagus_Beans-28/fingerprint_output"
+      }
+    },
+    {
+      "crop": "Sesame",
+      "scientific_name": "Sesamum indicum",
+      "directory": "WGS/Sesamum/",
+      "fastq_files": 0,
+      "vcf_files": 15,
+      "bam_files": 0,
+      "estimated_samples": 62,
+      "disk_usage": "24G",
+      "passport_accessions": 62,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "sesame5/04-Fingerprint panel"
+      }
+    },
+    {
+      "crop": "Hot Pepper",
+      "scientific_name": "Capsicum annuum",
+      "directory": "WGS/Hot papper/",
+      "fastq_files": 20,
+      "vcf_files": 2,
+      "bam_files": 0,
+      "estimated_samples": 20,
+      "disk_usage": "32G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "fingerprint_output/publish/data/07.fingerprint"
+      }
+    },
+    {
+      "crop": "Papaya",
+      "scientific_name": "Carica papaya",
+      "directory": "WGS/Papaya/",
+      "fastq_files": 17,
+      "vcf_files": 7,
+      "bam_files": 0,
+      "estimated_samples": 17,
+      "disk_usage": "37G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false,
+        "details": "workflow_results only; needs investigation of vendor evo/wgs analysis"
+      }
+    },
+    {
+      "crop": "Pumpkin",
+      "scientific_name": "Cucurbita spp.",
+      "directory": "WGS/Pumkin/",
+      "fastq_files": 10,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 10,
+      "disk_usage": "26G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Chickpea",
+      "scientific_name": "Cicer arietinum",
+      "directory": "WGS/Chick Pea-Cicer arietinum/",
+      "fastq_files": 10,
+      "vcf_files": 2,
+      "bam_files": 0,
+      "estimated_samples": 10,
+      "disk_usage": "23G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Peach",
+      "scientific_name": "Prunus persica",
+      "directory": "WGS/Peach/",
+      "fastq_files": 10,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 10,
+      "disk_usage": "30G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Plum",
+      "scientific_name": "Prunus domestica",
+      "directory": "WGS/Plum/",
+      "fastq_files": 8,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 8,
+      "disk_usage": "24G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Grape",
+      "scientific_name": "Vitis vinifera",
+      "directory": "WGS/Grape/",
+      "fastq_files": 8,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 8,
+      "disk_usage": "30G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Apricot",
+      "scientific_name": "Prunus armeniaca",
+      "directory": "WGS/Apricot/",
+      "fastq_files": 8,
+      "vcf_files": 1,
+      "bam_files": 0,
+      "estimated_samples": 8,
+      "disk_usage": "29G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "Last-Batch-Output/Apricot-11/fingerprint_output"
+      }
+    },
+    {
+      "crop": "Fenugreek",
+      "scientific_name": "Trigonella foenum-graecum",
+      "directory": "WGS/Fenogreek/",
+      "fastq_files": 2,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 2,
+      "disk_usage": "10G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": true,
+        "details": "Fenogreek-25 has 04 + 05 DNA_Fingerprinting modules + barcodes"
+      }
+    },
+    {
+      "crop": "Guar",
+      "scientific_name": "Cyamopsis tetragonoloba",
+      "directory": "WGS/Guar/",
+      "fastq_files": 4,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 4,
+      "disk_usage": "12G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Guava",
+      "scientific_name": "Psidium guajava",
+      "directory": "WGS/Guava/",
+      "fastq_files": 2,
+      "vcf_files": 1,
+      "bam_files": 0,
+      "estimated_samples": 2,
+      "disk_usage": "12G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Lemon",
+      "scientific_name": "Citrus limon",
+      "directory": "WGS/Limon/",
+      "fastq_files": 2,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 2,
+      "disk_usage": "6.4G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "NemaGuard",
+      "scientific_name": "Prunus persica",
+      "directory": "WGS/NemaGuard/",
+      "fastq_files": 2,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 2,
+      "disk_usage": "5.4G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Quince",
+      "scientific_name": "Cydonia oblonga",
+      "directory": "WGS/Quince/",
+      "fastq_files": 2,
+      "vcf_files": 0,
+      "bam_files": 0,
+      "estimated_samples": 2,
+      "disk_usage": "5.4G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Apricot (armeniaca)",
+      "scientific_name": "Prunus armeniaca",
+      "directory": "WGS/1-armeniaca-mishmish/",
+      "fastq_files": 0,
+      "vcf_files": 1,
+      "bam_files": 0,
+      "estimated_samples": null,
+      "disk_usage": "2.2G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false
+      }
+    },
+    {
+      "crop": "Last-Batch-Output (mixed)",
+      "scientific_name": "Multiple",
+      "directory": "WGS/Last-Batch-Output/",
+      "fastq_files": 0,
+      "vcf_files": 17,
+      "bam_files": 0,
+      "estimated_samples": null,
+      "disk_usage": "31G",
+      "passport_accessions": null,
+      "fingerprint_panel": {
+        "built": false,
+        "details": "Mixed dir; needs reorganization into per-crop folders"
+      }
+    }
+  ],
+  "crop_categories": {
+    "cereals": {
+      "count": 5,
+      "crops": ["Wheat", "Barley", "Oat", "Sorghum", "Millet"]
+    },
+    "legumes": {
+      "count": 5,
+      "crops": ["Faba Bean", "Chickpea", "Asparagus Bean", "Guar", "Fenugreek"]
+    },
+    "fruits": {
+      "count": 11,
+      "crops": ["Apricot", "Fig", "Grape", "Guava", "Mango", "Papaya", "Peach", "Plum", "Pomegranate", "Quince", "Lemon"]
+    },
+    "vegetables": {
+      "count": 3,
+      "crops": ["Hot Pepper", "Okra", "Pumpkin"]
+    },
+    "industrial_oil": {
+      "count": 2,
+      "crops": ["Coffee", "Sesame"]
+    },
+    "rootstock": {
+      "count": 1,
+      "crops": ["NemaGuard"]
+    }
+  },
+  "file_type_breakdown_top15": [
+    {"extension": ".png", "count": 17109, "description": "figures (PCA, ADMIXTURE, heatmaps, fingerprint barcodes)"},
+    {"extension": ".out", "count": 15162, "description": "tool stdouts"},
+    {"extension": ".pdf", "count": 14568, "description": "publish-quality figures / reports"},
+    {"extension": ".fna", "count": 13264, "description": "reference genome FASTA"},
+    {"extension": ".faa", "count": 13261, "description": "protein FASTA"},
+    {"extension": ".gff", "count": 13256, "description": "gene annotation"},
+    {"extension": ".gz", "count": 3951, "description": "FASTQ + bgzipped VCFs"},
+    {"extension": ".prfl", "count": 2326, "description": "AUGUSTUS profile files"},
+    {"extension": ".hmm", "count": 2326, "description": "HMM profiles for annotation"},
+    {"extension": ".txt", "count": 2168, "description": "accession lists / text reports"},
+    {"extension": ".html", "count": 1650, "description": "QC reports"},
+    {"extension": ".log", "count": 1457, "description": "run logs"},
+    {"extension": ".zip", "count": 1402, "description": "archives"},
+    {"extension": ".xls", "count": 1128, "description": "passport / metadata spreadsheets"},
+    {"extension": ".nosex", "count": 849, "description": "PLINK ancillary"}
+  ],
+  "fingerprint_analysis_status": {
+    "total_with_panel": 14,
+    "gbs_with_panel": ["Wheat (T. aestivum)", "Wheat (T. durum)", "Barley", "Faba Bean"],
+    "wgs_with_panel": ["Coffee", "Millet", "Sorghum", "Mango", "Sesame", "Hot Pepper", "Okra", "Fig", "Apricot", "Fenugreek", "Asparagus Bean"],
+    "without_panel": ["Oat", "Wheat (T. monococcum)", "Wheat (T. aethiopicum)", "Wheat (Triticale)", "Chickpea", "Grape", "Guar", "Guava", "Lemon", "NemaGuard", "Peach", "Plum", "Pomegranate", "Pumpkin", "Quince", "Papaya", "Apricot (armeniaca)"],
+    "panel_size_typical": "150 SNPs (PIC-ranked)"
+  },
+  "passport_summary": {
+    "crops_with_passport": 8,
+    "crops_total": 28,
+    "total_accessions_with_passport": 1024,
+    "saudi_arabia_accessions": 448,
+    "saudi_arabia_pct": 44,
+    "international_accessions": 576,
+    "international_pct": 56,
+    "main_international_sources": ["CIMMYT (Mexico)", "ACSAD (Syria)", "ICARDA", "Egypt", "India"],
+    "key_saudi_regions": ["Jazan", "Aseer", "Al-Baha", "Al-Kharj", "Riyadh", "Mecca/Taif", "Al-Qaseem", "Najran", "Hail", "Eastern Province"],
+    "per_crop": [
+      {
+        "crop": "Barley",
+        "accessions": 93,
+        "code_range": "BA1-BA94",
+        "origins": {"Syria": 55, "Saudi Arabia": 37, "Unknown": 2},
+        "main_donors": ["ACSAD", "ICARDA", "Farm (local)", "Market (local)"]
+      },
+      {
+        "crop": "Wheat (T. aestivum)",
+        "accessions": 563,
+        "code_range": "W129-W692+ and Y-series",
+        "origins": {"Mexico (CIMMYT)": 340, "Saudi Arabia": 100, "Morocco (ICARDA)": 23, "ACSAD": 17, "Unknown": 48, "Syria": 1, "Other": 34},
+        "main_donors": ["CIMMYT", "Farm (local)", "Market (local)", "ACSAD", "ICARDA"]
+      },
+      {
+        "crop": "Faba Bean",
+        "accessions": 22,
+        "code_range": "F1-F23",
+        "origins": {"Saudi Arabia": 12, "Egypt": 3, "Sudan": 2, "Australia": 2, "Spain": 1, "Unknown": 2},
+        "main_donors": ["Dr Salem Alghamdy (KSU)", "Market"]
+      },
+      {
+        "crop": "Coffee",
+        "accessions": 77,
+        "code_range": "C105-C181+",
+        "origins": {"Saudi Arabia": 75, "Unknown": 3},
+        "main_donors": ["Palladium project 2022-2024"],
+        "collection_sites": {"Jazan": 35, "Aseer": 28, "Al-Baha": 12, "Unknown": 3},
+        "local_name": "بن خولانى (Khawlani coffee)"
+      },
+      {
+        "crop": "Millet",
+        "accessions": 59,
+        "qc_passed": 57,
+        "code_range": "PM1-PM60",
+        "origins": {"Saudi Arabia": 59},
+        "main_donors": ["Farm (local)", "Agri. Research Center Gizan", "Directorate of Agriculture Al-Qaseem", "Market"]
+      },
+      {
+        "crop": "Sorghum",
+        "accessions": 85,
+        "code_range": "SO1-SO89",
+        "collection_sites": {"Al-Kharj": 72, "Jazan/Jizan": 14},
+        "notes": "Simplified passport: code + location only"
+      },
+      {
+        "crop": "Sesame",
+        "accessions": 62,
+        "code_range": "SE1-SE61+",
+        "collection_sites": {"Unknown (likely Yemen)": 49, "Jazan": 6, "Gizan": 4, "Al-Baha": 2, "Aseer": 1, "Eastern Province": 1},
+        "notes": "Most likely from Yemen based on place names; collection from 2011"
+      },
+      {
+        "crop": "Mango",
+        "accessions": 63,
+        "code_range": "M1-M63+",
+        "origins": {"Saudi Arabia": 22, "Egypt": 12, "India": 8, "USA": 7, "Thailand": 3, "Indonesia": 2, "Unknown": 2, "Yemen": 1, "Sudan": 1, "South Africa": 1, "Philippines": 1, "Pakistan": 1, "Jamaica": 1, "Cuba": 1, "Bangladesh": 1},
+        "notes": "Most diverse international collection - 14 countries"
+      }
+    ],
+    "crops_without_passport": [
+      "Oat", "Wheat (T. durum)", "Wheat (T. monococcum)", "Wheat (T. aethiopicum)", "Wheat (Triticale)",
+      "Apricot (armeniaca)", "Apricot", "Asparagus Bean", "Chickpea", "Fenugreek", "Fig", "Grape",
+      "Guar", "Guava", "Hot Pepper", "Lemon", "NemaGuard", "Okra", "Papaya", "Peach", "Plum",
+      "Pomegranate", "Pumpkin", "Quince"
+    ]
+  },
+  "next_steps": [
+    "Build fingerprint panels for crops still missing one (priority: Chickpea, Grape, Pomegranate, Peach, Plum, Pumpkin)",
+    "Generate passport metadata for the 20 WGS crops without passport files",
+    "Re-run inventory script to refresh SEEd_Genomics_Data_Summary.csv",
+    "Investigate Papaya vendor evo/wgs analysis before duplicating fingerprint effort",
+    "Decide handling for Wheat sub-species without panels (T. monococcum, T. aethiopicum, Triticale)",
+    "Consolidate Last-Batch-Output/ mixed VCFs into per-crop directories"
+  ]
+}

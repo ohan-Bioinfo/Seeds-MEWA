@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   BookOpen, Users, FileText, Dna, Sprout, Shield, Mail,
   MapPin, Building2, Globe, GraduationCap, FlaskConical,
-  Microscope, Award,
+  Microscope, Award, CheckCircle2, Clock, ExternalLink,
 } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
@@ -117,6 +117,85 @@ const SEED_BANKING_STUDIES = [
   { title: "Effective seedbank management to ensure food security and preserve biodiversity", authors: "Samik Bhattacharya & Klaus Mummenhoff", year: 2024, journal: "Springer", relevance: "Genomic viability prediction models for seed banks" },
   { title: "A Blueprint for Building Resilience and Food Security in MENA Drylands", authors: "Krishna Prasad Devkota et al.", year: 2025, journal: "Wiley", relevance: "26 neglected/underutilized species documented for MENA region" },
   { title: "Oasis agriculture revitalization and carbon sequestration for climate-resilient communities", authors: "Faten Dhawi & Megbel Aleidan", year: 2024, journal: "Frontiers Media", relevance: "Traditional oasis agricultural system revitalization" },
+];
+
+// ── Seed Center Research ───────────────────────────────────────────────────
+
+const SC_PUBLISHED = [
+  {
+    id: "SC-PUB-001",
+    title: "Whole-genome sequencing reveals genomic diversity and population structure of mango germplasm from the Jazan region of Saudi Arabia",
+    crop: "Mango",
+    cropAr: "المانجو",
+    year: 2026,
+    authors: "Naser B. Almarri, Salwa M. Mostafa, Nada M. Alsofuani, Sara Osman, Sara M. Alomran, Mohanad A. Ibrahim, Ibrahim Alrashidi, Omar A. Al-Haidar, Shakeel Ahmad",
+    journal: "Frontiers in Plant Science",
+    doi: "10.3389/fpls.2026.1808140",
+    url: "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2026.1808140/full",
+    methods: ["WGS", "SNP", "ADMIXTURE", "PCA"],
+    highlight: "64 accessions · 5.08M SNPs · 3 ancestry clusters · 150-SNP fingerprinting panel · Jazan region",
+  },
+  {
+    id: "SC-PUB-002",
+    title: "Robust biodiversity assessment and DNA fingerprinting of Saudi and Exotic sesame germplasm using whole genome resequencing",
+    crop: "Sesame",
+    cropAr: "السمسم",
+    year: 2026,
+    authors: "Naser B. Almarri, Nada M. Alsofuani, Sara Osman, Shakeel Ahmad, Mohanad A. Ibrahim, Salwa M. Mostafa, Omar A. Al-Haidar, Sara M. Alomran, Ibrahim Alrashidi, Rida Tariq",
+    journal: "Genetic Resources and Crop Evolution",
+    doi: "10.1007/s10722-025-02718-z",
+    url: "https://link.springer.com/article/10.1007/s10722-025-02718-z",
+    methods: ["WGS", "DNA Fingerprinting", "Biodiversity Assessment"],
+    highlight: "Saudi & exotic sesame germplasm · whole genome resequencing · diversity & fingerprinting",
+  },
+];
+
+const SC_IN_PROGRESS = [
+  {
+    crop: "Faba Bean",
+    cropAr: "الفول",
+    status: "under_review" as const,
+    statusLabel: "Under Review",
+    statusLabelAr: "قيد المراجعة",
+    progress: 60,
+    methods: ["WGS", "Diversity Analysis"],
+  },
+  {
+    crop: "Durum Wheat",
+    cropAr: "القمح القاسي",
+    status: "in_progress" as const,
+    statusLabel: "In Progress",
+    statusLabelAr: "قيد التنفيذ",
+    progress: 60,
+    methods: ["WGS", "Population Structure"],
+  },
+  {
+    crop: "Sorghum",
+    cropAr: "الذرة الرفيعة",
+    status: "in_progress" as const,
+    statusLabel: "In Progress",
+    statusLabelAr: "قيد التنفيذ",
+    progress: 60,
+    methods: ["WGS", "Genomic Diversity"],
+  },
+  {
+    crop: "Millet",
+    cropAr: "الدخن",
+    status: "in_progress" as const,
+    statusLabel: "In Progress",
+    statusLabelAr: "قيد التنفيذ",
+    progress: 60,
+    methods: ["WGS", "Fingerprinting"],
+  },
+  {
+    crop: "Fenugreek",
+    cropAr: "الحلبة",
+    status: "in_progress" as const,
+    statusLabel: "In Progress",
+    statusLabelAr: "قيد التنفيذ",
+    progress: 60,
+    methods: ["WGS", "Diversity Assessment"],
+  },
 ];
 
 const MARKER_STATS = [
@@ -262,6 +341,7 @@ export default function ResearchHub() {
                 { value: "drought", icon: Dna, labelKey: "rc.tab.drought" },
                 { value: "vegetables", icon: Sprout, labelKey: "rc.tab.vegetables" },
                 { value: "gaps", icon: Award, labelKey: "rc.tab.gaps" },
+                { value: "seedcenter", icon: FlaskConical, labelKey: "rc.tab.seedcenter" },
                 { value: "researchers", icon: GraduationCap, labelKey: "rc.tab.researchers" },
                 { value: "institutions", icon: Building2, labelKey: "rc.tab.institutions" },
               ].map((tab) => {
@@ -665,6 +745,119 @@ export default function ResearchHub() {
               ))}
             </div>
           </TabsContent>
+
+          {/* ── Seed Center Research ── */}
+          <TabsContent value="seedcenter" className="space-y-8">
+            {/* Published */}
+            <FadeUp>
+              <div className={`flex items-center gap-2 mb-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <div>
+                  <h2 className="font-semibold">{isRTL ? "أبحاث منشورة — مركز البذور السعودي" : "Published — Saudi Seed Center Research"}</h2>
+                  <p className="text-sm text-muted-foreground">{isRTL ? "دراسات مكتملة ومحكّمة بالتسلسل الجيني الكامل (WGS)" : "Peer-reviewed whole-genome resequencing studies"}</p>
+                </div>
+              </div>
+            </FadeUp>
+
+            {SC_PUBLISHED.map((s, i) => (
+              <FadeUp key={s.id} delay={i * 0.1}>
+                <Card className="border-green-200 bg-green-50/30 hover:shadow-md transition-shadow">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <div className={`flex items-center gap-2 mb-2 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
+                          <Badge className="bg-green-700 text-white text-xs">{s.id}</Badge>
+                          <Badge variant="outline" className="text-xs border-green-600 text-green-700">{isRTL ? s.cropAr : s.crop}</Badge>
+                          <Badge className="bg-green-100 text-green-800 text-xs">{s.year}</Badge>
+                          <Badge className="bg-emerald-600 text-white text-xs flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3" />
+                            {isRTL ? "منشور" : "Published"}
+                          </Badge>
+                        </div>
+                        <CardTitle className="text-base leading-snug">{s.title}</CardTitle>
+                        <CardDescription className="mt-1">{s.authors}</CardDescription>
+                        <CardDescription className="italic">{s.journal} · DOI: {s.doi}</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className={`flex items-center gap-2 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
+                      <span className="text-xs text-muted-foreground font-medium">{isRTL ? "الطرق:" : "Methods:"}</span>
+                      {s.methods.map((m) => (
+                        <Badge key={m} variant="secondary" className="text-xs">{m}</Badge>
+                      ))}
+                    </div>
+                    <p className="text-xs text-muted-foreground">📌 {s.highlight}</p>
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-1.5 text-xs font-medium text-green-700 hover:text-green-900 hover:underline ${isRTL ? "flex-row-reverse" : ""}`}
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      {isRTL ? "عرض المقالة الكاملة" : "View full article"}
+                    </a>
+                  </CardContent>
+                </Card>
+              </FadeUp>
+            ))}
+
+            {/* In Progress */}
+            <FadeUp delay={0.2}>
+              <div className={`flex items-center gap-2 mb-4 mt-6 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <Clock className="h-5 w-5 text-amber-600" />
+                <div>
+                  <h2 className="font-semibold">{isRTL ? "قيد التنفيذ — 60% مكتمل" : "In Progress — 60% Complete"}</h2>
+                  <p className="text-sm text-muted-foreground">{isRTL ? "دراسات جارية بمنهجية WGS على المحاصيل المحلية" : "Ongoing WGS studies on Saudi crop germplasm"}</p>
+                </div>
+              </div>
+            </FadeUp>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {SC_IN_PROGRESS.map((s, i) => (
+                <FadeUp key={s.crop} delay={i * 0.08}>
+                  <Card className="border-amber-200 bg-amber-50/20 hover:shadow-md transition-shadow">
+                    <CardHeader className="pb-2">
+                      <div className={`flex items-center justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+                        <div className={`flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+                          <Badge variant="outline" className="text-xs border-amber-500 text-amber-700">
+                            {isRTL ? s.cropAr : s.crop}
+                          </Badge>
+                          <Badge
+                            className={`text-xs flex items-center gap-1 ${
+                              s.status === "under_review"
+                                ? "bg-blue-100 text-blue-800 border border-blue-200"
+                                : "bg-amber-100 text-amber-800 border border-amber-200"
+                            }`}
+                          >
+                            {s.status === "under_review"
+                              ? <><CheckCircle2 className="w-3 h-3" />{isRTL ? s.statusLabelAr : s.statusLabel}</>
+                              : <><Clock className="w-3 h-3" />{isRTL ? s.statusLabelAr : s.statusLabel}</>
+                            }
+                          </Badge>
+                        </div>
+                        <span className="text-sm font-bold text-amber-700">{s.progress}%</span>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all ${s.status === "under_review" ? "bg-blue-500" : "bg-amber-500"}`}
+                          style={{ width: `${s.progress}%` }}
+                        />
+                      </div>
+                      <div className={`flex items-center gap-2 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
+                        {s.methods.map((m) => (
+                          <Badge key={m} variant="secondary" className="text-xs">{m}</Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </FadeUp>
+              ))}
+            </div>
+          </TabsContent>
+
         </Tabs>
       </section>
 

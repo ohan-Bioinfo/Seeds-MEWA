@@ -9,6 +9,17 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  LineChart,
+  Line,
+} from 'recharts';
+import {
   inventoryData,
   distributionRequests,
   calculateCenterSummaries,
@@ -17,18 +28,30 @@ import {
   type InventoryItem,
   type DistributionRequest
 } from '@/data/inventoryData';
-import { 
-  Package, 
-  TrendingDown, 
-  TrendingUp, 
-  AlertTriangle, 
-  Truck, 
+import {
+  Package,
+  TrendingDown,
+  TrendingUp,
+  AlertTriangle,
+  Truck,
   Activity,
   Database,
   Sprout,
   BarChart3,
   Clock
 } from 'lucide-react';
+
+// Overview bar chart — accessions per cold room (static, not filtered)
+const COLD_ROOM_BAR_DATA = [
+  { room: 'غ١', label: 'غرفة التبريد الأولى', accessions: 2179, fill: '#0B5F3A' },
+  { room: 'غ٢', label: 'غرفة التبريد الثانية', accessions: 451,  fill: '#D97706' },
+  { room: 'غ٨', label: 'غرفة التبريد الثامنة', accessions: 325,  fill: '#6B4423' },
+  { room: 'غ٧', label: 'غرفة التبريد السابعة', accessions: 212,  fill: '#7c3aed' },
+  { room: 'غ٥', label: 'غرفة التبريد الخامسة', accessions: 109,  fill: '#dc2626' },
+  { room: 'غ٤', label: 'غرفة التبريد الرابعة', accessions: 50,   fill: '#ef4444' },
+  { room: 'غ٦', label: 'غرفة التبريد السادسة', accessions: 8,    fill: '#9ca3af' },
+  { room: 'غ٣', label: 'غرفة التبريد الثالثة', accessions: 7,    fill: '#9ca3af' },
+];
 
 /**
  * Design Philosophy: Data-Driven Cartography with Agricultural Heritage
@@ -173,12 +196,12 @@ export default function InventoryTracking() {
                 <Database className="w-12 h-12" />
                 <div>
                   <h1 className="text-4xl font-bold font-serif">
-                    {language === 'ar' ? 'تتبع المخزون' : 'Inventory Tracking'}
+                    {language === 'ar' ? 'بنك البذور' : 'Seed Bank'}
                   </h1>
                   <p className="text-green-100 mt-2">
                     {language === 'ar' 
-                      ? 'مراقبة مستويات المخزون ومعدلات الإنبات في الوقت الفعلي'
-                      : 'Real-time monitoring of stock levels and germination rates'}
+                      ? '3,341 مقتنى في 8 غرف تبريد — بنك البذور الوطني، الرياض'
+                      : '3,341 accessions across 8 cold rooms — National Seed Bank, Riyadh'}
                   </p>
                 </div>
               </div>
@@ -192,8 +215,8 @@ export default function InventoryTracking() {
                       content,
                       language
                     }),
-                    filename: `inventory-report-${new Date().toISOString().split('T')[0]}.html`,
-                    title: language === 'ar' ? 'تقرير المخزون' : 'Inventory Report'
+                    filename: `seedbank-report-${new Date().toISOString().split('T')[0]}.html`,
+                    title: language === 'ar' ? 'تقرير بنك البذور' : 'Seed Bank Report'
                   };
                 }}
               />
@@ -432,6 +455,43 @@ export default function InventoryTracking() {
                 </Card>
               )}
 
+              {/* Overview Bar Chart — accessions per cold room */}
+              <Card className="p-6 bg-white border-2 border-green-100">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 className="font-semibold text-gray-900">
+                      {language === 'ar' ? 'المقتنيات حسب غرفة التبريد' : 'Accessions per Cold Room'}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      {language === 'ar' ? 'إجمالي 3,341 مقتنى — بنك البذور الوطني، الرياض' : 'Total 3,341 accessions — National Seed Bank, Riyadh'}
+                    </p>
+                  </div>
+                  <Badge variant="secondary" className="bg-green-100 text-green-800">
+                    {language === 'ar' ? '8 غرف' : '8 Rooms'}
+                  </Badge>
+                </div>
+                <div dir="ltr" className="w-full h-44">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={COLD_ROOM_BAR_DATA} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
+                      <XAxis dataKey="room" tick={{ fontSize: 12 }} axisLine={false} tickLine={false} />
+                      <YAxis tick={{ fontSize: 11 }} axisLine={false} tickLine={false} width={42} />
+                      <Tooltip
+                        formatter={(value: number) => [value.toLocaleString(), language === 'ar' ? 'مقتنى' : 'accessions']}
+                        labelFormatter={(label: string, payload) =>
+                          payload?.[0]?.payload?.label ?? label
+                        }
+                        contentStyle={{ fontSize: 12, borderRadius: 8 }}
+                      />
+                      <Bar dataKey="accessions" radius={[4, 4, 0, 0]}>
+                        {COLD_ROOM_BAR_DATA.map((entry) => (
+                          <Cell key={entry.room} fill={entry.fill} />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </Card>
+
               {/* Inventory Items Grid */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {filteredInventory.map(item => (
@@ -519,6 +579,34 @@ export default function InventoryTracking() {
                           <p className="text-sm font-medium text-gray-900">{item.distributionRequests}</p>
                         </div>
                       </div>
+
+                      {/* Germination trend sparkline */}
+                      {item.germinationHistory.length >= 2 && (
+                        <div className="pt-3 border-t border-gray-100">
+                          <p className="text-xs text-gray-500 mb-1">
+                            {language === 'ar' ? 'اتجاه الإنبات' : 'Germination Trend'}
+                          </p>
+                          <div dir="ltr" className="w-full h-12">
+                            <ResponsiveContainer width="100%" height="100%">
+                              <LineChart data={item.germinationHistory} margin={{ top: 2, right: 4, left: 4, bottom: 2 }}>
+                                <Line
+                                  type="monotone"
+                                  dataKey="pct"
+                                  stroke={item.status === 'optimal' ? '#22c55e' : item.status === 'low' ? '#f59e0b' : '#ef4444'}
+                                  strokeWidth={1.5}
+                                  dot={{ r: 2, fill: item.status === 'optimal' ? '#22c55e' : item.status === 'low' ? '#f59e0b' : '#ef4444' }}
+                                  isAnimationActive={false}
+                                />
+                                <Tooltip
+                                  formatter={(v: number) => [`${v}%`, language === 'ar' ? 'إنبات' : 'germ.']}
+                                  labelFormatter={(l: string) => l}
+                                  contentStyle={{ fontSize: 11, borderRadius: 6, padding: '2px 8px' }}
+                                />
+                              </LineChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </Card>
                 ))}

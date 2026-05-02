@@ -63,7 +63,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.contact': 'Contact',
     'nav.submit': 'Submit Data',
     'nav.centers': 'Seed Stations',
-    'nav.inventory': 'Inventory Tracking',
+    'nav.inventory': 'Seed Bank',
     'nav.publicAccess': 'Public Access',
 
     // Header
@@ -352,6 +352,7 @@ const translations: Record<Language, Record<string, string>> = {
     'rc.tab.drought': 'Drought Studies',
     'rc.tab.vegetables': 'Vegetables',
     'rc.tab.gaps': 'Gaps & Recs',
+    'rc.tab.seedcenter': 'Seed Center Research',
     'rc.tab.researchers': 'Researchers',
     'rc.tab.institutions': 'Institutions',
     'rc.markers': 'Markers',
@@ -455,7 +456,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.contact': 'اتصل بنا',
     'nav.submit': 'إرسال بيانات',
     'nav.centers': 'محطات البذور',
-    'nav.inventory': 'تتبع المخزون',
+    'nav.inventory': 'بنك البذور',
     'nav.publicAccess': 'وصول عام',
 
     // Header
@@ -744,6 +745,7 @@ const translations: Record<Language, Record<string, string>> = {
     'rc.tab.drought': 'دراسات الجفاف',
     'rc.tab.vegetables': 'الخضروات',
     'rc.tab.gaps': 'الفجوات والتوصيات',
+    'rc.tab.seedcenter': 'أبحاث المركز',
     'rc.tab.researchers': 'الباحثون',
     'rc.tab.institutions': 'المؤسسات',
     'rc.markers': 'الواسمات',
