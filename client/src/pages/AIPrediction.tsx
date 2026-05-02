@@ -1,43 +1,38 @@
 /**
- * AI Prediction — Under Development
- * Conceptual pipeline diagrams for seed viability and proteomics prediction.
+ * AI Prediction Center — Advanced AI theme
+ * Dark glassmorphism · Neon accents · Animated pipelines · Futuristic layout
  */
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip,
-  CartesianGrid, AreaChart, Area,
+  AreaChart, Area,
 } from "recharts";
 import PageLayout from "@/components/PageLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
-  Brain, FlaskConical, Dna, Leaf, TrendingUp, AlertTriangle,
-  CheckCircle2, Clock, Construction, ChevronRight, Microscope,
-  BarChart3, Cpu, Database, Zap,
+  Brain, FlaskConical, Dna, Leaf, TrendingUp,
+  CheckCircle2, Clock, ChevronRight, Microscope,
+  BarChart3, Cpu, Database, Zap, Activity, Sparkles,
+  Shield, Layers, Network,
 } from "lucide-react";
 
-function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+// ── Theme tokens ──────────────────────────────────────────────────────────
+const C = {
+  cyan:   "#00d4ff",
+  purple: "#a855f7",
+  green:  "#10b981",
+  amber:  "#f59e0b",
+  red:    "#ef4444",
+  bg:     "#020817",
+  card:   "rgba(255,255,255,0.04)",
+  border: "rgba(255,255,255,0.08)",
+};
 
-// ── Mock data for sample prediction charts ─────────────────────────────────
-
+// ── Chart data ─────────────────────────────────────────────────────────────
 const VIABILITY_TREND = [
   { year: "2016", predicted: 78, actual: 75 },
   { year: "2017", predicted: 85, actual: 88 },
@@ -57,98 +52,166 @@ const RADAR_DATA = [
   { trait: "Pathogen",    value: 55 },
 ];
 
-const PROTEIN_ABUNDANCE = [
-  { protein: "Legumin",    control: 45, stress: 28 },
-  { protein: "Vicilin",    control: 38, stress: 20 },
-  { protein: "HSP70",      control: 12, stress: 67 },
-  { protein: "Dehydrin",   control: 8,  stress: 55 },
-  { protein: "Catalase",   control: 30, stress: 48 },
-  { protein: "SOD",        control: 22, stress: 41 },
+const PROTEIN_DATA = [
+  { protein: "Legumin",  control: 45, stress: 28 },
+  { protein: "Vicilin",  control: 38, stress: 20 },
+  { protein: "HSP70",    control: 12, stress: 67 },
+  { protein: "Dehydrin", control: 8,  stress: 55 },
+  { protein: "Catalase", control: 30, stress: 48 },
+  { protein: "SOD",      control: 22, stress: 41 },
 ];
 
-// ── Pipeline step component ────────────────────────────────────────────────
+// ── Module definitions ─────────────────────────────────────────────────────
+const MODULES = [
+  {
+    icon: Leaf, en: "Seed Viability", ar: "حيوية البذور",
+    desc: "ML model predicting germination viability from storage conditions, weight, and historical tests.",
+    descAr: "نموذج تعلم آلي يتنبأ بنسبة إنبات البذور من بيانات التخزين والوزن.",
+    progress: 35, status: "active" as const,
+    tech: ["Random Forest", "XGBoost", "LSTM"], color: C.green,
+  },
+  {
+    icon: FlaskConical, en: "Proteomics", ar: "البروتيوميكس",
+    desc: "LC-MS/MS pipeline for stress-response protein identification and quantification.",
+    descAr: "خط أنابيب LC-MS/MS لتعريف بروتينات الاستجابة للإجهاد.",
+    progress: 20, status: "active" as const,
+    tech: ["MaxQuant", "Perseus", "STRING DB"], color: C.purple,
+  },
+  {
+    icon: Dna, en: "Genomic Traits", ar: "الصفات الجينومية",
+    desc: "GWAS-based prediction of phenotypic traits (drought, yield) from 150-SNP panels.",
+    descAr: "التنبؤ بالصفات الظاهرية من لوحات 150-SNP باستخدام GWAS.",
+    progress: 15, status: "planned" as const,
+    tech: ["GWAS", "GEBVs", "BLUP"], color: C.amber,
+  },
+  {
+    icon: Brain, en: "Population ML", ar: "تعلم المجتمع",
+    desc: "Deep learning clustering for diversity assessment and breeding optimization.",
+    descAr: "تجميع المقتنيات بالتعلم العميق لتقييم التنوع.",
+    progress: 25, status: "active" as const,
+    tech: ["ADMIXTURE", "PCA-DL", "t-SNE"], color: C.cyan,
+  },
+];
 
-function PipelineStep({
-  icon: Icon, title, titleAr, items, color, isRTL,
-}: {
+// ── Roadmap ────────────────────────────────────────────────────────────────
+const ROADMAP = [
+  { period: "Q1 2025", en: "Data preprocessing & feature pipeline", ar: "معالجة البيانات وخط الميزات", status: "done", metric: "RMSE 6.2% · R² 0.81" },
+  { period: "Q2–Q3 2025", en: "Seed viability baseline ML model", ar: "نموذج التعلم الآلي لحيوية البذور", status: "done", metric: "Trained on 773 accessions" },
+  { period: "Q4 2025 – Q1 2026", en: "Proteomics LC-MS/MS pipeline", ar: "دمج بيانات البروتيوميكس", status: "active", metric: "Sample prep finalised" },
+  { period: "Q2 2026", en: "GWAS genomic trait model", ar: "نموذج GWAS للصفات الجينومية", status: "planned", metric: "Pending variant calling" },
+  { period: "Q3–Q4 2026", en: "Integrated AI platform launch", ar: "إطلاق منصة الذكاء الاصطناعي", status: "planned", metric: "Public dashboard" },
+];
+
+// ── Pipelines ──────────────────────────────────────────────────────────────
+const PIPELINE_VIABILITY = [
+  { icon: Database, title: "Input Data",  titleAr: "بيانات الإدخال",   items: ["Germination %", "Weight (g)", "Date collected", "Cold room"], color: C.green },
+  { icon: Cpu,      title: "Features",    titleAr: "هندسة الميزات",    items: ["Normalization", "SMOTE", "PCA", "Time feats"], color: C.amber },
+  { icon: Brain,    title: "ML Model",    titleAr: "نموذج الذكاء الآلي", items: ["Random Forest", "XGBoost", "LSTM", "Ensemble"], color: C.purple },
+  { icon: TrendingUp, title: "Output",   titleAr: "المخرجات",           items: ["Viability %", "Risk level", "Alert", "CI band"], color: C.cyan },
+];
+
+const PIPELINE_PROTEOMICS = [
+  { icon: FlaskConical, title: "Sample",    titleAr: "العينة",         items: ["Seed extract", "Tissue", "Embryo"], color: C.purple },
+  { icon: Microscope,   title: "Prep",      titleAr: "التحضير",        items: ["Trypsin digest", "Fractionation", "Desalting"], color: C.amber },
+  { icon: Zap,          title: "Mass Spec", titleAr: "طيف الكتلة",     items: ["LC-MS/MS", "MALDI-TOF", "DIA mode"], color: C.red },
+  { icon: BarChart3,    title: "Analysis",  titleAr: "التحليل",        items: ["MaxQuant", "Perseus", "Label-free"], color: C.green },
+  { icon: Brain,        title: "Insight",   titleAr: "الاستنتاج",       items: ["Stress markers", "Pathways", "Biomarkers"], color: C.cyan },
+];
+
+const PIPELINE_GENOMICS = [
+  { icon: Database, title: "SNP Data",      titleAr: "بيانات SNP",     items: ["150-SNP panel", "5M+ SNPs", "VCF files"], color: C.amber },
+  { icon: BarChart3, title: "GWAS / QTL",   titleAr: "GWAS / QTL",     items: ["Association", "Haplotypes", "Kinship"], color: C.purple },
+  { icon: Dna,       title: "Gene Targets", titleAr: "الجينات المرشحة", items: ["QTL mapping", "GO terms", "KEGG"], color: C.red },
+  { icon: TrendingUp, title: "Traits",      titleAr: "الصفات",         items: ["Drought", "Yield", "Disease resist."], color: C.cyan },
+];
+
+// ── Animated helpers ───────────────────────────────────────────────────────
+
+function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  return (
+    <motion.div ref={ref} initial={{ opacity: 0, y: 32 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={className}>
+      {children}
+    </motion.div>
+  );
+}
+
+function GlassCard({ children, className = "", glow = "" }: { children: React.ReactNode; className?: string; glow?: string }) {
+  return (
+    <div
+      className={`rounded-2xl border backdrop-blur-md ${className}`}
+      style={{ background: C.card, borderColor: glow || C.border, boxShadow: glow ? `0 0 24px ${glow}22, inset 0 0 24px ${glow}06` : "none" }}
+    >
+      {children}
+    </div>
+  );
+}
+
+// Pulsing dot indicator
+function Pulse({ color }: { color: string }) {
+  return (
+    <span className="relative flex h-2.5 w-2.5">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{ backgroundColor: color }} />
+      <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ backgroundColor: color }} />
+    </span>
+  );
+}
+
+// Pipeline node
+function Node({ icon: Icon, title, titleAr, items, color, isRTL }: {
   icon: React.ElementType; title: string; titleAr: string;
   items: string[]; color: string; isRTL: boolean;
 }) {
   return (
-    <div className="flex flex-col items-center text-center min-w-[120px] max-w-[140px]">
-      <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-2 shadow-md" style={{ backgroundColor: color + "20", border: `2px solid ${color}` }}>
-        <Icon className="w-7 h-7" style={{ color }} />
-      </div>
-      <p className="text-xs font-bold text-gray-800 mb-1.5 leading-tight">
-        {isRTL ? titleAr : title}
-      </p>
-      <ul className="space-y-0.5">
-        {items.map(item => (
-          <li key={item} className="text-[10px] text-gray-500 bg-gray-50 rounded px-1.5 py-0.5 border border-gray-100">
-            {item}
-          </li>
+    <div className="flex flex-col items-center text-center" style={{ minWidth: 100, maxWidth: 128 }}>
+      <motion.div
+        whileHover={{ scale: 1.08 }}
+        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 cursor-default"
+        style={{ background: `${color}18`, border: `1.5px solid ${color}60`, boxShadow: `0 0 16px ${color}30` }}
+      >
+        <Icon className="w-6 h-6" style={{ color }} />
+      </motion.div>
+      <p className="text-[11px] font-bold text-white/90 mb-2 leading-tight">{isRTL ? titleAr : title}</p>
+      <ul className="space-y-1">
+        {items.map(it => (
+          <li key={it} className="text-[9px] font-mono px-1.5 py-0.5 rounded" style={{ background: `${color}12`, color: `${color}cc`, border: `1px solid ${color}25` }}>{it}</li>
         ))}
       </ul>
     </div>
   );
 }
 
-function Arrow({ isRTL }: { isRTL: boolean }) {
+function Connector({ isRTL, color = "#ffffff30" }: { isRTL: boolean; color?: string }) {
   return (
-    <div className="flex items-center justify-center px-1 pt-6">
-      <ChevronRight className={`w-5 h-5 text-gray-400 ${isRTL ? "rotate-180" : ""}`} />
+    <div className="flex items-center justify-center px-2 pt-5 shrink-0">
+      <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 2, repeat: Infinity }}>
+        <ChevronRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} style={{ color }} />
+      </motion.div>
     </div>
   );
 }
 
-// ── Module cards ───────────────────────────────────────────────────────────
-
-const MODULES = [
-  {
-    icon: Leaf,
-    en: "Seed Viability Prediction",
-    ar: "التنبؤ بحيوية البذور",
-    desc: "ML model predicting germination viability from storage conditions, weight, and historical test data.",
-    descAr: "نموذج تعلم آلي يتنبأ بنسبة إنبات البذور من بيانات التخزين والوزن والاختبارات السابقة.",
-    progress: 35,
-    status: "in_progress",
-    tech: ["Random Forest", "XGBoost", "Time-series"],
-    color: "#0B5F3A",
-  },
-  {
-    icon: FlaskConical,
-    en: "Proteomics Analysis",
-    ar: "تحليل البروتيوميكس",
-    desc: "LC-MS/MS data pipeline for stress-response protein identification and quantification.",
-    descAr: "خط أنابيب بيانات LC-MS/MS لتعريف بروتينات الاستجابة للإجهاد وتحديد كمياتها.",
-    progress: 20,
-    status: "in_progress",
-    tech: ["MaxQuant", "Perseus", "STRING DB"],
-    color: "#7c3aed",
-  },
-  {
-    icon: Dna,
-    en: "Genomic Trait Prediction",
-    ar: "التنبؤ بالصفات الجينومية",
-    desc: "GWAS-based prediction of phenotypic traits (drought tolerance, yield) from SNP fingerprint panels.",
-    descAr: "التنبؤ بالصفات الظاهرية من لوحات البصمة الجينية (150-SNP) باستخدام GWAS.",
-    progress: 15,
-    status: "planned",
-    tech: ["GWAS", "GEBVs", "BLUP"],
-    color: "#D97706",
-  },
-  {
-    icon: Brain,
-    en: "Population Structure ML",
-    ar: "التعلم الآلي لتركيب المجتمع",
-    desc: "Deep learning clustering of accessions for diversity assessment and breeding program optimization.",
-    descAr: "تجميع المقتنيات بالتعلم العميق لتقييم التنوع وتحسين برامج التربية.",
-    progress: 25,
-    status: "in_progress",
-    tech: ["ADMIXTURE", "PCA-DL", "t-SNE"],
-    color: "#DC143C",
-  },
-];
+// Animated counter
+function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
+  const [val, setVal] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+  useEffect(() => {
+    if (!inView) return;
+    let start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / 1400, 1);
+      setVal(Math.round((1 - Math.pow(1 - t, 3)) * target));
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [inView, target]);
+  return <span ref={ref}>{val.toLocaleString()}{suffix}</span>;
+}
 
 // ── Main Component ─────────────────────────────────────────────────────────
 
@@ -158,343 +221,319 @@ export default function AIPrediction() {
 
   return (
     <PageLayout>
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0c1a0e] via-[#122117] to-[#0a1e12] text-white">
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--mewa-green)] rounded-full blur-[160px] opacity-[0.07]" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-600 rounded-full blur-[140px] opacity-[0.05]" />
+      {/* full dark wrapper */}
+      <div style={{ background: "linear-gradient(135deg, #020817 0%, #0d0a1a 40%, #020c17 100%)", minHeight: "100vh" }}>
 
-        <div className="container relative py-16 md:py-20">
+        {/* ── Hero ────────────────────────────────────────────────────────── */}
+        <section className="relative overflow-hidden pt-20 pb-16">
+          {/* Animated background blobs */}
+          <motion.div animate={{ scale: [1, 1.15, 1], opacity: [0.12, 0.22, 0.12] }} transition={{ duration: 7, repeat: Infinity }}
+            className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: C.cyan, transform: "translate(30%, -30%)" }} />
+          <motion.div animate={{ scale: [1, 1.1, 1], opacity: [0.08, 0.16, 0.08] }} transition={{ duration: 9, repeat: Infinity, delay: 2 }}
+            className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[100px]" style={{ background: C.purple, transform: "translate(-30%, 30%)" }} />
+          <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.06, 0.12, 0.06] }} transition={{ duration: 11, repeat: Infinity, delay: 4 }}
+            className="absolute top-1/2 left-1/2 w-[300px] h-[300px] rounded-full blur-[90px]" style={{ background: C.green, transform: "translate(-50%, -50%)" }} />
+
+          {/* Subtle grid */}
+          <div className="absolute inset-0 opacity-[0.035]"
+            style={{ backgroundImage: `linear-gradient(${C.cyan} 1px, transparent 1px), linear-gradient(90deg, ${C.cyan} 1px, transparent 1px)`, backgroundSize: "48px 48px" }} />
+
+          {/* Scanning beam */}
+          <motion.div className="absolute top-0 left-0 right-0 h-px opacity-40"
+            style={{ background: `linear-gradient(90deg, transparent, ${C.cyan}, transparent)` }}
+            animate={{ y: [0, 400, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
+
+          <div className="container relative z-10">
+            <FadeUp>
+              <div className={`flex items-center gap-2 mb-6 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold" style={{ background: `${C.amber}18`, border: `1px solid ${C.amber}40`, color: C.amber }}>
+                  <Pulse color={C.amber} />
+                  {isRTL ? "تحت التطوير" : "Under Development"}
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold" style={{ background: `${C.cyan}12`, border: `1px solid ${C.cyan}30`, color: C.cyan }}>
+                  <Brain className="w-3 h-3" />
+                  {isRTL ? "ذكاء اصطناعي · تعلم آلي" : "AI · Machine Learning"}
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold" style={{ background: `${C.purple}12`, border: `1px solid ${C.purple}30`, color: C.purple }}>
+                  <Dna className="w-3 h-3" />
+                  {isRTL ? "جينوميات" : "Genomics"}
+                </span>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.1}>
+              <h1 className={`text-4xl sm:text-6xl font-black mb-4 leading-tight tracking-tight ${isRTL ? "text-right" : ""}`}
+                style={{ background: `linear-gradient(135deg, #ffffff 0%, ${C.cyan} 50%, ${C.purple} 100%)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                {isRTL ? "مركز التنبؤ بالذكاء الاصطناعي" : "AI Prediction Center"}
+              </h1>
+            </FadeUp>
+
+            <FadeUp delay={0.2}>
+              <p className={`text-base sm:text-lg max-w-2xl mb-10 leading-relaxed ${isRTL ? "text-right" : ""}`} style={{ color: "rgba(255,255,255,0.55)" }}>
+                {isRTL
+                  ? "منصة متكاملة للتنبؤ بحيوية البذور وتحليل البروتيوميكس والصفات الجينومية باستخدام نماذج التعلم الآلي المتقدمة."
+                  : "Integrated platform for seed viability prediction, proteomics analysis, and genomic trait modelling using advanced machine learning models."}
+              </p>
+            </FadeUp>
+
+            {/* Hero stat strip */}
+            <FadeUp delay={0.3}>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {[
+                  { icon: Database, label: isRTL ? "مقتنى مُدرَّب" : "Accessions Trained", value: 773, color: C.green },
+                  { icon: Activity, label: isRTL ? "دقة النموذج R²" : "Model R² Score", value: 81, suffix: "%", color: C.cyan },
+                  { icon: Layers, label: isRTL ? "خوارزميات" : "Algorithms", value: 4, color: C.purple },
+                  { icon: Network, label: isRTL ? "مسارات بيانات" : "Data Pipelines", value: 3, color: C.amber },
+                ].map((s, i) => {
+                  const Icon = s.icon;
+                  return (
+                    <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }} transition={{ delay: 0.3 + i * 0.08 }}
+                      className="rounded-xl p-4 text-center" style={{ background: `${s.color}0c`, border: `1px solid ${s.color}25` }}>
+                      <Icon className="w-5 h-5 mx-auto mb-2" style={{ color: s.color }} />
+                      <div className="text-2xl font-black" style={{ color: s.color }}>
+                        <Counter target={s.value} suffix={s.suffix} />
+                      </div>
+                      <p className="text-[10px] mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </FadeUp>
+          </div>
+        </section>
+
+        {/* Notice bar */}
+        <div style={{ background: `${C.amber}10`, borderTop: `1px solid ${C.amber}25`, borderBottom: `1px solid ${C.amber}25` }}>
+          <div className="container py-2.5">
+            <p className={`text-xs flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`} style={{ color: `${C.amber}cc` }}>
+              <Sparkles className="w-3.5 h-3.5 shrink-0" />
+              {isRTL
+                ? "البيانات والمخططات تمثيلية فقط — الأنظمة قيد التطوير."
+                : "All data and charts are illustrative only — systems currently in development."}
+            </p>
+          </div>
+        </div>
+
+        <div className="container py-14 space-y-14">
+
+          {/* ── Module cards ──────────────────────────────────────────────── */}
           <FadeUp>
-            <div className={`flex items-center gap-2 mb-4 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-              <Badge className="bg-amber-500/20 border-amber-400/40 text-amber-300 text-xs px-3 py-1">
-                <Construction className="w-3 h-3 me-1.5" />
-                {isRTL ? "تحت التطوير" : "Under Development"}
-              </Badge>
-              <Badge className="bg-white/10 border-white/20 text-white/80 text-xs px-3 py-1">
-                <Brain className="w-3 h-3 me-1.5" />
-                {isRTL ? "ذكاء اصطناعي · تعلم آلي" : "AI · Machine Learning"}
-              </Badge>
+            <p className={`text-xs font-semibold uppercase tracking-widest mb-5 ${isRTL ? "text-right" : ""}`} style={{ color: C.cyan }}>
+              {isRTL ? "وحدات النظام" : "System Modules"}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {MODULES.map((m, i) => {
+                const Icon = m.icon;
+                return (
+                  <FadeUp key={m.en} delay={i * 0.09}>
+                    <GlassCard glow={m.color} className="p-5 h-full">
+                      <div className={`flex items-start justify-between mb-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${m.color}18`, border: `1.5px solid ${m.color}50` }}>
+                          <Icon className="w-5 h-5" style={{ color: m.color }} />
+                        </div>
+                        <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold" style={{
+                          background: m.status === "planned" ? "rgba(255,255,255,0.06)" : `${m.color}18`,
+                          color: m.status === "planned" ? "rgba(255,255,255,0.35)" : m.color,
+                          border: `1px solid ${m.status === "planned" ? "rgba(255,255,255,0.1)" : m.color + "40"}`,
+                        }}>
+                          {m.status === "planned" ? (isRTL ? "مخطط" : "Planned") : (isRTL ? "جارٍ" : "Active")}
+                        </span>
+                      </div>
+                      <h3 className={`text-sm font-bold text-white mb-2 ${isRTL ? "text-right" : ""}`}>{isRTL ? m.ar : m.en}</h3>
+                      <p className={`text-xs leading-relaxed mb-4 ${isRTL ? "text-right" : ""}`} style={{ color: "rgba(255,255,255,0.45)" }}>
+                        {isRTL ? m.descAr : m.desc}
+                      </p>
+                      {/* Progress */}
+                      <div className="mb-3">
+                        <div className={`flex justify-between text-[10px] mb-1.5 ${isRTL ? "flex-row-reverse" : ""}`}>
+                          <span style={{ color: "rgba(255,255,255,0.35)" }}>{isRTL ? "التقدم" : "Progress"}</span>
+                          <span className="font-bold" style={{ color: m.color }}>{m.progress}%</span>
+                        </div>
+                        <div className="h-1 rounded-full" style={{ background: "rgba(255,255,255,0.08)" }}>
+                          <motion.div className="h-full rounded-full" style={{ background: `linear-gradient(90deg, ${m.color}80, ${m.color})` }}
+                            initial={{ width: 0 }} whileInView={{ width: `${m.progress}%` }} viewport={{ once: true }}
+                            transition={{ duration: 1.4, ease: "easeOut", delay: i * 0.12 }} />
+                        </div>
+                      </div>
+                      {/* Tech tags */}
+                      <div className={`flex flex-wrap gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
+                        {m.tech.map(t => (
+                          <span key={t} className="text-[9px] font-mono px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.08)" }}>{t}</span>
+                        ))}
+                      </div>
+                    </GlassCard>
+                  </FadeUp>
+                );
+              })}
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.1}>
-            <h1 className={`text-3xl md:text-5xl font-bold mb-4 leading-tight ${isRTL ? "text-right" : ""}`}>
-              {isRTL ? "مركز التنبؤ بالذكاء الاصطناعي" : "AI Prediction Center"}
-            </h1>
-          </FadeUp>
-
-          <FadeUp delay={0.2}>
-            <p className={`text-lg text-white/70 max-w-2xl mb-6 ${isRTL ? "text-right" : ""}`}>
-              {isRTL
-                ? "منصة متكاملة للتنبؤ بحيوية البذور وتحليل البروتيوميكس والصفات الجينومية باستخدام نماذج التعلم الآلي — قيد الإنشاء."
-                : "Integrated platform for seed viability prediction, proteomics analysis, and genomic trait modelling using machine learning — currently in development."}
-            </p>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ── Under Development Banner ── */}
-      <div className="bg-amber-50 border-b-2 border-amber-200">
-        <div className="container py-3">
-          <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-            <Construction className="w-5 h-5 text-amber-600 shrink-0" />
-            <p className="text-sm text-amber-800 font-medium">
-              {isRTL
-                ? "هذه الصفحة تعرض خرائط مفاهيمية للأنظمة قيد التطوير. البيانات والرسوم البيانية تمثيلية فقط."
-                : "This page shows conceptual diagrams of systems currently in development. All data and charts are illustrative only."}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="container py-10 space-y-12">
-
-        {/* ── Module progress cards ── */}
-        <FadeUp>
-          <h2 className={`text-xl font-bold text-gray-900 mb-6 ${isRTL ? "text-right" : ""}`}>
-            {isRTL ? "حالة وحدات النظام" : "Module Development Status"}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {MODULES.map((m, i) => {
-              const Icon = m.icon;
-              return (
-                <FadeUp key={m.en} delay={i * 0.08}>
-                  <Card className="border-2 hover:shadow-md transition-shadow" style={{ borderColor: m.color + "30" }}>
-                    <CardHeader className="pb-3">
-                      <div className={`flex items-center gap-2 mb-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                        <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: m.color + "15" }}>
-                          <Icon className="w-5 h-5" style={{ color: m.color }} />
-                        </div>
-                        <Badge
-                          className={`text-[10px] ${m.status === "planned" ? "bg-gray-100 text-gray-600" : "bg-amber-100 text-amber-700"}`}
-                        >
-                          {m.status === "planned"
-                            ? (isRTL ? "مخطط" : "Planned")
-                            : (isRTL ? "قيد التنفيذ" : "In Progress")}
-                        </Badge>
-                      </div>
-                      <CardTitle className={`text-sm leading-snug ${isRTL ? "text-right" : ""}`}>
-                        {isRTL ? m.ar : m.en}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <p className={`text-xs text-gray-500 leading-relaxed ${isRTL ? "text-right" : ""}`}>
-                        {isRTL ? m.descAr : m.desc}
-                      </p>
-                      <div>
-                        <div className={`flex items-center justify-between mb-1 ${isRTL ? "flex-row-reverse" : ""}`}>
-                          <span className="text-[10px] text-gray-400">{isRTL ? "التقدم" : "Progress"}</span>
-                          <span className="text-xs font-bold" style={{ color: m.color }}>{m.progress}%</span>
-                        </div>
-                        <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                          <motion.div
-                            className="h-full rounded-full"
-                            style={{ backgroundColor: m.color }}
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${m.progress}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.2, ease: "easeOut", delay: i * 0.1 }}
-                          />
-                        </div>
-                      </div>
-                      <div className={`flex flex-wrap gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
-                        {m.tech.map(t => (
-                          <span key={t} className="text-[9px] bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded font-mono">{t}</span>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </FadeUp>
-              );
-            })}
-          </div>
-        </FadeUp>
-
-        {/* ── Pipeline 1: Seed Viability ── */}
-        <FadeUp>
-          <Card className="border-2 border-green-100">
-            <CardHeader className="border-b border-green-50 bg-green-50/50">
-              <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
-                  <Leaf className="w-5 h-5 text-green-700" />
+          {/* ── Pipeline 1: Seed Viability ────────────────────────────────── */}
+          <FadeUp>
+            <GlassCard glow={C.green} className="p-6 sm:p-8">
+              <div className={`flex items-center gap-3 mb-8 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${C.green}15`, border: `1.5px solid ${C.green}50` }}>
+                  <Leaf className="w-5 h-5" style={{ color: C.green }} />
                 </div>
                 <div className={isRTL ? "text-right" : ""}>
-                  <CardTitle className="text-base">{isRTL ? "خط أنابيب التنبؤ بحيوية البذور" : "Seed Viability Prediction Pipeline"}</CardTitle>
-                  <p className="text-xs text-gray-500 mt-0.5">{isRTL ? "من بيانات التخزين إلى توقع نسبة الإنبات" : "From storage data to germination probability"}</p>
+                  <h2 className="text-base font-bold text-white">{isRTL ? "خط التنبؤ بحيوية البذور" : "Seed Viability Prediction Pipeline"}</h2>
+                  <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{isRTL ? "من بيانات التخزين إلى توقع الإنبات" : "Storage data → ML inference → viability score"}</p>
                 </div>
               </div>
-            </CardHeader>
-            <CardContent className="pt-6 pb-4">
-              {/* Pipeline flow */}
-              <div className={`flex items-start justify-center gap-0 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-                <PipelineStep icon={Database} title="Input Data" titleAr="بيانات الإدخال"
-                  items={["Germination %", "Weight (g)", "Date collected", "Cold room"]} color="#0B5F3A" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={Cpu} title="Feature Engineering" titleAr="هندسة الميزات"
-                  items={["Normalization", "SMOTE", "PCA reduction", "Time features"]} color="#D97706" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={Brain} title="ML Model" titleAr="نموذج التعلم الآلي"
-                  items={["Random Forest", "XGBoost", "LSTM network", "Ensemble"]} color="#7c3aed" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={TrendingUp} title="Output" titleAr="المخرجات"
-                  items={["Viability score", "Risk level", "Regen. alert", "Conf. interval"]} color="#DC143C" isRTL={isRTL} />
+              <div className={`flex items-start justify-center flex-wrap gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
+                {PIPELINE_VIABILITY.map((step, i) => (
+                  <div key={step.title} className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <Node {...step} isRTL={isRTL} />
+                    {i < PIPELINE_VIABILITY.length - 1 && <Connector isRTL={isRTL} color={PIPELINE_VIABILITY[i].color} />}
+                  </div>
+                ))}
               </div>
-
-              {/* Sample prediction charts */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+              {/* Charts */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
                 <div>
-                  <p className={`text-xs font-medium text-gray-600 mb-2 ${isRTL ? "text-right" : ""}`}>
-                    {isRTL ? "نموذج: توقع مقابل قيم فعلية (غرفة 1)" : "Sample: Predicted vs Actual Germination (Room 1)"}
-                  </p>
-                  <div dir="ltr" className="h-44">
+                  <p className="text-[11px] font-semibold mb-3" style={{ color: C.green }}>{isRTL ? "توقع مقابل قيم فعلية" : "Predicted vs Actual — Cold Room 1"}</p>
+                  <div dir="ltr" className="h-40 rounded-xl p-2" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${C.green}20` }}>
                     <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={VIABILITY_TREND} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                        <XAxis dataKey="year" tick={{ fontSize: 11 }} />
-                        <YAxis domain={[50, 100]} tick={{ fontSize: 11 }} />
-                        <Tooltip formatter={(v: number) => [`${v}%`]} />
-                        <Line type="monotone" dataKey="actual" stroke="#0B5F3A" strokeWidth={2} dot={{ r: 3 }} name="Actual" />
-                        <Line type="monotone" dataKey="predicted" stroke="#7c3aed" strokeWidth={2} strokeDasharray="5 3" dot={{ r: 3 }} name="Predicted" />
+                      <LineChart data={VIABILITY_TREND} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
+                        <XAxis dataKey="year" tick={{ fontSize: 9, fill: "rgba(255,255,255,0.3)" }} axisLine={false} tickLine={false} />
+                        <YAxis domain={[50, 100]} tick={{ fontSize: 9, fill: "rgba(255,255,255,0.3)" }} axisLine={false} tickLine={false} />
+                        <Tooltip contentStyle={{ background: "#0d1117", border: `1px solid ${C.green}40`, borderRadius: 8, fontSize: 11 }} formatter={(v: number) => [`${v}%`]} />
+                        <Line type="monotone" dataKey="actual" stroke={C.green} strokeWidth={2} dot={{ r: 2.5, fill: C.green }} name="Actual" connectNulls={false} />
+                        <Line type="monotone" dataKey="predicted" stroke={C.cyan} strokeWidth={2} strokeDasharray="5 3" dot={{ r: 2.5, fill: C.cyan }} name="Predicted" />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
                 </div>
                 <div>
-                  <p className={`text-xs font-medium text-gray-600 mb-2 ${isRTL ? "text-right" : ""}`}>
-                    {isRTL ? "نموذج: مؤشرات جودة البذور (رادار)" : "Sample: Seed Quality Indicators (Radar)"}
-                  </p>
-                  <div dir="ltr" className="h-44">
+                  <p className="text-[11px] font-semibold mb-3" style={{ color: C.cyan }}>{isRTL ? "مؤشرات جودة البذور" : "Seed Quality Radar"}</p>
+                  <div dir="ltr" className="h-40 rounded-xl p-2" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${C.cyan}20` }}>
                     <ResponsiveContainer width="100%" height="100%">
-                      <RadarChart data={RADAR_DATA} margin={{ top: 4, right: 20, left: 20, bottom: 4 }}>
-                        <PolarGrid />
-                        <PolarAngleAxis dataKey="trait" tick={{ fontSize: 10 }} />
-                        <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fontSize: 9 }} />
-                        <Radar dataKey="value" stroke="#0B5F3A" fill="#0B5F3A" fillOpacity={0.25} />
+                      <RadarChart data={RADAR_DATA} margin={{ top: 4, right: 16, left: 16, bottom: 4 }}>
+                        <PolarGrid stroke="rgba(255,255,255,0.1)" />
+                        <PolarAngleAxis dataKey="trait" tick={{ fontSize: 8, fill: "rgba(255,255,255,0.4)" }} />
+                        <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fontSize: 7, fill: "rgba(255,255,255,0.2)" }} />
+                        <Radar dataKey="value" stroke={C.cyan} fill={C.cyan} fillOpacity={0.15} />
                       </RadarChart>
                     </ResponsiveContainer>
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </FadeUp>
+            </GlassCard>
+          </FadeUp>
 
-        {/* ── Pipeline 2: Proteomics ── */}
-        <FadeUp>
-          <Card className="border-2 border-purple-100">
-            <CardHeader className="border-b border-purple-50 bg-purple-50/50">
-              <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
-                  <FlaskConical className="w-5 h-5 text-purple-700" />
+          {/* ── Pipeline 2: Proteomics ────────────────────────────────────── */}
+          <FadeUp>
+            <GlassCard glow={C.purple} className="p-6 sm:p-8">
+              <div className={`flex items-center gap-3 mb-8 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${C.purple}15`, border: `1.5px solid ${C.purple}50` }}>
+                  <FlaskConical className="w-5 h-5" style={{ color: C.purple }} />
                 </div>
                 <div className={isRTL ? "text-right" : ""}>
-                  <CardTitle className="text-base">{isRTL ? "خط أنابيب تحليل البروتيوميكس" : "Proteomics Analysis Pipeline"}</CardTitle>
-                  <p className="text-xs text-gray-500 mt-0.5">{isRTL ? "LC-MS/MS · تعريف البروتينات · التحليل الوظيفي" : "LC-MS/MS · Protein identification · Functional analysis"}</p>
+                  <h2 className="text-base font-bold text-white">{isRTL ? "خط تحليل البروتيوميكس" : "Proteomics Analysis Pipeline"}</h2>
+                  <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>LC-MS/MS · MaxQuant · STRING DB</p>
                 </div>
               </div>
-            </CardHeader>
-            <CardContent className="pt-6 pb-4">
-              <div className={`flex items-start justify-center gap-0 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-                <PipelineStep icon={FlaskConical} title="Biological Sample" titleAr="العينة البيولوجية"
-                  items={["Seed extract", "Tissue", "Endosperm", "Embryo"]} color="#7c3aed" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={Microscope} title="Sample Prep" titleAr="تحضير العينة"
-                  items={["Trypsin digest", "Fractionation", "Desalting", "Reduction"]} color="#D97706" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={Zap} title="Mass Spec" titleAr="طيف الكتلة"
-                  items={["LC-MS/MS", "MALDI-TOF", "DIA mode", "High-res MS2"]} color="#DC143C" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={BarChart3} title="Data Analysis" titleAr="تحليل البيانات"
-                  items={["MaxQuant", "Perseus", "Label-free", "PTM analysis"]} color="#0B5F3A" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={Brain} title="Biological Insight" titleAr="الاستنتاج البيولوجي"
-                  items={["Stress markers", "Pathway map", "Biomarkers", "Gene Ontology"]} color="#6B4423" isRTL={isRTL} />
+              <div className={`flex items-start justify-center flex-wrap gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
+                {PIPELINE_PROTEOMICS.map((step, i) => (
+                  <div key={step.title} className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <Node {...step} isRTL={isRTL} />
+                    {i < PIPELINE_PROTEOMICS.length - 1 && <Connector isRTL={isRTL} color={PIPELINE_PROTEOMICS[i].color} />}
+                  </div>
+                ))}
               </div>
-
-              <div className="mt-8">
-                <p className={`text-xs font-medium text-gray-600 mb-2 ${isRTL ? "text-right" : ""}`}>
-                  {isRTL ? "نموذج: وفرة البروتين — حالة إجهاد مقابل تحكم (غرفة تبريد 1)" : "Sample: Protein Abundance — Stress vs Control (Cold Room 1)"}
-                </p>
-                <div dir="ltr" className="h-48">
+              <div className="mt-10">
+                <p className="text-[11px] font-semibold mb-3" style={{ color: C.purple }}>{isRTL ? "وفرة البروتين — إجهاد مقابل تحكم" : "Protein Abundance — Stress vs Control"}</p>
+                <div dir="ltr" className="h-44 rounded-xl p-2" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${C.purple}20` }}>
                   <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={PROTEIN_ABUNDANCE} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                      <XAxis dataKey="protein" tick={{ fontSize: 11 }} />
-                      <YAxis tick={{ fontSize: 11 }} />
-                      <Tooltip />
-                      <Area type="monotone" dataKey="control" stroke="#0B5F3A" fill="#0B5F3A" fillOpacity={0.2} name="Control" />
-                      <Area type="monotone" dataKey="stress" stroke="#DC143C" fill="#DC143C" fillOpacity={0.2} name="Stress" />
+                    <AreaChart data={PROTEIN_DATA} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
+                      <XAxis dataKey="protein" tick={{ fontSize: 9, fill: "rgba(255,255,255,0.3)" }} axisLine={false} tickLine={false} />
+                      <YAxis tick={{ fontSize: 9, fill: "rgba(255,255,255,0.3)" }} axisLine={false} tickLine={false} />
+                      <Tooltip contentStyle={{ background: "#0d1117", border: `1px solid ${C.purple}40`, borderRadius: 8, fontSize: 11 }} />
+                      <Area type="monotone" dataKey="control" stroke={C.green} fill={C.green} fillOpacity={0.12} name="Control" strokeWidth={1.5} />
+                      <Area type="monotone" dataKey="stress" stroke={C.red} fill={C.red} fillOpacity={0.12} name="Stress" strokeWidth={1.5} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </FadeUp>
+            </GlassCard>
+          </FadeUp>
 
-        {/* ── Pipeline 3: Genomic Trait Prediction ── */}
-        <FadeUp>
-          <Card className="border-2 border-amber-100">
-            <CardHeader className="border-b border-amber-50 bg-amber-50/50">
-              <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
-                  <Dna className="w-5 h-5 text-amber-700" />
+          {/* ── Pipeline 3: Genomic Traits ────────────────────────────────── */}
+          <FadeUp>
+            <GlassCard glow={C.amber} className="p-6 sm:p-8">
+              <div className={`flex items-center gap-3 mb-8 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${C.amber}15`, border: `1.5px solid ${C.amber}50` }}>
+                  <Dna className="w-5 h-5" style={{ color: C.amber }} />
                 </div>
                 <div className={isRTL ? "text-right" : ""}>
-                  <CardTitle className="text-base">{isRTL ? "التنبؤ بالصفات الجينومية" : "Genomic-to-Phenotype Prediction"}</CardTitle>
-                  <p className="text-xs text-gray-500 mt-0.5">{isRTL ? "من لوحات البصمة الجينية (150-SNP) إلى الصفات الظاهرية" : "From 150-SNP fingerprint panels to phenotypic traits"}</p>
+                  <h2 className="text-base font-bold text-white">{isRTL ? "التنبؤ بالصفات الجينومية" : "Genomic-to-Phenotype Prediction"}</h2>
+                  <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>150-SNP panels → GWAS → trait inference</p>
                 </div>
               </div>
-            </CardHeader>
-            <CardContent className="pt-6 pb-4">
-              <div className={`flex items-start justify-center gap-0 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}>
-                <PipelineStep icon={Database} title="SNP Data" titleAr="بيانات SNP"
-                  items={["150-SNP panel", "WGS variants", "5M+ SNPs", "VCF files"]} color="#D97706" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={BarChart3} title="GWAS / QTL" titleAr="GWAS / QTL"
-                  items={["Association", "Haplotypes", "LD structure", "Kinship matrix"]} color="#7c3aed" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={Dna} title="Candidate Genes" titleAr="الجينات المرشحة"
-                  items={["QTL mapping", "Gene annot.", "GO terms", "KEGG pathways"]} color="#DC143C" isRTL={isRTL} />
-                <Arrow isRTL={isRTL} />
-                <PipelineStep icon={TrendingUp} title="Trait Prediction" titleAr="توقع الصفات"
-                  items={["Drought toler.", "Yield", "Disease resist.", "Heat adapt."]} color="#0B5F3A" isRTL={isRTL} />
-              </div>
-            </CardContent>
-          </Card>
-        </FadeUp>
-
-        {/* ── Development Roadmap ── */}
-        <FadeUp>
-          <Card className="border-2 border-gray-100">
-            <CardHeader>
-              <CardTitle className={`text-base flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <Clock className="w-5 h-5 text-gray-500" />
-                {isRTL ? "خارطة طريق التطوير" : "Development Roadmap"}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {[
-                  {
-                    period: "Q1 2025", periodAr: "الربع الأول 2025",
-                    label: "Data preprocessing & feature pipeline", labelAr: "معالجة البيانات وخط الميزات",
-                    status: "done", note: "Germination data cleaned, storage conditions normalised",
-                    noteAr: "تنظيف بيانات الإنبات وتطبيع ظروف التخزين",
-                  },
-                  {
-                    period: "Q2–Q3 2025", periodAr: "الربع 2–3 2025",
-                    label: "Seed viability baseline ML model", labelAr: "نموذج التعلم الآلي الأساسي لحيوية البذور",
-                    status: "done", note: "Random Forest trained, RMSE = 6.2%, R² = 0.81",
-                    noteAr: "تدريب Random Forest، RMSE = 6.2%، R² = 0.81",
-                  },
-                  {
-                    period: "Q4 2025 – Q1 2026", periodAr: "الربع 4 2025 – الربع 1 2026",
-                    label: "Proteomics data integration & LC-MS/MS pipeline", labelAr: "دمج بيانات البروتيوميكس وخط LC-MS/MS",
-                    status: "active", note: "Sample preparation protocol finalised; data acquisition ongoing",
-                    noteAr: "اكتمل بروتوكول التحضير؛ جمع البيانات جارٍ",
-                  },
-                  {
-                    period: "Q2 2026", periodAr: "الربع الثاني 2026",
-                    label: "Genomic trait GWAS model (drought & yield)", labelAr: "نموذج GWAS للصفات الجينومية (الجفاف والإنتاجية)",
-                    status: "planned", note: "Pending: WGS variant calling completion for sorghum & millet",
-                    noteAr: "في انتظار: إتمام استدعاء المتغيرات لـ Sorghum وMillet",
-                  },
-                  {
-                    period: "Q3–Q4 2026", periodAr: "الربع 3–4 2026",
-                    label: "Integrated AI prediction platform launch", labelAr: "إطلاق منصة التنبؤ بالذكاء الاصطناعي المتكاملة",
-                    status: "planned", note: "Public dashboard with live germination predictions",
-                    noteAr: "لوحة تحكم عامة مع توقعات الإنبات الحية",
-                  },
-                ].map((item, i) => (
-                  <div key={i} className={`flex gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className="flex flex-col items-center shrink-0">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${
-                        item.status === "done" ? "bg-green-100 border-green-500" :
-                        item.status === "active" ? "bg-amber-100 border-amber-500" :
-                        "bg-gray-100 border-gray-300"
-                      }`}>
-                        {item.status === "done" ? <CheckCircle2 className="w-4 h-4 text-green-600" /> :
-                         item.status === "active" ? <Clock className="w-4 h-4 text-amber-600" /> :
-                         <AlertTriangle className="w-4 h-4 text-gray-400" />}
-                      </div>
-                      {i < 4 && <div className="w-0.5 h-6 bg-gray-200 mt-1" />}
-                    </div>
-                    <div className={`pb-4 ${isRTL ? "text-right" : ""}`}>
-                      <span className="text-[10px] font-mono text-gray-400">{isRTL ? item.periodAr : item.period}</span>
-                      <p className="text-sm font-semibold text-gray-800 leading-snug mt-0.5">
-                        {isRTL ? item.labelAr : item.label}
-                      </p>
-                      <p className="text-xs text-gray-500 mt-0.5">{isRTL ? item.noteAr : item.note}</p>
-                    </div>
+              <div className={`flex items-start justify-center flex-wrap gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
+                {PIPELINE_GENOMICS.map((step, i) => (
+                  <div key={step.title} className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <Node {...step} isRTL={isRTL} />
+                    {i < PIPELINE_GENOMICS.length - 1 && <Connector isRTL={isRTL} color={PIPELINE_GENOMICS[i].color} />}
                   </div>
                 ))}
               </div>
-            </CardContent>
-          </Card>
-        </FadeUp>
+            </GlassCard>
+          </FadeUp>
 
+          {/* ── Roadmap ───────────────────────────────────────────────────── */}
+          <FadeUp>
+            <GlassCard className="p-6 sm:p-8">
+              <div className={`flex items-center gap-2 mb-8 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <Clock className="w-4 h-4" style={{ color: C.cyan }} />
+                <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: C.cyan }}>
+                  {isRTL ? "خارطة طريق التطوير" : "Development Roadmap"}
+                </p>
+              </div>
+              <div className="space-y-0">
+                {ROADMAP.map((item, i) => {
+                  const color = item.status === "done" ? C.green : item.status === "active" ? C.cyan : "rgba(255,255,255,0.2)";
+                  return (
+                    <motion.div key={i} initial={{ opacity: 0, x: isRTL ? 20 : -20 }} whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                      className={`flex gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+                      <div className="flex flex-col items-center shrink-0">
+                        <div className="w-8 h-8 rounded-full flex items-center justify-center z-10" style={{ background: `${color}18`, border: `2px solid ${color}`, boxShadow: item.status !== "planned" ? `0 0 12px ${color}50` : "none" }}>
+                          {item.status === "done"
+                            ? <CheckCircle2 className="w-4 h-4" style={{ color }} />
+                            : item.status === "active"
+                              ? <motion.div animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 1.5, repeat: Infinity }}><Activity className="w-4 h-4" style={{ color }} /></motion.div>
+                              : <Clock className="w-4 h-4" style={{ color }} />}
+                        </div>
+                        {i < ROADMAP.length - 1 && (
+                          <div className="w-px flex-1 my-1" style={{ background: `linear-gradient(${color}60, rgba(255,255,255,0.05))`, minHeight: 24 }} />
+                        )}
+                      </div>
+                      <div className={`pb-6 flex-1 ${isRTL ? "text-right" : ""}`}>
+                        <span className="text-[10px] font-mono" style={{ color: "rgba(255,255,255,0.3)" }}>{item.period}</span>
+                        <p className="text-sm font-semibold text-white mt-0.5">{isRTL ? item.ar : item.en}</p>
+                        <p className="text-[11px] mt-1 font-mono" style={{ color }}>▸ {item.metric}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </GlassCard>
+          </FadeUp>
+
+          {/* ── Tech stack footer ─────────────────────────────────────────── */}
+          <FadeUp>
+            <div className={`flex flex-wrap items-center gap-2 justify-center ${isRTL ? "flex-row-reverse" : ""}`}>
+              {["Python 3.11", "scikit-learn", "TensorFlow", "PyTorch", "MaxQuant", "PLINK2", "R/Bioconductor", "ADMIXTURE"].map(t => (
+                <span key={t} className="text-[10px] font-mono px-2.5 py-1 rounded-md" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.35)" }}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </FadeUp>
+
+        </div>
       </div>
     </PageLayout>
   );
