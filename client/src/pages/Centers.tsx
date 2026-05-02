@@ -412,7 +412,7 @@ export default function Centers() {
                     className={`flex items-center gap-1.5 px-3 py-2 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-lg ${isRTL ? "flex-row-reverse" : ""}`}
                   >
                     <TIcon className="h-4 w-4" />
-                    <span>{t(tab.labelKey)}</span>
+                    <span className="hidden sm:inline">{t(tab.labelKey)}</span>
                   </TabsTrigger>
                 );
               })}
@@ -1149,7 +1149,7 @@ export default function Centers() {
 
       {/* ── Center Detail Dialog ── */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
           {selectedCenter && (
             <>
               <DialogHeader>
