@@ -576,6 +576,79 @@ export default function AIPrediction() {
           </FadeUp>
 
         </div>
+
+        {/* ── Prototype footer banner ───────────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          style={{ borderTop: `1px solid ${C.cyan}20`, background: "rgba(0,212,255,0.03)" }}
+          className="mt-0"
+        >
+          <div className="container py-6">
+            {/* Top divider line with glow */}
+            <div className="relative mb-6">
+              <div className="absolute inset-0 flex items-center">
+                <motion.div
+                  className="w-full h-px"
+                  style={{ background: `linear-gradient(90deg, transparent, ${C.cyan}60, transparent)` }}
+                  animate={{ opacity: [0.4, 1, 0.4] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+              </div>
+              <div className="relative flex justify-center">
+                <span className="px-4 text-[10px] font-mono uppercase tracking-widest" style={{ background: "#020817", color: `${C.cyan}80` }}>
+                  ⚠ PROTOTYPE NOTICE
+                </span>
+              </div>
+            </div>
+
+            {/* Main disclaimer block */}
+            <div className={`flex flex-col sm:flex-row items-start sm:items-center gap-4 ${isRTL ? "sm:flex-row-reverse" : ""}`}>
+              {/* Stamp icon */}
+              <div className="shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: `${C.amber}10`, border: `1.5px dashed ${C.amber}50` }}>
+                <Shield className="w-7 h-7" style={{ color: C.amber }} />
+              </div>
+
+              <div className={`flex-1 ${isRTL ? "text-right" : ""}`}>
+                <p className="text-sm font-bold mb-1" style={{ color: C.amber }}>
+                  {isRTL ? "نسخة تجريبية — ليست نسخة نهائية" : "Prototype Build — Not a Final Release"}
+                </p>
+                <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.38)" }}>
+                  {isRTL
+                    ? "هذه النسخة تجريبية تطويرية لمركز التنبؤ بالذكاء الاصطناعي الخاص بمركز البذور السعودي. جميع النماذج والمخططات والبيانات المعروضة هي لأغراض المفهوم والتصميم فقط، ولا تمثل نتائج إنتاجية. يُتوقع إطلاق النسخة الإنتاجية في الربع الأخير من عام 2026."
+                    : "This is a development prototype of the Saudi SEEd Center AI Prediction platform. All models, diagrams, and data shown are for conceptual and design purposes only and do not represent production-ready outputs. The full production release is targeted for Q3–Q4 2026."}
+                </p>
+              </div>
+
+              {/* Version chip */}
+              <div className="shrink-0 text-center">
+                <div className="px-3 py-2 rounded-xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <p className="text-[9px] font-mono uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,0.3)" }}>Version</p>
+                  <p className="text-lg font-black font-mono" style={{ color: C.cyan }}>v0.1</p>
+                  <p className="text-[9px] font-mono" style={{ color: "rgba(255,255,255,0.25)" }}>2026 · SEEd AI</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom meta row */}
+            <div className={`flex flex-wrap items-center gap-3 mt-5 pt-4 ${isRTL ? "flex-row-reverse justify-end" : "justify-start"}`}
+              style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+              {[
+                { label: isRTL ? "الحالة" : "Status", value: isRTL ? "نموذج أولي" : "Prototype", color: C.amber },
+                { label: isRTL ? "التوافق" : "Compatibility", value: "SEEd Platform 1.x", color: C.cyan },
+                { label: isRTL ? "الترخيص" : "License", value: "Internal Use Only", color: C.purple },
+                { label: isRTL ? "الإصدار المتوقع" : "Target Release", value: "Q3–Q4 2026", color: C.green },
+              ].map(m => (
+                <div key={m.label} className="flex items-center gap-1.5">
+                  <span className="text-[9px] font-mono" style={{ color: "rgba(255,255,255,0.25)" }}>{m.label}:</span>
+                  <span className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded" style={{ background: `${m.color}12`, color: m.color, border: `1px solid ${m.color}30` }}>{m.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </PageLayout>
   );
