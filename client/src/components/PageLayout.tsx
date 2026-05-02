@@ -70,6 +70,11 @@ export default function PageLayout({
               <p className="text-sm text-primary-foreground/80 mt-2">
                 {t("footer.country")}
               </p>
+              <img
+                src="https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png"
+                alt="Vision 2030"
+                className="h-10 w-auto mt-4 rounded bg-white/10 p-1"
+              />
             </div>
 
             {/* Quick links */}

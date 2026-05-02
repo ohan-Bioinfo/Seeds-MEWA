@@ -81,8 +81,13 @@ export default function Navigation() {
             })}
           </div>
 
-          {/* Language Switcher — desktop */}
-          <div className={`hidden xl:flex items-center shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
+          {/* Vision 2030 logo + Language Switcher — desktop */}
+          <div className={`hidden xl:flex items-center gap-3 shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
+            <img
+              src="https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png"
+              alt="Vision 2030"
+              className="h-10 w-auto"
+            />
             <LanguageSwitcher />
           </div>
 

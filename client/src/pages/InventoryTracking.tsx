@@ -25,9 +25,18 @@ import {
   calculateCenterSummaries,
   getCriticalStockItems,
   getPendingDistributions,
+  SEEDBANK_TOTALS,
+  CATEGORY_BREAKDOWN,
+  SOURCE_BREAKDOWN,
+  FAMILY_BREAKDOWN,
   type InventoryItem,
   type DistributionRequest
 } from '@/data/inventoryData';
+import {
+  PieChart,
+  Pie,
+  Legend,
+} from 'recharts';
 import {
   Package,
   TrendingDown,
@@ -398,18 +407,22 @@ export default function InventoryTracking() {
 
           {/* Tabs for different views */}
           <Tabs defaultValue="inventory" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-3 bg-green-100">
+            <TabsList className="grid w-full grid-cols-4 bg-green-100">
               <TabsTrigger value="inventory" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
                 <Package className="w-4 h-4 mr-2" />
                 {language === 'ar' ? 'المخزون' : 'Inventory'}
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
+                <BarChart3 className="w-4 h-4 mr-2" />
+                {language === 'ar' ? 'التحليلات' : 'Analytics'}
               </TabsTrigger>
               <TabsTrigger value="distributions" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
                 <Truck className="w-4 h-4 mr-2" />
                 {language === 'ar' ? 'التوزيع' : 'Distributions'}
               </TabsTrigger>
               <TabsTrigger value="centers" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
-                <BarChart3 className="w-4 h-4 mr-2" />
-                {language === 'ar' ? 'ملخص المراكز' : 'Center Summary'}
+                <Activity className="w-4 h-4 mr-2" />
+                {language === 'ar' ? 'ملخص المراكز' : 'Centers'}
               </TabsTrigger>
             </TabsList>
 
@@ -611,6 +624,176 @@ export default function InventoryTracking() {
                   </Card>
                 ))}
               </div>
+            </TabsContent>
+
+            {/* Analytics Tab */}
+            <TabsContent value="analytics" className="space-y-6">
+
+              {/* Summary strip */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { label: language === 'ar' ? 'إجمالي المقتنيات' : 'Total Accessions', value: SEEDBANK_TOTALS.total.toLocaleString(), color: 'bg-green-50 border-green-200', text: 'text-green-800' },
+                  { label: language === 'ar' ? 'محلية / سعودية' : 'Saudi / Local', value: SEEDBANK_TOTALS.saudiLocal.toLocaleString(), color: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-800' },
+                  { label: language === 'ar' ? 'تجارب دولية' : 'International Trials', value: SEEDBANK_TOTALS.internationalTrials.toLocaleString(), color: 'bg-blue-50 border-blue-200', text: 'text-blue-800' },
+                  { label: language === 'ar' ? 'لها بيانات إنبات' : 'Germination Tested', value: SEEDBANK_TOTALS.withGerminationData.toLocaleString(), color: 'bg-amber-50 border-amber-200', text: 'text-amber-800' },
+                ].map(s => (
+                  <Card key={s.label} className={`p-4 border-2 ${s.color}`}>
+                    <div className={`text-2xl font-bold ${s.text}`}>{s.value}</div>
+                    <div className="text-xs text-gray-600 mt-1">{s.label}</div>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Categories + Origin */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                {/* Category breakdown */}
+                <Card className="p-6 border-2 border-green-100">
+                  <h3 className="font-semibold text-gray-900 mb-4">
+                    {language === 'ar' ? 'توزيع المقتنيات حسب الفئة' : 'Accessions by Category'}
+                  </h3>
+                  <div className="space-y-3">
+                    {CATEGORY_BREAKDOWN.map(cat => (
+                      <div key={cat.en}>
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-sm font-medium text-gray-700">
+                            {language === 'ar' ? cat.ar : cat.en}
+                          </span>
+                          <span className="text-sm text-gray-500">{cat.count.toLocaleString()} ({cat.pct}%)</span>
+                        </div>
+                        <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="h-full rounded-full" style={{ width: `${cat.pct}%`, backgroundColor: cat.color }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+
+                {/* Origin split */}
+                <Card className="p-6 border-2 border-green-100">
+                  <h3 className="font-semibold text-gray-900 mb-4">
+                    {language === 'ar' ? 'مصدر المقتنيات' : 'Accession Origin'}
+                  </h3>
+                  <div dir="ltr" className="h-48">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={[
+                            { name: language === 'ar' ? 'محلي / سعودي' : 'Saudi / Local', value: SEEDBANK_TOTALS.saudiLocal, fill: '#0B5F3A' },
+                            { name: language === 'ar' ? 'تجارب دولية' : 'International Trials', value: SEEDBANK_TOTALS.internationalTrials, fill: '#2563EB' },
+                            { name: language === 'ar' ? 'نسخ احتياطية' : 'Backup Copies', value: SEEDBANK_TOTALS.backupCopies, fill: '#9ca3af' },
+                          ]}
+                          cx="50%" cy="50%" outerRadius={70}
+                          dataKey="value"
+                          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(1)}%`}
+                          labelLine={false}
+                        />
+                        <Tooltip formatter={(v: number) => v.toLocaleString()} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                </Card>
+              </div>
+
+              {/* Sources + Families */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                {/* Top sources */}
+                <Card className="p-6 border-2 border-green-100">
+                  <h3 className="font-semibold text-gray-900 mb-4">
+                    {language === 'ar' ? 'أبرز مصادر الجمع' : 'Top Collection Sources'}
+                  </h3>
+                  <div dir="ltr" className="h-52">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={SOURCE_BREAKDOWN} layout="vertical" margin={{ left: 140, right: 20, top: 4, bottom: 4 }}>
+                        <XAxis type="number" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
+                        <YAxis type="category" dataKey="name" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} width={135} />
+                        <Tooltip formatter={(v: number) => [v.toLocaleString(), language === 'ar' ? 'مقتنى' : 'accessions']} />
+                        <Bar dataKey="count" radius={[0, 4, 4, 0]}>
+                          {SOURCE_BREAKDOWN.map(s => (
+                            <Cell key={s.name} fill={s.type === 'international' ? '#2563EB' : s.type === 'local' ? '#0B5F3A' : '#9ca3af'} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="flex gap-4 mt-2 text-xs text-gray-500">
+                    <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-green-800 inline-block" />{language === 'ar' ? 'محلي' : 'Local'}</span>
+                    <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-blue-600 inline-block" />{language === 'ar' ? 'دولي' : 'International'}</span>
+                  </div>
+                </Card>
+
+                {/* Top plant families */}
+                <Card className="p-6 border-2 border-green-100">
+                  <h3 className="font-semibold text-gray-900 mb-4">
+                    {language === 'ar' ? 'أبرز العائلات النباتية' : 'Top Plant Families'}
+                  </h3>
+                  <div dir="ltr" className="h-52">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={FAMILY_BREAKDOWN} layout="vertical" margin={{ left: 100, right: 20, top: 4, bottom: 4 }}>
+                        <XAxis type="number" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
+                        <YAxis type="category" dataKey="family" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} width={95} />
+                        <Tooltip
+                          formatter={(v: number) => [v.toLocaleString(), language === 'ar' ? 'مقتنى' : 'accessions']}
+                          labelFormatter={(l: string, p) => `${l} — ${p?.[0]?.payload?.note ?? ''}`}
+                        />
+                        <Bar dataKey="count" fill="#0B5F3A" radius={[0, 4, 4, 0]} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </Card>
+              </div>
+
+              {/* Viability + Collection range */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Card className="p-5 border-2 border-green-100 md:col-span-2">
+                  <h3 className="font-semibold text-gray-900 mb-3 text-sm">
+                    {language === 'ar' ? 'حيوية البذور (من 773 مقتنى مختبر)' : 'Seed Viability (from 773 tested)'}
+                  </h3>
+                  <div className="flex items-center gap-4 mb-2">
+                    <div className="flex-1">
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-green-700 font-medium">{language === 'ar' ? 'عالية ≥80%' : 'High ≥80%'}</span>
+                        <span className="text-green-700">{SEEDBANK_TOTALS.highViability}</span>
+                      </div>
+                      <div className="h-4 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="h-full bg-green-500 rounded-full" style={{ width: `${(SEEDBANK_TOTALS.highViability / SEEDBANK_TOTALS.withGerminationData) * 100}%` }} />
+                      </div>
+                    </div>
+                    <span className="text-lg font-bold text-green-700">{Math.round(SEEDBANK_TOTALS.highViability / SEEDBANK_TOTALS.withGerminationData * 100)}%</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex-1">
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-red-700 font-medium">{language === 'ar' ? 'منخفضة <80%' : 'Low <80%'}</span>
+                        <span className="text-red-700">{SEEDBANK_TOTALS.lowViability}</span>
+                      </div>
+                      <div className="h-4 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="h-full bg-red-400 rounded-full" style={{ width: `${(SEEDBANK_TOTALS.lowViability / SEEDBANK_TOTALS.withGerminationData) * 100}%` }} />
+                      </div>
+                    </div>
+                    <span className="text-lg font-bold text-red-700">{Math.round(SEEDBANK_TOTALS.lowViability / SEEDBANK_TOTALS.withGerminationData * 100)}%</span>
+                  </div>
+                </Card>
+
+                <Card className="p-5 border-2 border-green-100 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-3 text-sm">
+                      {language === 'ar' ? 'فترة الجمع' : 'Collection Period'}
+                    </h3>
+                    <div className="text-xs text-gray-500 mb-1">{language === 'ar' ? 'بداية' : 'Start'}</div>
+                    <div className="text-base font-semibold text-green-800 mb-3">{SEEDBANK_TOTALS.collectionStart}</div>
+                    <div className="text-xs text-gray-500 mb-1">{language === 'ar' ? 'آخر تحديث' : 'Latest'}</div>
+                    <div className="text-base font-semibold text-green-800">{SEEDBANK_TOTALS.collectionEnd}</div>
+                  </div>
+                  <div className="pt-3 border-t border-gray-100 text-xs text-gray-500">
+                    {language === 'ar'
+                      ? `متوسط وزن العينة: ${SEEDBANK_TOTALS.avgWeightG}غ`
+                      : `Avg. sample weight: ${SEEDBANK_TOTALS.avgWeightG}g`}
+                  </div>
+                </Card>
+              </div>
+
             </TabsContent>
 
             {/* Distributions Tab */}

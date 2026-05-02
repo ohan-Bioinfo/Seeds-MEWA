@@ -32,7 +32,9 @@ import {
   getFilteredRegionData,
   getSaudiTotalsByCrop,
   TOTAL_PASSPORT_ACCESSIONS,
+  TOTAL_GENOMIC_CROPS,
   getActiveCropTypes,
+  getPassportCropTypes,
   REGION_CROP_DATA,
 } from "@/data/passportData";
 import {
@@ -48,7 +50,8 @@ import {
   BarChart3,
 } from "lucide-react";
 
-const ALL_CROPS = getActiveCropTypes();
+const ALL_CROPS = getActiveCropTypes();          // all 28
+const PASSPORT_CROPS = getPassportCropTypes();   // 8 with passport + map data
 
 /* ── Animated counter hook ── */
 function useAnimatedCounter(target: number, duration = 1800) {
@@ -230,8 +233,11 @@ export default function Home() {
     );
   }, [selectedCrops, regionData, saudiTotals]);
 
+  // For map/charts, only passport crops are meaningful
+  const activePassportCrops =
+    selectedCrops.filter(c => CROP_META[c].hasPassport);
   const activeCropsForDisplay =
-    selectedCrops.length > 0 ? selectedCrops : ALL_CROPS;
+    activePassportCrops.length > 0 ? activePassportCrops : PASSPORT_CROPS;
 
   // Crop label depends on language
   const cropLabel = (crop: CropType) =>
@@ -239,10 +245,10 @@ export default function Home() {
 
   /* ── Chart data ── */
 
-  // Pie chart: crop distribution
+  // Pie chart: passport crops only (totalAccessions > 0)
   const pieData = useMemo(
     () =>
-      ALL_CROPS.map((crop) => ({
+      PASSPORT_CROPS.map((crop) => ({
         name: cropLabel(crop),
         value: CROP_META[crop].totalAccessions,
         color: CROP_META[crop].color,
@@ -265,7 +271,7 @@ export default function Home() {
   // Stacked bar: Saudi vs International per crop
   const originData = useMemo(
     () =>
-      ALL_CROPS.map((crop) => {
+      PASSPORT_CROPS.map((crop) => {
         const meta = CROP_META[crop];
         const saudi = saudiTotals[crop] || 0;
         return {
@@ -319,7 +325,7 @@ export default function Home() {
               {t("home.badge.totalAccessions")}
             </Badge>
             <Badge className="bg-white/15 border-white/25 text-white backdrop-blur-sm hover:bg-white/20 transition-colors">
-              <Leaf className="w-3 h-3 me-1.5" />8{" "}
+              <Leaf className="w-3 h-3 me-1.5" />{TOTAL_GENOMIC_CROPS}{" "}
               {t("home.badge.cropsWithData")}
             </Badge>
             <Badge className="bg-white/15 border-white/25 text-white backdrop-blur-sm hover:bg-white/20 transition-colors">
@@ -342,7 +348,7 @@ export default function Home() {
           />
           <KpiCard
             icon={Leaf}
-            value={8}
+            value={TOTAL_GENOMIC_CROPS}
             label={t("home.kpi.cropsTracked")}
             color="#D4AF37"
             delay={0.1}
@@ -368,10 +374,13 @@ export default function Home() {
       {/* ── Crop tiles strip ── */}
       <section className="bg-muted/40 border-y border-border py-4">
         <div className="container">
-          <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
-            {ALL_CROPS.map((crop, i) => {
+          {/* Passport crops row */}
+          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide mb-1.5 px-0.5">
+            {language === "ar" ? "محاصيل لها بيانات جواز (8)" : "Passport crops with regional data (8)"}
+          </div>
+          <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-2 mb-3">
+            {PASSPORT_CROPS.map((crop, i) => {
               const meta = CROP_META[crop];
-              const total = meta.totalAccessions;
               const isSelected = selectedCrops.includes(crop);
               return (
                 <motion.button
@@ -389,23 +398,55 @@ export default function Home() {
                         ? "border-border bg-card hover:border-primary/50 hover:shadow-md"
                         : "border-border bg-card opacity-45 hover:opacity-80"
                   }`}
-                  title={`${meta.scientificName} — ${total} ${t("home.label.accessions")}`}
+                  title={`${meta.scientificName} — ${meta.totalAccessions} ${t("home.label.accessions")}`}
                 >
-                  <span className="text-xl sm:text-2xl mb-0.5 sm:mb-1">
-                    {meta.icon}
-                  </span>
+                  <span className="text-xl sm:text-2xl mb-0.5 sm:mb-1">{meta.icon}</span>
                   <span className="text-[10px] sm:text-xs font-semibold text-foreground truncate w-full leading-tight">
                     {cropLabel(crop)}
                   </span>
-                  <span
-                    className="text-base sm:text-lg font-bold mt-0.5"
-                    style={{ color: meta.color }}
-                  >
-                    {total}
+                  <span className="text-base sm:text-lg font-bold mt-0.5" style={{ color: meta.color }}>
+                    {meta.totalAccessions}
                   </span>
-                  <span className="text-[9px] sm:text-[10px] text-muted-foreground">
-                    {t("home.label.accessions")}
+                  <span className="text-[9px] sm:text-[10px] text-muted-foreground">{t("home.label.accessions")}</span>
+                </motion.button>
+              );
+            })}
+          </div>
+
+          {/* Genomics-only crops row */}
+          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide mb-1.5 px-0.5">
+            {language === "ar"
+              ? `محاصيل جينوميات فقط — WGS/GBS (${ALL_CROPS.length - PASSPORT_CROPS.length})`
+              : `Genomics-only crops — WGS/GBS (${ALL_CROPS.length - PASSPORT_CROPS.length})`}
+          </div>
+          <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-10 gap-1.5 sm:gap-2">
+            {ALL_CROPS.filter(c => !CROP_META[c].hasPassport).map((crop, i) => {
+              const meta = CROP_META[crop];
+              const isSelected = selectedCrops.includes(crop);
+              return (
+                <motion.button
+                  key={crop}
+                  onClick={() => handleCropToggle(crop)}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3 + i * 0.03, duration: 0.3 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                  className={`flex flex-col items-center p-1.5 sm:p-2 rounded-xl border-2 transition-all cursor-pointer text-center ${
+                    isSelected
+                      ? "border-primary shadow-lg bg-primary/5"
+                      : "border-dashed border-border bg-card/60 hover:border-primary/50 hover:shadow-md"
+                  }`}
+                  title={`${meta.scientificName} — ${meta.samples} samples (${meta.sequencingType})`}
+                >
+                  <span className="text-lg sm:text-xl mb-0.5">{meta.icon}</span>
+                  <span className="text-[9px] sm:text-[10px] font-semibold text-foreground truncate w-full leading-tight">
+                    {cropLabel(crop)}
                   </span>
+                  <span className="text-sm sm:text-base font-bold mt-0.5" style={{ color: meta.color }}>
+                    {meta.samples}
+                  </span>
+                  <span className="text-[8px] sm:text-[9px] text-muted-foreground">{meta.sequencingType}</span>
                 </motion.button>
               );
             })}
@@ -700,7 +741,7 @@ export default function Home() {
                           {TOTAL_PASSPORT_ACCESSIONS.toLocaleString()}
                         </span>
                       </div>
-                      {ALL_CROPS.map((crop) => {
+                      {PASSPORT_CROPS.map((crop) => {
                         const meta = CROP_META[crop];
                         const saudiCount = saudiTotals[crop] || 0;
                         const totalCount = meta.totalAccessions;

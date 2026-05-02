@@ -186,10 +186,10 @@ export const inventoryData: InventoryItem[] = [
     cropType: 'نباتات برية',
     variety: 'Fabaceae / Arecaceae / Bignoniaceae — 8 accessions',
     accessionCount: 8,
-    stockLevel: 0.08,
+    stockLevel: 0.00,
     minThreshold: 1,
     maxCapacity: 5,
-    germinationRate: 25,
+    germinationRate: 0,
     germinationHistory: [],
     lastTested: '2024-07-01',
     harvestYear: 2023,
@@ -378,3 +378,50 @@ export function getCriticalStockItems(): InventoryItem[] {
 export function getPendingDistributions(): DistributionRequest[] {
   return distributionRequests.filter(req => req.status === 'pending' || req.status === 'approved');
 }
+
+// ── Collection Analytics (derived from seedbank.json, May 2024 snapshot) ──
+
+export const SEEDBANK_TOTALS = {
+  total: 3341,
+  saudiLocal: 1814,        // excl. international trials + backup copies
+  internationalTrials: 1525,
+  backupCopies: 259,
+  withGerminationData: 773,
+  highViability: 512,      // ≥80% germination
+  lowViability: 261,       // <80% germination (tested but poor)
+  weighed: 928,            // accessions with weight_g recorded
+  totalWeightKg: 221.6,
+  avgWeightG: 238.8,
+  collectionStart: '2005-08-07',
+  collectionEnd: '2024-11-19',
+};
+
+export const CATEGORY_BREAKDOWN = [
+  { en: 'Field Crops',   ar: 'محاصيل حقلية', count: 2200, pct: 65.8, color: '#0B5F3A' },
+  { en: 'Vegetables',    ar: 'خضروات',        count: 408,  pct: 12.2, color: '#D97706' },
+  { en: 'Horticultural', ar: 'بستانية',       count: 350,  pct: 10.5, color: '#6B4423' },
+  { en: 'Wild Plants',   ar: 'نباتات برية',   count: 301,  pct:  9.0, color: '#7c3aed' },
+  { en: 'Medicinal',     ar: 'طبي ومعطر',     count: 82,   pct:  2.5, color: '#dc2626' },
+];
+
+export const SOURCE_BREAKDOWN = [
+  { name: 'CIMMYT',                      count: 1047, type: 'international' as const },
+  { name: 'Farm',                        count: 818,  type: 'local' as const },
+  { name: 'Market',                      count: 452,  type: 'local' as const },
+  { name: 'ACSAD',                       count: 295,  type: 'international' as const },
+  { name: 'Agri. Res. Center, Gizan',    count: 106,  type: 'local' as const },
+  { name: 'Dr Salem Alghamdy (KSU)',     count: 99,   type: 'local' as const },
+  { name: 'ICRISAT',                     count: 49,   type: 'international' as const },
+  { name: 'Other',                       count: 475,  type: 'other' as const },
+];
+
+export const FAMILY_BREAKDOWN = [
+  { family: 'Poaceae',        count: 1870, note: 'Grasses & cereals' },
+  { family: 'Fabaceae',       count: 306,  note: 'Legumes' },
+  { family: 'Cucurbitaceae',  count: 115,  note: 'Cucurbits' },
+  { family: 'Rubiaceae',      count: 92,   note: 'Coffee family' },
+  { family: 'Amaranthaceae',  count: 89,   note: 'Amaranths' },
+  { family: 'Apiaceae',       count: 87,   note: 'Umbellifers' },
+  { family: 'Pedaliaceae',    count: 86,   note: 'Sesame family' },
+  { family: 'Brassicaceae',   count: 83,   note: 'Mustards' },
+];
