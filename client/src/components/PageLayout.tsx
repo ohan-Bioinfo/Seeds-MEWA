@@ -71,9 +71,11 @@ export default function PageLayout({
                 {t("footer.country")}
               </p>
               <img
-                src="https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Vision2030_logo.svg/400px-Vision2030_logo.svg.png"
                 alt="Vision 2030"
-                className="h-10 w-auto mt-4 rounded bg-white/10 p-1"
+                className="h-10 w-auto mt-4"
+                style={{ filter: 'brightness(0) invert(1)' }}
+                onError={(e) => { (e.target as HTMLImageElement).src = 'https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png'; (e.target as HTMLImageElement).style.filter = ''; }}
               />
             </div>
 

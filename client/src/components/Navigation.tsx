@@ -86,9 +86,10 @@ export default function Navigation() {
           {/* Vision 2030 logo + Language Switcher — desktop */}
           <div className={`hidden xl:flex items-center gap-3 shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
             <img
-              src="https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Vision2030_logo.svg/400px-Vision2030_logo.svg.png"
               alt="Vision 2030"
-              className="h-10 w-auto"
+              className="h-9 w-auto"
+              onError={(e) => { (e.target as HTMLImageElement).src = 'https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png'; }}
             />
             <LanguageSwitcher />
           </div>

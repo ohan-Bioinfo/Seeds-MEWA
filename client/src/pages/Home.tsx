@@ -256,26 +256,35 @@ export default function Home() {
     [language],
   );
 
-  // Bar chart: regional totals
+  // Bar chart: regional totals (short names to avoid label clipping)
+  const SHORT_REGION: Record<string, string> = {
+    Jazan: "Jazan", Aseer: "Aseer", "Al-Baha": "Al-Baha",
+    Riyadh: "Riyadh", Taif: "Taif", Qaseem: "Qaseem",
+    Hail: "Hail", Najran: "Najran", Tabuk: "Tabuk",
+  };
   const regionBarData = useMemo(
     () =>
       [...REGION_CROP_DATA]
         .sort((a, b) => b.total - a.total)
         .map((r) => ({
-          name: r.region,
+          name: SHORT_REGION[r.region] ?? r.region,
           total: r.total,
         })),
     [],
   );
 
-  // Stacked bar: Saudi vs International per crop
+  // Stacked bar: Saudi vs International per crop (short English labels)
+  const SHORT_CROP: Record<string, string> = {
+    wheat: "Wheat", coffee: "Coffee", barley: "Barley", fabaBean: "Faba Bean",
+    millet: "Millet", sorghum: "Sorghum", sesame: "Sesame", mango: "Mango",
+  };
   const originData = useMemo(
     () =>
       PASSPORT_CROPS.map((crop) => {
         const meta = CROP_META[crop];
         const saudi = saudiTotals[crop] || 0;
         return {
-          name: cropLabel(crop),
+          name: SHORT_CROP[crop] ?? meta.label,
           [t("home.label.saudi")]: saudi,
           [t("home.label.international")]: meta.totalAccessions - saudi,
           color: meta.color,
@@ -935,52 +944,32 @@ export default function Home() {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart
-                      data={regionBarData}
-                      layout="vertical"
-                      margin={{ top: 5, right: 30, left: 5, bottom: 5 }}
-                    >
-                      <CartesianGrid
-                        strokeDasharray="3 3"
-                        stroke="var(--border)"
-                        opacity={0.4}
-                        horizontal={false}
-                      />
-                      <XAxis
-                        type="number"
-                        tick={{ fontSize: 10, fill: "var(--muted-foreground)" }}
-                      />
-                      <YAxis
-                        dataKey="name"
-                        type="category"
-                        width={70}
-                        tick={{ fontSize: 11, fill: "var(--foreground)" }}
-                      />
-                      <Tooltip content={<ChartTooltip />} />
-                      <Bar
-                        dataKey="total"
-                        name={t("home.label.saudiAccessions")}
-                        fill="var(--primary)"
-                        radius={[0, 4, 4, 0]}
-                        animationDuration={1200}
-                        barSize={20}
+                  <div dir="ltr" className="w-full" style={{ height: 260 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart
+                        data={regionBarData}
+                        layout="vertical"
+                        margin={{ top: 4, right: 36, left: 0, bottom: 4 }}
                       >
-                        {regionBarData.map((_, idx) => (
-                          <Cell
-                            key={idx}
-                            fill={
-                              idx === 0
-                                ? "#0B5F3A"
-                                : idx < 3
-                                  ? "#1a7a52"
-                                  : "#3d9970"
-                            }
-                          />
-                        ))}
-                      </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
+                        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.4} horizontal={false} />
+                        <XAxis type="number" tick={{ fontSize: 10, fill: "#6b7280" }} axisLine={false} tickLine={false} />
+                        <YAxis
+                          dataKey="name"
+                          type="category"
+                          width={56}
+                          tick={{ fontSize: 11, fill: "#374151", fontWeight: 500 }}
+                          axisLine={false}
+                          tickLine={false}
+                        />
+                        <Tooltip content={<ChartTooltip />} />
+                        <Bar dataKey="total" name={t("home.label.saudiAccessions")} radius={[0, 6, 6, 0]} animationDuration={1000} barSize={20}>
+                          {regionBarData.map((_, idx) => (
+                            <Cell key={idx} fill={idx === 0 ? "#0B5F3A" : idx < 3 ? "#1a7a52" : "#3d9970"} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
                 </CardContent>
               </Card>
             </FadeUp>
@@ -998,51 +987,30 @@ export default function Home() {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <ResponsiveContainer width="100%" height={320}>
-                    <BarChart
-                      data={originData}
-                      layout="vertical"
-                      margin={{ top: 5, right: 30, left: 5, bottom: 5 }}
-                    >
-                      <CartesianGrid
-                        strokeDasharray="3 3"
-                        stroke="var(--border)"
-                        opacity={0.4}
-                        horizontal={false}
-                      />
-                      <XAxis
-                        type="number"
-                        tick={{ fontSize: 10, fill: "var(--muted-foreground)" }}
-                      />
-                      <YAxis
-                        dataKey="name"
-                        type="category"
-                        width={90}
-                        tick={{ fontSize: 11, fill: "var(--foreground)" }}
-                      />
-                      <Tooltip content={<ChartTooltip />} />
-                      <Legend
-                        wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
-                        iconType="circle"
-                      />
-                      <Bar
-                        dataKey={t("home.label.saudi")}
-                        stackId="origin"
-                        fill="#0B5F3A"
-                        radius={[0, 0, 0, 0]}
-                        animationDuration={1200}
-                        barSize={22}
-                      />
-                      <Bar
-                        dataKey={t("home.label.international")}
-                        stackId="origin"
-                        fill="#D4AF37"
-                        radius={[0, 4, 4, 0]}
-                        animationDuration={1200}
-                        barSize={22}
-                      />
-                    </BarChart>
-                  </ResponsiveContainer>
+                  <div dir="ltr" className="w-full" style={{ height: 280 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart
+                        data={originData}
+                        layout="vertical"
+                        margin={{ top: 4, right: 16, left: 0, bottom: 4 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.4} horizontal={false} />
+                        <XAxis type="number" tick={{ fontSize: 10, fill: "#6b7280" }} axisLine={false} tickLine={false} />
+                        <YAxis
+                          dataKey="name"
+                          type="category"
+                          width={66}
+                          tick={{ fontSize: 11, fill: "#374151", fontWeight: 500 }}
+                          axisLine={false}
+                          tickLine={false}
+                        />
+                        <Tooltip content={<ChartTooltip />} />
+                        <Legend wrapperStyle={{ fontSize: 11, paddingTop: 6 }} iconType="circle" iconSize={8} />
+                        <Bar dataKey={t("home.label.saudi")} stackId="origin" fill="#0B5F3A" radius={[0, 0, 0, 0]} animationDuration={1000} barSize={20} />
+                        <Bar dataKey={t("home.label.international")} stackId="origin" fill="#D4AF37" radius={[0, 6, 6, 0]} animationDuration={1000} barSize={20} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
                 </CardContent>
               </Card>
             </FadeUp>
