@@ -129,6 +129,18 @@ export default function PageLayout({
           <div className="mt-8 pt-8 border-t border-primary-foreground/20 text-center text-sm text-primary-foreground/60">
             {t("footer.rights")}
           </div>
+
+          {/* Prototype notice */}
+          <div className="mt-4 pt-4 border-t border-primary-foreground/10 flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-widest border border-amber-400/40 bg-amber-400/10 text-amber-300">
+              ⚠ PROTOTYPE
+            </span>
+            <span className="text-[10px] text-primary-foreground/35">
+              {isRTL
+                ? "نسخة تجريبية — غير مخصصة للاستخدام الإنتاجي النهائي · SEEd Center 2026"
+                : "Development prototype — not a final production release · SEEd Center 2026"}
+            </span>
+          </div>
         </div>
       </footer>
     </div>
