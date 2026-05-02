@@ -9,6 +9,7 @@ import {
   X,
   Building2,
   Package,
+  Brain,
 } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -21,6 +22,7 @@ const navItems = [
   { path: "/inventory", labelKey: "nav.inventory", icon: Package },
   { path: "/genomics", labelKey: "nav.genomics", icon: Dna },
   { path: "/research", labelKey: "nav.research", icon: BookOpen },
+  { path: "/ai-prediction", labelKey: "nav.aiPrediction", icon: Brain },
   { path: "/contact", labelKey: "nav.contact", icon: Mail },
 ];
 

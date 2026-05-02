@@ -64,6 +64,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.submit': 'Submit Data',
     'nav.centers': 'Seed Stations',
     'nav.inventory': 'Seed Bank',
+    'nav.aiPrediction': 'AI Prediction',
     'nav.publicAccess': 'Public Access',
 
     // Header
@@ -457,6 +458,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.submit': 'إرسال بيانات',
     'nav.centers': 'محطات البذور',
     'nav.inventory': 'بنك البذور',
+    'nav.aiPrediction': 'التنبؤ بالذكاء الاصطناعي',
     'nav.publicAccess': 'وصول عام',
 
     // Header

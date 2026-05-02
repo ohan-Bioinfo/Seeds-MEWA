@@ -16,6 +16,7 @@ import DataCatalog from "./pages/DataCatalog";
 import GeneticFingerprints from "./pages/GeneticFingerprints";
 import Centers from "./pages/Centers";
 import InventoryTracking from "./pages/InventoryTracking";
+import AIPrediction from "./pages/AIPrediction";
 // SubmitData merged into GenomicsHub
 
 function Router() {
@@ -31,6 +32,7 @@ function Router() {
       <Route path={"/research"} component={ResearchHub} />
       {/* Submit merged into /genomics */}
       {/* Community merged into /research */}
+      <Route path={"/ai-prediction"} component={AIPrediction} />
       <Route path={"/contact"} component={Contact} />
       <Route path={"/about"} component={About} />
       <Route path={"/404"} component={NotFound} />
