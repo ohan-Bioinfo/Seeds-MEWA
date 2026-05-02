@@ -695,14 +695,14 @@ export default function GenomicsHub() {
 
         {/* ── Tabs ── */}
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="grid w-full grid-cols-5 mb-8">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="gbs">GBS Data</TabsTrigger>
-            <TabsTrigger value="wgs">WGS Data</TabsTrigger>
-            <TabsTrigger value="files">File Types</TabsTrigger>
-            <TabsTrigger value="submit" className="flex items-center gap-1.5">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mb-8">
+            <TabsTrigger value="overview" className="text-xs sm:text-sm"><span className="hidden sm:inline">Overview</span></TabsTrigger>
+            <TabsTrigger value="gbs" className="text-xs sm:text-sm"><span className="hidden sm:inline">GBS Data</span></TabsTrigger>
+            <TabsTrigger value="wgs" className="text-xs sm:text-sm"><span className="hidden sm:inline">WGS Data</span></TabsTrigger>
+            <TabsTrigger value="files" className="text-xs sm:text-sm"><span className="hidden sm:inline">File Types</span></TabsTrigger>
+            <TabsTrigger value="submit" className="flex items-center gap-1.5 text-xs sm:text-sm">
               <Upload className="w-3.5 h-3.5" />
-              {t("submit.tab")}
+              <span className="hidden sm:inline">{t("submit.tab")}</span>
             </TabsTrigger>
           </TabsList>
 
@@ -1329,7 +1329,7 @@ export default function GenomicsHub() {
                           <FormField label={t("submit.field.siteDescription")}>
                             <FormTextarea placeholder="Description of the collection site, soil type, elevation..." value={passport.siteDescription} onChange={(v) => setPassport({ ...passport, siteDescription: v })} />
                           </FormField>
-                          <div className="grid grid-cols-3 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <FormField label={t("submit.field.latitude")}>
                               <FormInput placeholder="21.4225" value={passport.latitude} onChange={(v) => setPassport({ ...passport, latitude: v })} />
                             </FormField>

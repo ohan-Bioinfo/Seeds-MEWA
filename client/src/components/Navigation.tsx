@@ -61,7 +61,7 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div
-            className={`hidden xl:flex items-center gap-0.5 ${isRTL ? "flex-row-reverse" : ""}`}
+            className={`hidden lg:flex items-center gap-0.5 ${isRTL ? "flex-row-reverse" : ""}`}
           >
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -84,7 +84,7 @@ export default function Navigation() {
           </div>
 
           {/* Vision 2030 logo + Language Switcher — desktop */}
-          <div className={`hidden xl:flex items-center gap-3 shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
+          <div className={`hidden lg:flex items-center gap-3 shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Vision2030_logo.svg/400px-Vision2030_logo.svg.png"
               alt="Vision 2030"
@@ -96,7 +96,7 @@ export default function Navigation() {
 
           {/* Mobile / tablet: Language switcher + hamburger */}
           <div
-            className={`xl:hidden flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}
+            className={`lg:hidden flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}
           >
             <LanguageSwitcher />
             <button
@@ -115,7 +115,7 @@ export default function Navigation() {
 
         {/* Mobile dropdown menu */}
         {mobileMenuOpen && (
-          <div className="xl:hidden py-3 border-t border-border">
+          <div className="lg:hidden py-3 border-t border-border">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
               {navItems.map((item) => {
                 const Icon = item.icon;

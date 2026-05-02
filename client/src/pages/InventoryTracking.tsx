@@ -201,10 +201,10 @@ export default function InventoryTracking() {
         <div className="bg-gradient-to-r from-green-700 to-green-600 text-white py-16">
           <div className="container">
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-4">
-                <Database className="w-12 h-12" />
+              <div className="flex flex-wrap items-center gap-4">
+                <Database className="w-8 h-8 sm:w-12 sm:h-12" />
                 <div>
-                  <h1 className="text-4xl font-bold font-serif">
+                  <h1 className="text-2xl sm:text-4xl font-bold font-serif">
                     {language === 'ar' ? 'بنك البذور' : 'Seed Bank'}
                   </h1>
                   <p className="text-green-100 mt-2">
@@ -407,22 +407,22 @@ export default function InventoryTracking() {
 
           {/* Tabs for different views */}
           <Tabs defaultValue="inventory" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4 bg-green-100">
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 bg-green-100">
               <TabsTrigger value="inventory" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
                 <Package className="w-4 h-4 mr-2" />
-                {language === 'ar' ? 'المخزون' : 'Inventory'}
+                <span className="hidden sm:inline">{language === 'ar' ? 'المخزون' : 'Inventory'}</span>
               </TabsTrigger>
               <TabsTrigger value="analytics" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
                 <BarChart3 className="w-4 h-4 mr-2" />
-                {language === 'ar' ? 'التحليلات' : 'Analytics'}
+                <span className="hidden sm:inline">{language === 'ar' ? 'التحليلات' : 'Analytics'}</span>
               </TabsTrigger>
               <TabsTrigger value="distributions" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
                 <Truck className="w-4 h-4 mr-2" />
-                {language === 'ar' ? 'التوزيع' : 'Distributions'}
+                <span className="hidden sm:inline">{language === 'ar' ? 'التوزيع' : 'Distributions'}</span>
               </TabsTrigger>
               <TabsTrigger value="centers" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
                 <Activity className="w-4 h-4 mr-2" />
-                {language === 'ar' ? 'ملخص المراكز' : 'Centers'}
+                <span className="hidden sm:inline">{language === 'ar' ? 'ملخص المراكز' : 'Centers'}</span>
               </TabsTrigger>
             </TabsList>
 
@@ -703,11 +703,11 @@ export default function InventoryTracking() {
                   <h3 className="font-semibold text-gray-900 mb-4">
                     {language === 'ar' ? 'أبرز مصادر الجمع' : 'Top Collection Sources'}
                   </h3>
-                  <div dir="ltr" className="h-52">
+                  <div dir="ltr" className="w-full" style={{ height: 208 }}>
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={SOURCE_BREAKDOWN} layout="vertical" margin={{ left: 140, right: 20, top: 4, bottom: 4 }}>
+                      <BarChart data={SOURCE_BREAKDOWN} layout="vertical" margin={{ left: 4, right: 12, top: 4, bottom: 4 }}>
                         <XAxis type="number" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
-                        <YAxis type="category" dataKey="name" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} width={135} />
+                        <YAxis type="category" dataKey="name" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} width={120} />
                         <Tooltip formatter={(v: number) => [v.toLocaleString(), language === 'ar' ? 'مقتنى' : 'accessions']} />
                         <Bar dataKey="count" radius={[0, 4, 4, 0]}>
                           {SOURCE_BREAKDOWN.map(s => (

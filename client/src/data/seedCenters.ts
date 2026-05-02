@@ -4,6 +4,18 @@
  * Fields with no data in the source are left blank / zero.
  */
 
+export interface StationStats {
+  experiments: number;
+  equipment: number;
+  achievements: number;
+  horticulturalVarieties: number;
+  winterPlantings: number;
+  summerPlantings: number;
+  nurserySeedlings: number;
+  cuttings: number;
+  visits: number;
+}
+
 export interface SeedCenter {
   id: string;
   name: string;
@@ -45,6 +57,7 @@ export interface SeedCenter {
     address: string;
     addressAr: string;
   };
+  stats: StationStats;
 }
 
 export const seedCenters: SeedCenter[] = [
@@ -70,6 +83,7 @@ export const seedCenters: SeedCenter[] = [
     seedExchange: { distributed: 0, received: 0, partners: [] },
     tracking: { accessionsStored: 0, germplasmTypes: [], storageCapacity: '' },
     contact: { phone: '', email: '', address: '', addressAr: 'جازان' },
+    stats: { experiments: 3, equipment: 7, achievements: 6, horticulturalVarieties: 19, winterPlantings: 0, summerPlantings: 277, nurserySeedlings: 0, cuttings: 0, visits: 6 },
   },
 
   // 2. Najran — نجران
@@ -91,6 +105,7 @@ export const seedCenters: SeedCenter[] = [
     seedExchange: { distributed: 0, received: 0, partners: [] },
     tracking: { accessionsStored: 0, germplasmTypes: [], storageCapacity: '' },
     contact: { phone: '', email: '', address: '', addressAr: 'نجران' },
+    stats: { experiments: 3, equipment: 3, achievements: 9, horticulturalVarieties: 0, winterPlantings: 0, summerPlantings: 0, nurserySeedlings: 0, cuttings: 0, visits: 4 },
   },
 
   // 3. Al-Baha — الباحة
@@ -116,6 +131,7 @@ export const seedCenters: SeedCenter[] = [
     seedExchange: { distributed: 0, received: 0, partners: [] },
     tracking: { accessionsStored: 0, germplasmTypes: [], storageCapacity: '' },
     contact: { phone: '', email: '', address: '', addressAr: 'الباحة' },
+    stats: { experiments: 3, equipment: 7, achievements: 9, horticulturalVarieties: 75, winterPlantings: 47, summerPlantings: 185, nurserySeedlings: 0, cuttings: 0, visits: 3 },
   },
 
   // 4. Al-Kharj — الخرج
@@ -141,6 +157,7 @@ export const seedCenters: SeedCenter[] = [
     seedExchange: { distributed: 7600, received: 0, partners: [] },
     tracking: { accessionsStored: 0, germplasmTypes: [], storageCapacity: '' },
     contact: { phone: '', email: '', address: '', addressAr: 'الخرج' },
+    stats: { experiments: 3, equipment: 9, achievements: 10, horticulturalVarieties: 40, winterPlantings: 120, summerPlantings: 224, nurserySeedlings: 0, cuttings: 7600, visits: 1 },
   },
 
   // 5. Madinah — المدينة المنورة
@@ -165,6 +182,7 @@ export const seedCenters: SeedCenter[] = [
     seedExchange: { distributed: 0, received: 0, partners: [] },
     tracking: { accessionsStored: 0, germplasmTypes: [], storageCapacity: '' },
     contact: { phone: '', email: '', address: '', addressAr: 'المدينة المنورة' },
+    stats: { experiments: 4, equipment: 6, achievements: 0, horticulturalVarieties: 9, winterPlantings: 32, summerPlantings: 134, nurserySeedlings: 0, cuttings: 0, visits: 4 },
   },
 
   // 6. Hail — حائل
@@ -186,6 +204,7 @@ export const seedCenters: SeedCenter[] = [
     seedExchange: { distributed: 0, received: 0, partners: [] },
     tracking: { accessionsStored: 0, germplasmTypes: [], storageCapacity: '' },
     contact: { phone: '', email: '', address: '', addressAr: 'حائل' },
+    stats: { experiments: 2, equipment: 5, achievements: 0, horticulturalVarieties: 0, winterPlantings: 0, summerPlantings: 0, nurserySeedlings: 0, cuttings: 0, visits: 1 },
   },
 
   // 7. Al-Ahsa — الأحساء
@@ -211,6 +230,7 @@ export const seedCenters: SeedCenter[] = [
     seedExchange: { distributed: 0, received: 0, partners: [] },
     tracking: { accessionsStored: 0, germplasmTypes: [], storageCapacity: '' },
     contact: { phone: '', email: '', address: '', addressAr: 'الأحساء' },
+    stats: { experiments: 4, equipment: 5, achievements: 11, horticulturalVarieties: 58, winterPlantings: 36, summerPlantings: 146, nurserySeedlings: 0, cuttings: 0, visits: 8 },
   },
 
   // 8. Namas — النماص
@@ -233,6 +253,7 @@ export const seedCenters: SeedCenter[] = [
     seedExchange: { distributed: 32330, received: 0, partners: [] },
     tracking: { accessionsStored: 0, germplasmTypes: [], storageCapacity: '' },
     contact: { phone: '', email: '', address: '', addressAr: 'النماص' },
+    stats: { experiments: 2, equipment: 0, achievements: 10, horticulturalVarieties: 0, winterPlantings: 0, summerPlantings: 0, nurserySeedlings: 32330, cuttings: 0, visits: 3 },
   },
 
   // 9. Abha — أبها
@@ -257,6 +278,7 @@ export const seedCenters: SeedCenter[] = [
     seedExchange: { distributed: 52000, received: 0, partners: [] },
     tracking: { accessionsStored: 0, germplasmTypes: [], storageCapacity: '' },
     contact: { phone: '', email: '', address: '', addressAr: 'أبها' },
+    stats: { experiments: 5, equipment: 0, achievements: 10, horticulturalVarieties: 65, winterPlantings: 35, summerPlantings: 0, nurserySeedlings: 0, cuttings: 52000, visits: 0 },
   },
 ];
 

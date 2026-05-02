@@ -332,7 +332,7 @@ export default function ResearchHub() {
 
       {/* ── Main content with tabs ── */}
       <section className="container pb-16">
-        <Tabs defaultValue="saudi" className="w-full">
+        <Tabs defaultValue="seedcenter" className="w-full">
           <FadeUp>
             <TabsList className="flex flex-wrap w-full h-auto gap-1 mb-8 bg-secondary/50 p-1.5 rounded-xl">
               {[

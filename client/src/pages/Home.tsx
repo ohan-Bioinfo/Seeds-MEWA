@@ -428,7 +428,7 @@ export default function Home() {
               ? `محاصيل جينوميات فقط — WGS/GBS (${ALL_CROPS.length - PASSPORT_CROPS.length})`
               : `Genomics-only crops — WGS/GBS (${ALL_CROPS.length - PASSPORT_CROPS.length})`}
           </div>
-          <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-10 gap-1.5 sm:gap-2">
+          <div className="grid grid-cols-4 sm:grid-cols-7 lg:grid-cols-10 gap-1.5 sm:gap-2">
             {ALL_CROPS.filter(c => !CROP_META[c].hasPassport).map((crop, i) => {
               const meta = CROP_META[crop];
               const isSelected = selectedCrops.includes(crop);
@@ -446,7 +446,7 @@ export default function Home() {
                       ? "border-primary shadow-lg bg-primary/5"
                       : "border-dashed border-border bg-card/60 hover:border-primary/50 hover:shadow-md"
                   }`}
-                  title={`${meta.scientificName} — ${meta.samples} samples (${meta.sequencingType})`}
+                  title={meta.scientificName}
                 >
                   <span className="text-lg sm:text-xl mb-0.5">{meta.icon}</span>
                   <span className="text-[9px] sm:text-[10px] font-semibold text-foreground truncate w-full leading-tight">
