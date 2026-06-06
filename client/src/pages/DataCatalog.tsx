@@ -129,7 +129,7 @@ export default function DataCatalog() {
           {getPassportCropTypes()
             .filter((crop) => allData.some((d) => d.cropType === crop))
             .map((crop) => (
-            <Card key={crop} className="border-primary/20">
+            <Card key={crop} className="stat-card border-primary/20 border-t-2" style={{ borderTopColor: CROP_META[crop].color }}>
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
                   <span>{CROP_META[crop].icon}</span>

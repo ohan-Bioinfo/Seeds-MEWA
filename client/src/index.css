@@ -254,3 +254,13 @@
     50% { background-position: 100% 50%; }
   }
 }
+
+/* Refined stat/KPI card: soft shadow + hover lift (visual-only) */
+.stat-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(11, 95, 58, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -8px rgba(11, 95, 58, 0.18), 0 4px 8px rgba(0, 0, 0, 0.05);
+}

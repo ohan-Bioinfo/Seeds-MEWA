@@ -236,7 +236,7 @@ export default function InventoryTracking() {
         <div className="container py-8">
           {/* Overview Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <Card className="p-6 border-2 border-green-200 bg-white">
+            <Card className="stat-card p-6 border-2 border-green-200 bg-white">
               <div className="flex items-center justify-between mb-4">
                 <Package className="w-8 h-8 text-green-600" />
                 <Badge variant="secondary" className="bg-green-100 text-green-800">
@@ -263,7 +263,7 @@ export default function InventoryTracking() {
               </p>
             </Card>
 
-            <Card className="p-6 border-2 border-amber-200 bg-white">
+            <Card className="stat-card p-6 border-2 border-amber-200 bg-white">
               <div className="flex items-center justify-between mb-4">
                 <Sprout className="w-8 h-8 text-amber-600" />
                 <Badge variant="secondary" className="bg-amber-100 text-amber-800">
@@ -288,7 +288,7 @@ export default function InventoryTracking() {
               </div>
             </Card>
 
-            <Card className="p-6 border-2 border-red-200 bg-white">
+            <Card className="stat-card p-6 border-2 border-red-200 bg-white">
               <div className="flex items-center justify-between mb-4">
                 <AlertTriangle className="w-8 h-8 text-red-600" />
                 <Badge variant="secondary" className="bg-red-100 text-red-800">
@@ -316,7 +316,7 @@ export default function InventoryTracking() {
               </div>
             </Card>
 
-            <Card className="p-6 border-2 border-blue-200 bg-white">
+            <Card className="stat-card p-6 border-2 border-blue-200 bg-white">
               <div className="flex items-center justify-between mb-4">
                 <Truck className="w-8 h-8 text-blue-600" />
                 <Badge variant="secondary" className="bg-blue-100 text-blue-800">

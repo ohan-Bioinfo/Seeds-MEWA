@@ -123,7 +123,7 @@ function KpiCard({
     <FadeUp delay={delay}>
       <Card
         ref={ref}
-        className="relative overflow-hidden group hover:shadow-lg transition-shadow duration-300"
+        className="stat-card relative overflow-hidden group"
       >
         <div
           className="absolute top-0 left-0 right-0 h-1 opacity-80"

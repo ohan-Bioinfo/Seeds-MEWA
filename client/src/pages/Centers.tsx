@@ -120,7 +120,7 @@ function KpiCard({
     <FadeUp delay={delay}>
       <div ref={ref} className="relative group">
         <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-br from-[var(--mewa-green)] to-[var(--mewa-gold)] opacity-0 group-hover:opacity-30 blur transition-opacity duration-500" />
-        <Card className="relative border-primary/15 bg-card/80 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
+        <Card className="stat-card relative border-primary/15 bg-card/80 backdrop-blur-sm">
           <CardContent className="p-5 text-center">
             <div className="mx-auto mb-3 h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
               <Icon className="h-5 w-5 text-primary" />
