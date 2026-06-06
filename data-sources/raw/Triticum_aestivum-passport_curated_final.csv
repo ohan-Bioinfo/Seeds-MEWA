@@ -1,0 +1,529 @@
+IID,Accession_Bank_ID,Genus,Species,Scientific_Name,Source_or_Donor_Name,Collection_Country,Collection_Site,Place_of_collection,in_vcf_533,in_dataset_B,cluster_K10
+W129,Local Source 2021 -2022 No.644,Triticum,aestivum,Triticum aestivum L,ICARDA-113081,Saudi Arabia,NA,Al-Baha,TRUE,FALSE,NA
+W131,Local Source 2021 -2022 No.876,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Taif,TRUE,FALSE,NA
+W137,ACSAD 2021/2022 NO.1328,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,NA,Syria,TRUE,FALSE,NA
+Y1,1494,Triticum,aestivum,Triticum aestivum L,Market,NA,NA,NA,TRUE,FALSE,NA
+W222,599,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh,Tumair,TRUE,FALSE,NA
+W223,644,Triticum,aestivum,Triticum aestivum L,Farm,Mexico,NA,CIMMYT Sample,TRUE,FALSE,NA
+W224,817,Triticum,aestivum,Triticum aestivum L,ICARDA-113081,Morocco,NA,Al-Baha,TRUE,FALSE,NA
+W225,876,Triticum,aestivum,Triticum aestivum L,Farm,ICARDA-Morocco,Najran,Najran,TRUE,FALSE,NA
+W226,920,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Taif,TRUE,FALSE,NA
+W227,507,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Aseer,TRUE,FALSE,NA
+W228,1830,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W229,1831,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W230,1838,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W231,1842,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W232,1876,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W233,1890,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W234,1934,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W235,1940,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W236,1976,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W237,1979,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W238,1982,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W239,1996,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W240,2014,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W241,2026,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W242,2043,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W243,2088,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W244,2113,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W245,2115,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W246,2117,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W247,2123,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W248,2152,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W249,2184,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,FALSE,NA
+W250,2191,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,FALSE,NA
+W251,2196,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,FALSE,NA
+W1,18,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh,Al-Majm’a,TRUE,TRUE,1
+W2,20,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh ,Tumair,TRUE,TRUE,4
+W3,17,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh ,Al-Majm’a,TRUE,TRUE,2
+W4,682,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Al-Baha,Baljarashi,TRUE,TRUE,1
+W5,109,Triticum,turgidum,Triticum turgidum L,Rashid Al-Hazani,Saudi Arabia,Riyadh,Al-Hareeq,TRUE,TRUE,2
+W6,357,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Northern Province,Al-Dahna,TRUE,FALSE,NA
+W7,323,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Al-Qaseem,Al-Bakariah,TRUE,FALSE,NA
+W8,989,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Buraidah,TRUE,TRUE,2
+W9,181,Triticum,aestivum,Triticum aestivum L,"Agri. Res. Center, Gizan",Saudi Arabia,jazan,Jazan,TRUE,TRUE,4
+W10,113,Triticum,aestivum,Triticum aestivum L,Fram,Saudi Arabia,Riyadh,Al-Hareeq,TRUE,FALSE,NA
+W11,90,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh,Al-Dilam,TRUE,TRUE,4
+W12,302,Triticum,aestivum,Triticum aestivum L,Farm Via Dir. Branch,Saudi Arabia,Aseer,Al-Nimas,TRUE,TRUE,4
+W13,936,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Najran,TRUE,TRUE,2
+W14,193,Triticum,aestivum,Triticum aestivum L,"Agri. Directorate, Najran",Saudi Arabia,Najran,Najran,TRUE,FALSE,NA
+W15,773,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Najran,Najran,TRUE,TRUE,4
+W16,317,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Al-Khubra,Al-Khubra,TRUE,FALSE,NA
+W17,693,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Al-Baha,Al-Muqwa Bani Malik,TRUE,TRUE,2
+W18,681,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Al-Baha,Baljarashi,TRUE,TRUE,10
+W19,679,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Al-Baha,Baljarashi,TRUE,TRUE,4
+W20,770,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Najran,Najran,TRUE,TRUE,4
+W28,988,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Buraidah,TRUE,FALSE,NA
+W29,983,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Buraidah,TRUE,TRUE,4
+W30,552,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Tabuk,Tabuk,TRUE,FALSE,NA
+W32,882,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Taif (Al-Saad),TRUE,TRUE,1
+W33,929,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Najran,TRUE,TRUE,4
+W34,1525,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Saudi Arabia,Saudi Arabia,TRUE,TRUE,6
+W35,1514,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Saudi Arabia,Saudi Arabia,TRUE,TRUE,10
+W36,573,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Al-Qaseem,Al-Qawara,TRUE,FALSE,NA
+W37,713,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Tabuk,NA,TRUE,TRUE,4
+W38,641,Triticum,aestivum,Triticum aestivum L,ICARDA-113064,Morocco,NA,Abha,TRUE,TRUE,1
+W39,642,Triticum,aestivum,Triticum aestivum L,ICARDA-113070,Morocco,NA,Abha,TRUE,FALSE,NA
+W40,647,Triticum,aestivum,Triticum aestivum L,ICARDA-138509,Morocco,NA,Taif,TRUE,TRUE,1
+W41,925,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Aseer,TRUE,TRUE,1
+W42,978,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Buraidah,TRUE,TRUE,1
+W43,505,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,FALSE,NA
+W45,504,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,FALSE,NA
+W46,502,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,TRUE,10
+W48,839,Triticum,aestivum,Triticum aestivum L,Directorate of Agriculture Al-Qaseem,Saudi Arabia,Al-Qaseem,Al-Qaseem,TRUE,FALSE,NA
+W49,598,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,CIMMYT Sample,CIMMYT,TRUE,FALSE,NA
+W50,491,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,TRUE,10
+W51,499,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,TRUE,3
+W52,977,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Buraidah,TRUE,TRUE,2
+W53,596,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,NA,CIMMYT Sample,TRUE,TRUE,4
+W54,594,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,NA,CIMMYT Sample,TRUE,FALSE,NA
+W55,1172,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,NA,Hail,TRUE,TRUE,1
+W56,496,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,TRUE,8
+W57,506,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,FALSE,NA
+W58,646,Triticum,aestivum,Triticum aestivum L,ICARDA-113219,Morocco,NA,Al-Baha,TRUE,TRUE,10
+W59,503,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,TRUE,1
+W60,377,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Northern Province,Rafha,TRUE,TRUE,4
+W61,286,Triticum,aestivum,Triticum aestivum L,Al-Shabi Market,Saudi Arabia,Aseer,Balsamer,TRUE,FALSE,NA
+W62,375,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Northern Province,Rafha,TRUE,FALSE,NA
+W63,494,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,FALSE,NA
+W64,492,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,TRUE,4
+W65,129,Triticum,aestivum,Triticum aestivum L,Date-palm Res. Center,Saudi Arabia,Eastern Province,Al-Hassa,TRUE,TRUE,8
+W66,645,Triticum,aestivum,Triticum aestivum L,ICARDA-113018,Morocco,NA,Abha,TRUE,TRUE,1
+W70,921,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Aseer,TRUE,TRUE,10
+W71,591,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,NA,CIMMYT Sample,TRUE,FALSE,NA
+W72,715,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Tabuk,NA,TRUE,TRUE,4
+W73,604,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,NA,Riyadh,TRUE,FALSE,NA
+W74,584,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,NA,CIMMYT Sample,TRUE,TRUE,2
+W75,6,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Al-Qaseem,Buraidah,TRUE,TRUE,1
+W76,984,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Buraidah,TRUE,FALSE,NA
+W77,583,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,NA,CIMMYT Sample,TRUE,TRUE,1
+W78,562,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Al-Qaseem,Al-Qawara,TRUE,TRUE,1
+W79,643,Triticum,aestivum,Triticum aestivum L,ICARDA-113072,Morocco,NA,Abha,TRUE,TRUE,1
+W80,595,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,NA,CIMMYT Sample,TRUE,TRUE,1
+W81,586,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,NA,CIMMYT Sample,TRUE,TRUE,1
+W83,603,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,NA,CIMMYT Sample,TRUE,FALSE,NA
+W84,593,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,NA,CIMMYT Sample,TRUE,FALSE,NA
+W85,498,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,TRUE,6
+W86,1070,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Hail,TRUE,TRUE,4
+W87,1262,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Farm - Taif,Taif,TRUE,TRUE,10
+W88,1243,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Farm - Taif,Beni Malak,TRUE,TRUE,3
+W89,1247,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Aseer,Belasmar,TRUE,FALSE,NA
+W90,1245,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Aseer,Belasmar,TRUE,FALSE,NA
+W91,1248,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Aseer,Belasmar,TRUE,FALSE,NA
+W92,1273,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Farm - Taif,Taif,TRUE,TRUE,6
+W93,1311,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Eastern Province,Om El Araad,TRUE,TRUE,2
+W94,1312,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Eastern Province,Om El Araad,TRUE,FALSE,NA
+W95,1291,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Hail,Hail,TRUE,TRUE,4
+W96,188,Triticum,aestivum,Triticum aestivum L,Agri. Directorate,Saudi Arabia,Riyadh,Al-Kharj,TRUE,TRUE,4
+W97,1503,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,aseer,Elmaween,TRUE,TRUE,2
+W98,1502,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,aseer,Abal Belahmar,TRUE,FALSE,NA
+W99,1501,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,aseer,belgarshi-albaha,TRUE,TRUE,1
+W100,1500,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,aseer,aseer,TRUE,TRUE,2
+W101,1499,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,aseer,Tanmyah aseer,TRUE,TRUE,2
+W102,1498,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,aseer,Elmaween,TRUE,TRUE,1
+W103,236,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Al-Jauf,Al-Jauf,TRUE,TRUE,1
+W106,1240,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Taif,Maysaan,TRUE,TRUE,4
+W107,376,Triticum,aestivum,Triticum aestivum L,Farm,Morocco,Northern Province,Rafha,TRUE,TRUE,3
+W108,495,Triticum,aestivum,Triticum aestivum L,ICARDA,Morocco,NA,ICARDA Sample,TRUE,TRUE,1
+W110,7,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Al-Qaseem,Al-Bidayei,TRUE,FALSE,NA
+W111,11,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Al-Qaseem,Al-Bidayei,TRUE,FALSE,NA
+W112,9,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Al-Qaseem,Al-Bidayei,TRUE,FALSE,NA
+W114,15,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh,Tumair,TRUE,TRUE,1
+W115,16,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh,Tumair,TRUE,FALSE,NA
+W116,13,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh,Tumair,TRUE,FALSE,NA
+W117,8,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Al-Qaseem,Buraidah,TRUE,FALSE,NA
+W118,1509,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Aseer,Beni zebian-albaha,TRUE,FALSE,NA
+W119,1508,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Aseer,AlSoudah,TRUE,TRUE,2
+W120,1507,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Taif,Taif,TRUE,TRUE,4
+W122,1505,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Aseer,Albaha,TRUE,TRUE,2
+W124,12,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh,Tumair,TRUE,FALSE,NA
+W125,817,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Najran,Najran,TRUE,TRUE,1
+W126,876,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Mecca,Taif,TRUE,TRUE,4
+W127,Local Source 2021 -2022 No. 12,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh,Tumair,TRUE,FALSE,NA
+W128,Local Source 2021 -2022 No.599,Triticum,aestivum,Triticum aestivum L,CIMMYT,Saudi Arabia,Tabuk,CIMMYT Sample,TRUE,FALSE,NA
+W130,Local Source 2021 -2022 No.644,Triticum,aestivum,Triticum aestivum L,ICARDA-113081,Saudi Arabia,NA,"Al-Baha, Aseer",TRUE,TRUE,4
+W132,Local Source 2021 -2022 No.817,Triticum,aestivum,Triticum aestivum L,farm,Saudi Arabia,Najran,Najran,TRUE,TRUE,10
+W133,Local Source 2021 -2022 No.876,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Taif,TRUE,TRUE,1
+W134,Local Source 2021 -2022 No.920,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Aseer,TRUE,TRUE,6
+W135,Local Source 2021 -2022 No.1172,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,NA,Hail,TRUE,TRUE,5
+W136,Local Source 2021 -2022 No.1525,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,NA,NA,TRUE,TRUE,5
+W138,ACSAD 2021/2022 NO.1326,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,NA,Syria,TRUE,TRUE,6
+W139,ACSAD 2021/2022 NO.1327,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,NA,Syria,TRUE,TRUE,5
+W140,ACSAD 2021/2022 NO.1328,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,NA,Syria,TRUE,FALSE,NA
+W141,ACSAD 2021/2022 NO.1330,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,NA,Syria,TRUE,TRUE,5
+W142,ACSAD 2021/2022 NO.1333,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,NA,Syria,TRUE,TRUE,7
+W143,ACSAD 2021/2022 NO.1336,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,NA,Syria,TRUE,TRUE,5
+W144,ACSAD 2021/2022 NO.1339,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,NA,Syria,TRUE,TRUE,3
+W145,CIMMYT 2021/2022 NO.2014,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,45 IBWSN,Mexico,TRUE,TRUE,7
+W146,CIMMYT 2021/2022 NO.2044,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,45 IBWSN,Mexico,TRUE,FALSE,NA
+W147,CIMMYT 2021/2022 NO.2045,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,45 IBWSN,Mexico,TRUE,FALSE,NA
+W148,CIMMYT 2021/2022 NO.2073,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,45 IBWSN,Mexico,TRUE,TRUE,8
+W149,CIMMYT 2021/2022 NO.2074,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,45 IBWSN,Mexico,TRUE,TRUE,8
+W150,CIMMYT 2021/2022 NO.2081,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,45 IBWSN,Mexico,TRUE,TRUE,3
+W151,CIMMYT 2021/2022 NO.2201,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,3
+W152,CIMMYT2021-2022 NO.2202,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,7
+W153,CIMMYT2021-2022 NO.2203,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,5
+W154,CIMMYT2021-2022 NO.2204,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,FALSE,NA
+W155,CIMMYT2021-2022 NO.2205,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,3
+W156,CIMMYT2021-2022 NO.2206,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,5
+W157,CIMMYT2021-2022 NO.2208,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,3
+W158,CIMMYT2021-2022 NO.2166,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,5
+W159,CIMMYT2021-2022 NO.2177,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,7
+W160,CIMMYT2021-2022 NO.2186,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,7
+W161,CIMMYT2021-2022 NO.2189,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,7
+W162,CIMMYT2021-2022 NO.2193,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,7
+W163,CIMMYT2021-2022 NO.2198,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,3
+W164,CIMMYT2021-2022 NO.2208,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,6
+W165,CIMMYT2021-2022 NO.2163,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,6
+W166,CIMMYT2021-2022 NO.2176,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,FALSE,NA
+W167,CIMMYT2021-2022 NO.2179,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,5
+W168,CIMMYT2021-2022 NO.2184,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,6
+W169,CIMMYT2021-2022 NO.2186,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,6
+W170,CIMMYT2021-2022 NO.2227,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,20SAWYT,Mexico,TRUE,TRUE,5
+W171,CIMMYT2021-2022 NO.1861,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,45 IBWSN,Mexico,TRUE,TRUE,5
+W172,CIMMYT2021-2022 NO.2075,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,45 IBWSN,Mexico,TRUE,TRUE,7
+W173,CIMMYT2021-2022 NO.2205,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,33ESWYT,Mexico,TRUE,TRUE,7
+W174,CIMMYT2021-2022 NO.2223,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,20SAWYT,Mexico,TRUE,TRUE,6
+W175,CIMMYT2021-2022 NO.2226,Triticum,aestivum,Triticum aestivum L,CIMMYT,CIMMYT,20SAWYT,Mexico,TRUE,TRUE,5
+W177,599,Triticum,aestivum,Triticum aestivum L,Farm,Mexico,NA,CIMMYT Sample,TRUE,TRUE,5
+W178,644,Triticum,aestivum,Triticum aestivum L,ICARDA-113081,Saudi Arabia,NA,Al-Baha,TRUE,TRUE,10
+W179,817,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Najran,Najran,TRUE,TRUE,10
+W180,876,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Taif,TRUE,TRUE,10
+W181,920,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Aseer,TRUE,TRUE,10
+W182,1833,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W183,1851,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W184,1880,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,6
+W185,1882,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,6
+W186,1904,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W187,1937,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,3
+W188,1995,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W189,2015,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W190,2067,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,46 IBWSN,Mexico,TRUE,TRUE,3
+W191,2040,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W192,2042,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W193,2076,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W195,2077,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,9
+W196,2080,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,8
+W197,2102,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W198,2111,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,9
+W199,2118,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W200,2129,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,3
+W201,2154,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W202,2167,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,TRUE,5
+W203,2191,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,TRUE,5
+W204,2203,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,TRUE,7
+W205,2165,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,TRUE,5
+W206,2171,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,TRUE,6
+W207,2181,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,FALSE,NA
+W208,2182,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,TRUE,7
+W209,2210,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,33ESWYT,Mexico,TRUE,TRUE,3
+W210,2113,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,6
+W211,2234,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,6
+W212,2240,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,5
+W213,2242,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,5
+W215,2215,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,5
+W216,2216,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,6
+W217,2224,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,6
+W218,2225,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,6
+W219,2236,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,5
+W220,2238,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,5
+W221,2249,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,20SAWYT,Mexico,TRUE,TRUE,6
+W252,644,Triticum,aestivum,Triticum aestivum L,ICARDA-113081,Morocco,NA,Al-Baha,TRUE,TRUE,10
+W253,876,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Taif,TRUE,TRUE,10
+W254,920,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Aseer,TRUE,TRUE,10
+W255,507,Triticum,aestivum,Triticum aestivum L,ICARDA,Syira,NA,ICARDA Sample,TRUE,TRUE,1
+W256,1834,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,FALSE,NA
+W257,1835,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W258,1836,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,3
+W259,1848,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W260,1850,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W261,1853,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W262,1858,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W263,1863,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,3
+W265,1879,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W266,1894,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,3
+W267,1916,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,8
+W268,1919,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W269,1928,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W270,2141,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,3
+W271,2142,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,9
+W272,1951,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,9
+W273,1954,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W274,1964,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,1
+W275,1962,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,10
+W276,1963,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,7
+W277,2012,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,8
+W278,2054,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,9
+W279,2060,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W280,2126,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,8
+W281,2147,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,45 IBWSN,Mexico,TRUE,TRUE,5
+W322,12,Triticum,aestivum,Triticum aestivum L,Farm,Saudi Arabia,Riyadh,Tumair,TRUE,FALSE,NA
+W324,644,Triticum,aestivum,Triticum aestivum L,ICARDA-113081,Morocco,NA,Al-Baha,TRUE,TRUE,3
+W325,817,Triticum,aestivum,Triticum aestivum L,Farm,ICARDA-Morocco,Najran,Najran,TRUE,TRUE,4
+W326,876,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Taif,TRUE,TRUE,10
+W327,920,Triticum,aestivum,Triticum aestivum L,Market,Saudi Arabia,Mecca,Aseer,TRUE,TRUE,10
+W328,1326,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,Mecca,Syria,TRUE,TRUE,5
+W329,1327,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,Mecca,Syria,TRUE,TRUE,5
+W330,1328,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,Mecca,Syria,TRUE,TRUE,9
+W331,1330,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,Mecca,Syria,TRUE,TRUE,6
+W332,1333,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,Mecca,Syria,TRUE,TRUE,5
+W333,1336,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,Mecca,Syria,TRUE,TRUE,5
+W334,1339,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,Mecca,Syria,TRUE,TRUE,5
+W335,1340,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,Mecca,Syria,TRUE,TRUE,7
+W336,1344,Triticum,aestivum,Triticum aestivum L,ACSAD,ACSAD,Mecca,Syria,TRUE,TRUE,5
+W444,2263,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W445,2264,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W446,2265,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W447,2266,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,6
+W448,2267,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W449,2268,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W450,2269,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W451,2270,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,3
+W452,2271,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,3
+W453,2272,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,3
+W454,2273,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,3
+W455,2274,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,3
+W458,2277,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W459,2278,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W461,2280,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W462,2281,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W463,2282,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W465,2284,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W466,2285,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W467,2286,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W468,2287,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W469,2288,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W470,2289,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W471,2290,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W472,2293,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,9
+W473,2294,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,9
+W474,2295,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W475,2296,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W476,2297,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W478,2299,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W479,2300,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W480,2301,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W482,2303,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W483,2305,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,9
+W484,2306,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W485,2307,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W486,2308,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W487,2309,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W489,2311,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W490,2312,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W491,2313,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W493,2315,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W494,2316,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W495,2317,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W496,2318,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W498,2320,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,9
+W499,2321,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,9
+W500,2322,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W501,2323,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W502,2324,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W503,2325,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W505,2327,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,9
+W506,2328,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W507,2329,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W508,2330,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W509,2331,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W510,2332,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,3
+W511,2333,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,3
+W512,2334,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W513,2335,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W514,2336,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W516,2338,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W517,2339,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W519,2341,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W520,2342,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W521,2343,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W522,2344,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W523,2345,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W524,2346,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W525,2347,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W526,2348,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W527,2349,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W528,2350,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W529,2351,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W530,2352,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W531,2353,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W532,2354,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W533,2355,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W534,2356,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W535,2357,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W536,2358,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W537,2359,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W538,2360,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W539,2361,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W540,2362,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W541,2363,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W542,2364,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W543,2365,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W544,2366,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,6
+W545,2367,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W546,2368,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W547,2369,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W548,2370,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W549,2371,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W550,2372,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W551,2373,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,9
+W552,2374,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W553,2375,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W555,2377,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W556,2378,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W557,2379,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W558,2380,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W559,2381,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W560,2382,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W561,2383,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,3
+W562,2384,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W563,2386,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W564,2387,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W565,2388,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,8
+W566,2389,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W567,2390,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W568,2391,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W569,2392,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W570,2393,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W571,2394,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,9
+W572,2395,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W573,2396,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W574,2397,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W575,2398,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W576,2399,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W577,2400,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,7
+W578,2401,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,FALSE,NA
+W579,2402,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W581,2404,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W582,2405,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W583,2406,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,9
+W584,2407,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,7
+W585,2408,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W586,2409,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W587,2410,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W588,2411,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W589,2412,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W590,2413,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W591,2414,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W592,2415,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W593,2416,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W594,2417,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W595,2418,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W596,2420,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W597,2421,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W598,2423,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,8
+W599,2424,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,8
+W600,2425,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,8
+W601,2427,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W602,2428,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W603,2429,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W604,2430,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,7 STEMRRSN,Mexico,TRUE,TRUE,5
+W605,2432,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W606,2434,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W608,2437,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W609,2438,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W610,2439,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W611,2440,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,8
+W613,2443,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,7
+W614,2444,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,9
+W615,2445,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,9
+W616,2446,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W618,2450,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,8
+W619,2452,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W620,2455,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W621,2459,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W622,2462,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W623,2463,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W624,2464,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W625,2465,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W627,2467,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W628,2468,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W629,2469,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W630,2470,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W631,2471,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W632,2472,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W633,2473,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W634,2474,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W635,2475,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W636,2476,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W637,2477,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W638,2479,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W639,2480,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W640,2481,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W641,2482,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,6
+W642,2483,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W643,2486,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,9
+W644,2487,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W645,2488,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W646,2489,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W647,2490,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W648,2491,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W649,2492,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W650,2493,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W651,2494,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,7
+W652,2495,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W653,2496,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W654,2497,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W655,2498,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W658,2501,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W659,2502,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W660,2503,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,2
+W661,2504,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,5
+W662,2505,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W663,2506,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W664,2507,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W665,2509,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W666,2510,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W667,2511,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W668,2512,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W669,2513,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W670,2516,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W671,2517,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W672,2518,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,9
+W673,2519,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W674,2520,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W675,2522,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W676,2523,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,8
+W677,2524,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W678,2525,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,FALSE,NA
+W679,2526,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,7
+W680,2527,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,1
+W681,2528,Triticum,aestivum,Triticum aestivum L,CIMMYT,Mexico,6 STEMRRSN,Mexico,TRUE,TRUE,3
+W682,1494,Triticum,aestivum,Triticum aestivum,Market,NA,NA,NA,TRUE,TRUE,4
+W683,3254,Triticum,aestivum,Triticum aestivum,Farm,NA,NA,NA,TRUE,FALSE,NA
+W685,1372,Triticum,aestivum,Triticum aestivum,Farm,NA,aseer,NA,TRUE,TRUE,3
+W686,3260,Triticum,aestivum,Triticum aestivum,Farm,NA,NA,NA,TRUE,TRUE,10
+W687,1345,Triticum,aestivum,Triticum aestivum,Farm,NA,Al-Baha,NA,TRUE,TRUE,4
+W688,1364,Triticum,aestivum,Triticum aestivum,Farm,NA,aseer,NA,TRUE,TRUE,4
+W689,188,Triticum,aestivum,Triticum aestivum,Agri. Directorate,NA,Riyadh,Al-Kharj,TRUE,TRUE,4
+W690,3253,Triticum,aestivum,Triticum aestivum,Farm,NA,NA,NA,TRUE,TRUE,4
+W691,3259,Triticum,aestivum,Triticum aestivum,Farm,NA,NA,NA,TRUE,FALSE,NA
+W693,3251,Triticum,aestivum,Triticum aestivum,Farm,NA,NA,NA,TRUE,TRUE,4
+W694,1438,Triticum,aestivum,Triticum aestivum,Farm,NA,Al-Baha,NA,TRUE,TRUE,4
+W695,3252,Triticum,aestivum,Triticum aestivum,Farm,NA,NA,NA,TRUE,TRUE,4
+W696,3257,Triticum,aestivum,Triticum aestivum,Farm,NA,NA,NA,TRUE,FALSE,NA
+W697,1359,Triticum,aestivum,Triticum aestivum,Farm,NA,taif,NA,TRUE,FALSE,NA
+W698,1360,Triticum,aestivum,Triticum aestivum,Farm,NA,taif,NA,TRUE,FALSE,NA
+W699,Removed,NA,NA,NA,NA,NA,NA,NA,TRUE,FALSE,NA
+W700,1363,Triticum,aestivum,Triticum aestivum,Farm,NA,aseer,NA,TRUE,FALSE,NA
+W701,1365,Triticum,turgidum,.Triticum turgidum L,Farm,NA,aseer,NA,TRUE,FALSE,NA
+W702,1370,Triticum,turgidum,.Triticum turgidum L,Farm,NA,aseer,NA,TRUE,FALSE,NA
+W704,Removed,NA,NA,NA,NA,NA,NA,NA,TRUE,FALSE,NA
+W707,1363,Triticum,aestivum,Triticum aestivum,Farm,NA,aseer,NA,TRUE,TRUE,2
+W708,1369,Triticum,aestivum,Triticum aestivum,Farm,NA,aseer,NA,TRUE,TRUE,1
+W709,1377,Triticum,aestivum,Triticum aestivum,Farm,NA,aseer,NA,TRUE,TRUE,2
+W711,3263,Triticum,turgidum,.Triticum turgidum L,Farm,NA,NA,NA,TRUE,TRUE,1
+W712,1361,Triticum,aestivum,Triticum aestivum,Farm,NA,Taif,NA,TRUE,TRUE,4
+W713,1357,Triticum,aestivum,Triticum aestivum,Farm,NA,Taif,NA,TRUE,FALSE,NA
+W714,3300,Triticum,aestivum,Triticum aestivum,Farm,NA,Al-Baha,NA,TRUE,TRUE,1
+W715,3069,Triticum,aestivum,Triticum aestivum,ACSAD,NA,Al-Baha,Syria,TRUE,FALSE,NA
+W717,1372,Triticum,aestivum,Triticum aestivum,Farm,NA,aseer,NA,TRUE,TRUE,10
+W718,1357,Triticum,aestivum,Triticum aestivum,Farm,NA,Taif,NA,TRUE,FALSE,NA
+W720,3266,Triticum,aestivum,Triticum aestivum,Farm,NA,NA,NA,TRUE,TRUE,1
+W721,1438,Triticum,aestivum,Triticum aestivum,Farm,NA,Al-Baha,NA,TRUE,TRUE,2
+W722,109,Triticum,turgidum,.Triticum turgidum L,Rashid Al-Hazani,NA,Riyadh,Al-Hareeq,TRUE,TRUE,9
+W723,3262,Triticum,turgidum,.Triticum turgidum L,Farm,NA,NA,NA,TRUE,TRUE,2
+W724,3264,Triticum,turgidum,.Triticum turgidum L,Farm,NA,NA,NA,TRUE,FALSE,NA
+W725,3109,Triticum,turgidum,.Triticum turgidum L,USA,NA,USA,USA,TRUE,TRUE,2
+W726,ASCAD1229,NA,NA,NA,NA,NA,NA,NA,TRUE,FALSE,NA
+W727,3112,Triticum,turgidum,.Triticum turgidum L,ACSAD,NA,ACSAD,Syria,TRUE,TRUE,2

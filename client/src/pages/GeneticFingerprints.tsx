@@ -1,6 +1,6 @@
 /**
  * Genetic Fingerprints — Enhanced with all-crop diversity heatmap,
- * expanded crop support (all 8 crops), data retrieval request flow,
+ * expanded crop support (all passport crops), data retrieval request flow,
  * and interactive fingerprint comparison
  */
 
@@ -17,7 +17,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { CROP_META, CropType, getActiveCropTypes } from "@/data/passportData";
+import { CROP_META, CropType, getActiveCropTypes, getPassportCropTypes } from "@/data/passportData";
 import { loadAllData } from "@/lib/dataLoader";
 import { SeedPassport } from "@/types/data";
 import {
@@ -40,6 +40,13 @@ import {
 } from "lucide-react";
 
 const ALL_CROPS = getActiveCropTypes();
+const PASSPORT_CROPS = getPassportCropTypes();
+// Passport crops that have no live CSV yet (counts come from CROP_META only)
+const STATIC_ONLY_CROPS: CropType[] = ["sorghum", "sesame", "mango"];
+const STATIC_ACCESSIONS = STATIC_ONLY_CROPS.reduce(
+  (sum, c) => sum + CROP_META[c].totalAccessions,
+  0,
+);
 
 // ── Animated fade-up ──
 const FadeUp = ({
@@ -62,49 +69,56 @@ const FadeUp = ({
   </motion.div>
 );
 
-// ── Simulated fingerprint diversity data for ALL 8 crops ──
+// ── Simulated fingerprint diversity data for all passport crops ──
 // Heterozygosity values (0-1) per crop per region
 const DIVERSITY_MATRIX: Record<
   string,
   Record<string, { he: number; markers: number; samples: number }>
 > = {
-  wheat: {
+  breadWheat: {
     Jazan: { he: 0.31, markers: 5, samples: 1 },
-    Aseer: { he: 0.42, markers: 5, samples: 24 },
-    "Al-Baha": { he: 0.38, markers: 5, samples: 11 },
-    Riyadh: { he: 0.45, markers: 5, samples: 16 },
-    Taif: { he: 0.49, markers: 5, samples: 31 },
-    Qaseem: { he: 0.35, markers: 5, samples: 10 },
-    Najran: { he: 0.41, markers: 5, samples: 13 },
-    Hail: { he: 0.28, markers: 5, samples: 1 },
-    Tabuk: { he: 0.33, markers: 5, samples: 4 },
+    Aseer: { he: 0.42, markers: 5, samples: 17 },
+    "Al-Baha": { he: 0.38, markers: 5, samples: 5 },
+    Riyadh: { he: 0.45, markers: 5, samples: 13 },
+    Taif: { he: 0.49, markers: 5, samples: 11 },
+    Qaseem: { he: 0.35, markers: 5, samples: 15 },
+    Najran: { he: 0.41, markers: 5, samples: 8 },
+    Hail: { he: 0.28, markers: 5, samples: 4 },
+    Tabuk: { he: 0.33, markers: 5, samples: 1 },
+  },
+  durumWheat: {
+    Aseer: { he: 0.39, markers: 5, samples: 3 },
+    Taif: { he: 0.44, markers: 5, samples: 2 },
+    Riyadh: { he: 0.41, markers: 5, samples: 2 },
+    Qaseem: { he: 0.36, markers: 5, samples: 1 },
   },
   coffee: {
     Jazan: { he: 0.62, markers: 8, samples: 41 },
-    Aseer: { he: 0.58, markers: 8, samples: 27 },
+    Aseer: { he: 0.58, markers: 8, samples: 26 },
     "Al-Baha": { he: 0.55, markers: 8, samples: 13 },
   },
   barley: {
     Jazan: { he: 0.25, markers: 5, samples: 1 },
-    Aseer: { he: 0.32, markers: 5, samples: 2 },
+    Aseer: { he: 0.32, markers: 5, samples: 6 },
     "Al-Baha": { he: 0.30, markers: 5, samples: 2 },
     Riyadh: { he: 0.37, markers: 5, samples: 2 },
     Taif: { he: 0.34, markers: 5, samples: 3 },
-    Qaseem: { he: 0.41, markers: 5, samples: 7 },
-    Najran: { he: 0.29, markers: 5, samples: 1 },
-    Hail: { he: 0.36, markers: 5, samples: 2 },
-    Tabuk: { he: 0.31, markers: 5, samples: 2 },
+    Qaseem: { he: 0.41, markers: 5, samples: 4 },
+    Najran: { he: 0.29, markers: 5, samples: 5 },
+    Hail: { he: 0.36, markers: 5, samples: 3 },
+    Tabuk: { he: 0.31, markers: 5, samples: 1 },
   },
   fabaBean: {
-    Riyadh: { he: 0.22, markers: 4, samples: 4 },
+    Eastern: { he: 0.22, markers: 4, samples: 2 },
   },
   millet: {
     Jazan: { he: 0.51, markers: 6, samples: 10 },
     Aseer: { he: 0.44, markers: 6, samples: 3 },
     "Al-Baha": { he: 0.47, markers: 6, samples: 10 },
     Riyadh: { he: 0.39, markers: 6, samples: 3 },
-    Taif: { he: 0.52, markers: 6, samples: 4 },
+    Taif: { he: 0.52, markers: 6, samples: 7 },
     Qaseem: { he: 0.36, markers: 6, samples: 4 },
+    Eastern: { he: 0.40, markers: 6, samples: 2 },
   },
   sorghum: {
     Jazan: { he: 0.56, markers: 7, samples: 14 },
@@ -121,6 +135,9 @@ const DIVERSITY_MATRIX: Record<
     "Al-Baha": { he: 0.63, markers: 10, samples: 10 },
     Taif: { he: 0.54, markers: 10, samples: 8 },
   },
+  papaya: {
+    Jazan: { he: 0.46, markers: 6, samples: 13 },
+  },
 };
 
 const ALL_REGIONS = [
@@ -132,12 +149,15 @@ const ALL_REGIONS = [
   "Qaseem",
   "Najran",
   "Hail",
+  "Eastern",
   "Tabuk",
 ];
 
 // SSR marker loci per crop type
 const CROP_LOCI: Record<string, string[]> = {
-  wheat: ["Xgwm533", "Xgwm261", "Xbarc45", "Xgwm389", "Xgwm148"],
+  breadWheat: ["Xgwm533", "Xgwm261", "Xbarc45", "Xgwm389", "Xgwm148"],
+  durumWheat: ["Xgwm533", "Xgwm261", "Xbarc45", "Xgwm389", "Xgwm148"],
+  papaya: ["CpSSR-1", "CpSSR-5", "CpSSR-9", "CpSSR-14", "CpSSR-21", "CpSSR-27"],
   coffee: ["CaM21", "CaM14", "CaM33", "SSR-C03", "SSR-C12", "SSR-C25", "SSR-C41", "SSR-C08"],
   barley: ["Bmag0125", "EBmac0415", "HVM20", "Bmac0029", "HVM67"],
   fabaBean: ["VfG01", "VfG07", "VfG14", "VfG22"],
@@ -146,6 +166,8 @@ const CROP_LOCI: Record<string, string[]> = {
   sesame: ["SiSSR01", "SiSSR08", "SiSSR15", "SiSSR22", "SiSSR29", "SiSSR36"],
   mango: ["MiSHRS-1", "MiSHRS-4", "MiSHRS-18", "MiSHRS-29", "MiSHRS-32", "MiSHRS-36", "LMMA-1", "LMMA-6", "LMMA-14", "MiSSR-10"],
 };
+
+const TOTAL_SSR_LOCI = Object.values(CROP_LOCI).reduce((sum, loci) => sum + loci.length, 0);
 
 // ── Heatmap color scale (He = expected heterozygosity 0-1) ──
 function heColor(he: number): string {
@@ -170,7 +192,7 @@ function generateSSRProfile(
   const hash = accessionId
     .split("")
     .reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const loci = CROP_LOCI[cropType] || CROP_LOCI.wheat;
+  const loci = CROP_LOCI[cropType] || CROP_LOCI.breadWheat;
   return loci.map((locus, idx) => ({
     locus,
     allele1: 150 + ((hash * (idx + 1) * 13) % 100),
@@ -320,7 +342,8 @@ export default function GeneticFingerprints() {
   };
 
   // Total fingerprints stat includes static crops beyond CSV
-  const totalFingerprints = allData.length + 289; // +289 for barley, faba, millet, sorghum, sesame, mango
+  // Live CSV-backed accessions + static-only crops (sorghum/sesame/mango have no CSV yet)
+  const totalFingerprints = allData.length + STATIC_ACCESSIONS;
 
   if (loading) {
     return (
@@ -358,9 +381,9 @@ export default function GeneticFingerprints() {
               Molecular Marker Database
             </h1>
             <p className="text-sm sm:text-base text-white/75 max-w-2xl">
-              SSR markers, DNA barcodes, and genetic diversity profiles for all 8
-              MEWA crop species across Saudi regions. Browse, compare, and
-              request fingerprint data.
+              SSR markers, DNA barcodes, and genetic diversity profiles for all{" "}
+              {PASSPORT_CROPS.length} MEWA crop species across Saudi regions.
+              Browse, compare, and request fingerprint data.
             </p>
           </motion.div>
           <motion.div
@@ -374,11 +397,12 @@ export default function GeneticFingerprints() {
               {totalFingerprints.toLocaleString()} Profiles
             </Badge>
             <Badge className="bg-white/15 border-white/25 text-white backdrop-blur-sm">
-              <Leaf className="w-3 h-3 me-1.5" />8 Crop Species
+              <Leaf className="w-3 h-3 me-1.5" />
+              {PASSPORT_CROPS.length} Crop Species
             </Badge>
             <Badge className="bg-white/15 border-white/25 text-white backdrop-blur-sm">
               <FlaskConical className="w-3 h-3 me-1.5" />
-              48 SSR Loci
+              {TOTAL_SSR_LOCI} SSR Loci
             </Badge>
           </motion.div>
         </div>
@@ -396,7 +420,7 @@ export default function GeneticFingerprints() {
             },
             {
               label: "SSR Loci",
-              value: "48",
+              value: String(TOTAL_SSR_LOCI),
               icon: Dna,
               color: "#D4AF37",
             },
@@ -408,7 +432,7 @@ export default function GeneticFingerprints() {
             },
             {
               label: "Crop Species",
-              value: "8",
+              value: String(PASSPORT_CROPS.length),
               icon: Leaf,
               color: "#C0392B",
             },
@@ -649,7 +673,7 @@ export default function GeneticFingerprints() {
                     >
                       All
                     </button>
-                    {(["wheat", "coffee"] as const).map((crop) => (
+                    {PASSPORT_CROPS.map((crop) => (
                       <button
                         key={crop}
                         onClick={() => setSelectedCrop(crop)}

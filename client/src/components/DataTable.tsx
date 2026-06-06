@@ -5,6 +5,8 @@
 
 import { useState } from 'react';
 import { SeedPassport } from '@/types/data';
+import { CROP_META } from '@/data/passportData';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Table,
   TableBody,
@@ -23,6 +25,7 @@ interface DataTableProps {
 const ITEMS_PER_PAGE = 20;
 
 export default function DataTable({ data }: DataTableProps) {
+  const { language } = useLanguage();
   const [currentPage, setCurrentPage] = useState(1);
   
   const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
@@ -90,15 +93,20 @@ export default function DataTable({ data }: DataTableProps) {
                   {item.accessionId}
                 </TableCell>
                 <TableCell>
-                  <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
-                    item.cropType === 'wheat' 
-                      ? 'bg-[#D4A574]/20 text-[#B88A5E]' 
-                      : 'bg-[#6B4423]/20 text-[#6B4423]'
-                  }`}>
-                    <span className={`w-2 h-2 rounded-full ${
-                      item.cropType === 'wheat' ? 'bg-[#D4A574]' : 'bg-[#6B4423]'
-                    }`}></span>
-                    {item.cropType}
+                  <span
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium"
+                    style={{
+                      backgroundColor: `${CROP_META[item.cropType].color}22`,
+                      color: CROP_META[item.cropType].color,
+                    }}
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: CROP_META[item.cropType].color }}
+                    ></span>
+                    {language === "ar"
+                      ? CROP_META[item.cropType].labelAr
+                      : CROP_META[item.cropType].label}
                   </span>
                 </TableCell>
                 <TableCell className="text-sm">{item.arabicName}</TableCell>

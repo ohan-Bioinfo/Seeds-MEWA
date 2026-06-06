@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { SeedPassport } from '@/types/data';
 import { loadAllData, filterData } from '@/lib/dataLoader';
+import { CROP_META, getPassportCropTypes } from '@/data/passportData';
 import { Download, FileSpreadsheet, Database, Fingerprint } from 'lucide-react';
 import { toast } from 'sonner';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -123,29 +124,24 @@ export default function DataCatalog() {
             </CardContent>
           </Card>
 
-          <Card className="border-primary/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">{t('catalog.wheat')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-[#B8860B]">
-                {filteredData.filter(d => d.cropType === 'wheat').length}
-              </div>
-              <p className="text-xs text-muted-foreground mt-1">{t('catalog.triticum')}</p>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">{t('catalog.coffee')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-[#6F4E37]">
-                {filteredData.filter(d => d.cropType === 'coffee').length}
-              </div>
-              <p className="text-xs text-muted-foreground mt-1">{t('catalog.coffea')}</p>
-            </CardContent>
-          </Card>
+          {getPassportCropTypes()
+            .filter((crop) => allData.some((d) => d.cropType === crop))
+            .map((crop) => (
+            <Card key={crop} className="border-primary/20">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
+                  <span>{CROP_META[crop].icon}</span>
+                  {dir === 'rtl' ? CROP_META[crop].labelAr : CROP_META[crop].label}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold" style={{ color: CROP_META[crop].color }}>
+                  {filteredData.filter(d => d.cropType === crop).length}
+                </div>
+                <p className="text-xs text-muted-foreground mt-1 italic">{CROP_META[crop].scientificName}</p>
+              </CardContent>
+            </Card>
+          ))}
 
           <Card className="border-primary/20">
             <CardHeader className="pb-3">

@@ -1,8 +1,8 @@
 /* Design Philosophy: Data-Driven Cartography with Agricultural Heritage
    Saudi Map: Interactive map showing seed distribution across ALL Saudi regions
    Uses Leaflet/OpenStreetMap with custom circle markers and detailed region popups
-   Supports all 8 crops with passport data (wheat, coffee, barley, faba bean,
-   millet, sorghum, sesame, mango)
+   Supports all passport crops (bread/durum wheat, coffee, barley, faba bean,
+   millet, sorghum, sesame, mango, papaya) — driven by CROP_META
 */
 
 import { CircleMarker, Popup } from "react-leaflet";
@@ -30,6 +30,7 @@ const REGION_COORDINATES: Record<string, [number, number]> = {
   Qaseem: [26.3264, 43.975],
   Hail: [27.5219, 41.6901],
   Jazan: [16.8892, 42.5511],
+  Eastern: [25.3833, 49.5667],
   Tabuk: [28.3998, 36.5782],
 };
 

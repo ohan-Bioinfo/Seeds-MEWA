@@ -9,6 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Search } from 'lucide-react';
 import { SAUDI_REGIONS } from '@/types/data';
+import { CROP_META, getPassportCropTypes } from '@/data/passportData';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface FilterPanelProps {
   selectedCrops: string[];
@@ -27,6 +29,7 @@ export default function FilterPanel({
   onRegionChange,
   onSearchChange
 }: FilterPanelProps) {
+  const { language } = useLanguage();
   const handleCropToggle = (crop: string) => {
     if (selectedCrops.includes(crop)) {
       onCropChange(selectedCrops.filter(c => c !== crop));
@@ -69,35 +72,26 @@ export default function FilterPanel({
         {/* Crop Type Filter */}
         <div className="space-y-3">
           <Label className="text-sm font-medium">Crop Type</Label>
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="wheat"
-                checked={selectedCrops.includes('wheat')}
-                onCheckedChange={() => handleCropToggle('wheat')}
-              />
-              <label
-                htmlFor="wheat"
-                className="text-sm cursor-pointer flex items-center gap-2"
-              >
-                <span className="w-3 h-3 rounded-full bg-[#D4A574]"></span>
-                Wheat
-              </label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="coffee"
-                checked={selectedCrops.includes('coffee')}
-                onCheckedChange={() => handleCropToggle('coffee')}
-              />
-              <label
-                htmlFor="coffee"
-                className="text-sm cursor-pointer flex items-center gap-2"
-              >
-                <span className="w-3 h-3 rounded-full bg-[#6B4423]"></span>
-                Coffee
-              </label>
-            </div>
+          <div className="space-y-2 max-h-64 overflow-y-auto">
+            {getPassportCropTypes().map((crop) => (
+              <div key={crop} className="flex items-center space-x-2">
+                <Checkbox
+                  id={crop}
+                  checked={selectedCrops.includes(crop)}
+                  onCheckedChange={() => handleCropToggle(crop)}
+                />
+                <label
+                  htmlFor={crop}
+                  className="text-sm cursor-pointer flex items-center gap-2"
+                >
+                  <span
+                    className="w-3 h-3 rounded-full"
+                    style={{ backgroundColor: CROP_META[crop].color }}
+                  ></span>
+                  {language === 'ar' ? CROP_META[crop].labelAr : CROP_META[crop].label}
+                </label>
+              </div>
+            ))}
           </div>
         </div>
         

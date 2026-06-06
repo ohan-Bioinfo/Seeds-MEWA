@@ -275,8 +275,9 @@ export default function Home() {
 
   // Stacked bar: Saudi vs International per crop (short English labels)
   const SHORT_CROP: Record<string, string> = {
-    wheat: "Wheat", coffee: "Coffee", barley: "Barley", fabaBean: "Faba Bean",
-    millet: "Millet", sorghum: "Sorghum", sesame: "Sesame", mango: "Mango",
+    breadWheat: "Bread Wheat", durumWheat: "Durum", coffee: "Coffee",
+    barley: "Barley", fabaBean: "Faba Bean", millet: "Millet",
+    sorghum: "Sorghum", sesame: "Sesame", mango: "Mango", papaya: "Papaya",
   };
   const originData = useMemo(
     () =>
@@ -385,7 +386,9 @@ export default function Home() {
         <div className="container">
           {/* Passport crops row */}
           <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide mb-1.5 px-0.5">
-            {language === "ar" ? "محاصيل لها بيانات جواز (8)" : "Passport crops with regional data (8)"}
+            {language === "ar"
+              ? `محاصيل لها بيانات جواز (${PASSPORT_CROPS.length})`
+              : `Passport crops with regional data (${PASSPORT_CROPS.length})`}
           </div>
           <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-2 mb-3">
             {PASSPORT_CROPS.map((crop, i) => {

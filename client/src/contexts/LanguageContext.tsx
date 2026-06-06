@@ -73,7 +73,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Home Page
     'home.hero.title': 'MEWA Seed & Seedlings Data Center',
-    'home.hero.description': 'Passport data for 8 crops across nine Saudi regions. Filter by crop, region, and accession details.',
+    'home.hero.description': 'Passport data for 10 crops across Saudi regions. Filter by crop, region, and accession details.',
     'home.hero.subtitle': 'Ministry of Environment, Water & Agriculture',
     'home.stats.total': 'Total Samples',
     'home.stats.totalDesc': 'Across all regions',
@@ -479,7 +479,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Home Page
     'home.hero.title': 'مركز بيانات البذور والتقاوي - وزارة الزراعة',
-    'home.hero.description': 'بيانات الجواز لـ 8 محاصيل (قمح، بن، شعير، دخن، ذرة رفيعة، سمسم، فول، مانجو) عبر تسع مناطق سعودية.',
+    'home.hero.description': 'بيانات الجواز لـ 10 محاصيل (قمح الخبز، قمح الدوروم، بن، شعير، دخن، ذرة رفيعة، سمسم، فول، مانجو، بابايا) عبر المناطق السعودية.',
     'home.hero.subtitle': 'وزارة البيئة والمياه والزراعة',
     'home.stats.total': 'إجمالي العينات',
     'home.stats.totalDesc': 'عبر جميع المناطق',

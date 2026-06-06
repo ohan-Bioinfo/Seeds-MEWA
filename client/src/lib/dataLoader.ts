@@ -1,4 +1,5 @@
 import { SeedPassport, RegionStats, SAUDI_REGIONS } from '@/types/data';
+import type { CropType } from '@/data/passportData';
 
 function parseCSVLine(line: string, useTabs: boolean = true): string[] {
   if (useTabs) {
@@ -8,10 +9,10 @@ function parseCSVLine(line: string, useTabs: boolean = true): string[] {
   const result: string[] = [];
   let current = '';
   let inQuotes = false;
-  
+
   for (let i = 0; i < line.length; i++) {
     const char = line[i];
-    
+
     if (char === '"') {
       inQuotes = !inQuotes;
     } else if (char === ',' && !inQuotes) {
@@ -27,109 +28,88 @@ function parseCSVLine(line: string, useTabs: boolean = true): string[] {
 
 function normalizeRegionName(name: string): string {
   if (!name || name === 'NA' || name === 'Unknow' || name === '0') return '';
-  
-  // Normalize common variations
-  const normalized = name.toLowerCase().trim();
-  
-  if (normalized.includes('aseer') || normalized.includes('abha') || normalized.includes('عسير')) return 'Aseer';
-  if (normalized.includes('baha') || normalized.includes('الباحة')) return 'Al-Baha';
-  if (normalized.includes('najran') || normalized.includes('نجران')) return 'Najran';
-  if (normalized.includes('riyadh') || normalized.includes('الرياض')) return 'Riyadh';
-  if (normalized.includes('qaseem') || normalized.includes('qassim') || normalized.includes('القصيم')) return 'Qaseem';
-  if (normalized.includes('hail') || normalized.includes('حائل')) return 'Hail';
-  if (normalized.includes('jazan') || normalized.includes('jizan') || normalized.includes('جازان')) return 'Jazan';
-  if (normalized.includes('tabuk') || normalized.includes('تبوك')) return 'Tabuk';
-  if (normalized.includes('taif') || normalized.includes('الطائف') || normalized.includes('mecca')) return 'Taif';
-  
+
+  const n = name.toLowerCase().trim();
+
+  if (['aseer', 'asir', 'abha', 'عسير', 'tanoum', 'beni malak', 'belasmar', 'belahmar', 'elmaween'].some(k => n.includes(k))) return 'Aseer';
+  if (n.includes('baha') || n.includes('الباحة')) return 'Al-Baha';
+  if (n.includes('najran') || n.includes('نجران')) return 'Najran';
+  if (['riyadh', 'الرياض', 'dilam', 'tumair', 'tumayr', 'kharj', 'dawadmi', 'majm'].some(k => n.includes(k))) return 'Riyadh';
+  if (['qaseem', 'qassim', 'القصيم', 'buraidah', 'unaiz', 'onaiz', 'unayz', 'bakariah', 'bidayei', 'qawara'].some(k => n.includes(k))) return 'Qaseem';
+  if (n.includes('hail') || n.includes('حائل')) return 'Hail';
+  if (['jazan', 'jizan', 'gizan', 'جازان', 'damad', 'sabya', 'sabia', 'baish'].some(k => n.includes(k))) return 'Jazan';
+  if (n.includes('tabuk') || n.includes('تبوك')) return 'Tabuk';
+  if (['hasa', 'ahsa', 'hofuf', 'dammam', 'qatif', 'eastern', 'الشرقية', 'الأحساء'].some(k => n.includes(k))) return 'Eastern';
+  if (n.includes('taif') || n.includes('الطائف') || n.includes('mecca') || n.includes('makkah') || n.includes('saad')) return 'Taif';
+
   return '';
 }
 
-export async function loadWheatData(): Promise<SeedPassport[]> {
-  const response = await fetch('/wheatpassport.csv');
-  const text = await response.text();
-  const lines = text.split('\n').filter(line => line.trim());
-  
-  return lines.slice(1).map((line, index) => {
-    const fields = parseCSVLine(line);
-    return {
-      id: `wheat-${index}`,
-      accessionId: fields[0] || '',
-      localName: fields[1] || '',
-      genus: fields[2] || '',
-      species: fields[3] || '',
-      scientificName: fields[4] || '',
-      source: fields[5] || '',
-      arabicName: fields[6] || '',
-      country: fields[7] || '',
-      province: fields[8] || '',
-      location: normalizeRegionName(fields[9] || ''),
-      cropType: 'wheat' as const
-    };
-  });
+// All passport CSVs now share one canonical schema (see data-sources/convert_passports.py):
+// accessionId, localName, genus, species, scientificName, source, arabicName, country, province, location
+interface CropSource {
+  cropType: CropType;
+  csvPath: string;
+  delimiter: 'comma' | 'tab';
 }
 
-export async function loadCoffeeData(): Promise<SeedPassport[]> {
-  const response = await fetch('/CoffeePassport(1).csv');
+const CROP_SOURCES: CropSource[] = [
+  { cropType: 'breadWheat', csvPath: '/breadwheat_passport.csv', delimiter: 'comma' },
+  { cropType: 'durumWheat', csvPath: '/durumwheat_passport.csv', delimiter: 'comma' },
+  { cropType: 'coffee', csvPath: '/coffee_passport.csv', delimiter: 'comma' },
+  { cropType: 'barley', csvPath: '/barley_passport.csv', delimiter: 'comma' },
+  { cropType: 'fabaBean', csvPath: '/fababean_passport.csv', delimiter: 'comma' },
+  { cropType: 'millet', csvPath: '/millet_passport.csv', delimiter: 'comma' },
+  { cropType: 'papaya', csvPath: '/papaya_passport.csv', delimiter: 'comma' },
+];
+
+async function loadCropData(source: CropSource): Promise<SeedPassport[]> {
+  const response = await fetch(source.csvPath);
   const text = await response.text();
   const lines = text.split('\n').filter(line => line.trim());
-  
+
   return lines.slice(1).map((line, index) => {
-    const fields = parseCSVLine(line, false); // Coffee CSV is comma-separated
-    // Coffee CSV structure: Sr. No., Sent Code, Accession Bank ID, Genus, Species, ScientifiCName, Source, Local Names, Collection Country, Collection Site, Place of collection
+    const f = parseCSVLine(line, source.delimiter === 'tab');
     return {
-      id: `coffee-${index}`,
-      accessionId: fields[1] || '',
-      localName: fields[7] || '',
-      genus: fields[3] || '',
-      species: fields[4] || '',
-      scientificName: fields[5] || '',
-      source: fields[6] || '',
-      arabicName: fields[7] || '',
-      country: fields[8] || '',
-      province: normalizeRegionName(fields[9] || ''),
-      location: normalizeRegionName(fields[10] || ''),
-      cropType: 'coffee' as const
+      id: `${source.cropType}-${index}`,
+      accessionId: f[0] || '',
+      localName: f[1] || '',
+      genus: f[2] || '',
+      species: f[3] || '',
+      scientificName: f[4] || '',
+      source: f[5] || '',
+      arabicName: f[6] || '',
+      country: f[7] || '',
+      province: f[8] || '',
+      location: normalizeRegionName(f[9] || ''),
+      cropType: source.cropType,
     };
   });
 }
 
 export async function loadAllData(): Promise<SeedPassport[]> {
-  const [wheat, coffee] = await Promise.all([
-    loadWheatData(),
-    loadCoffeeData()
-  ]);
-  return [...wheat, ...coffee];
+  const all = await Promise.all(CROP_SOURCES.map(loadCropData));
+  return all.flat();
 }
 
 export function calculateRegionStats(data: SeedPassport[]): RegionStats[] {
   const stats = new Map<string, RegionStats>();
-  
-  // Initialize all Saudi regions
+
   SAUDI_REGIONS.forEach(region => {
-    stats.set(region, {
-      region,
-      wheatCount: 0,
-      coffeeCount: 0,
-      totalCount: 0
-    });
+    stats.set(region, { region, crops: {}, totalCount: 0 });
   });
-  
-  // Count samples by region
+
   data.forEach(sample => {
     const region = sample.location || sample.province;
     if (!region) return;
-    
+
     const stat = stats.get(region);
     if (stat) {
-      if (sample.cropType === 'wheat') {
-        stat.wheatCount++;
-      } else {
-        stat.coffeeCount++;
-      }
+      stat.crops[sample.cropType] = (stat.crops[sample.cropType] || 0) + 1;
       stat.totalCount++;
     }
   });
-  
+
   return Array.from(stats.values()).filter(s => s.totalCount > 0);
 }
 
@@ -142,7 +122,7 @@ export function filterData(
     if (filters.cropType.length > 0 && !filters.cropType.includes(sample.cropType)) {
       return false;
     }
-    
+
     // Filter by region
     if (filters.regions.length > 0) {
       const sampleRegion = sample.location || sample.province;
@@ -150,7 +130,7 @@ export function filterData(
         return false;
       }
     }
-    
+
     // Filter by search term
     if (filters.searchTerm) {
       const term = filters.searchTerm.toLowerCase();
@@ -162,7 +142,7 @@ export function filterData(
         sample.province.toLowerCase().includes(term)
       );
     }
-    
+
     return true;
   });
 }

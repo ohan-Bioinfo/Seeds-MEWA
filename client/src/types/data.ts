@@ -1,3 +1,5 @@
+import type { CropType } from '@/data/passportData';
+
 export interface SeedPassport {
   id: string;
   accessionId: string;
@@ -10,13 +12,12 @@ export interface SeedPassport {
   country: string;
   province: string;
   location: string;
-  cropType: 'wheat' | 'coffee';
+  cropType: CropType;
 }
 
 export interface RegionStats {
   region: string;
-  wheatCount: number;
-  coffeeCount: number;
+  crops: Partial<Record<CropType, number>>;
   totalCount: number;
 }
 
@@ -35,6 +36,7 @@ export const SAUDI_REGIONS = [
   'Qaseem',
   'Hail',
   'Jazan',
+  'Eastern',
   'Tabuk'
 ] as const;
 
