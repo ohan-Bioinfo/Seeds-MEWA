@@ -19,6 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   MapPin,
+  ExternalLink,
   Wheat,
   User,
   Users,
@@ -1167,6 +1168,19 @@ export default function Centers() {
                     ? selectedCenter.contact.addressAr
                     : selectedCenter.contact.address}
                 </div>
+                <a
+                  href="https://seed-stations.embryo.sa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mt-2 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 ${isRTL ? "flex-row-reverse" : ""}`}
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                  </span>
+                  {t("st.dialog.liveDashboard")}
+                  <ExternalLink className="h-4 w-4" />
+                </a>
               </DialogHeader>
 
               <div className="space-y-6 mt-4">

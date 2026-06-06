@@ -327,6 +327,7 @@ const translations: Record<Language, Record<string, string>> = {
     'st.dialog.needs': 'Needs',
     'st.dialog.visits': 'Visits',
     'st.dialog.manager': 'Manager',
+    'st.dialog.liveDashboard': 'Live Dashboard',
     'st.dialog.noContact': 'No contact details available',
     'st.dialog.crops': 'Crops',
     'st.dialog.est': 'Est.',
@@ -468,7 +469,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.submit': 'إرسال بيانات',
     'nav.centers': 'محطات البذور',
     'nav.inventory': 'بنك البذور',
-    'nav.aiPrediction': 'التنبؤ بالذكاء الاصطناعي',
+    'nav.aiPrediction': 'الذكاء الاصطناعي',
     'nav.publicAccess': 'وصول عام',
 
     // Header
@@ -731,6 +732,7 @@ const translations: Record<Language, Record<string, string>> = {
     'st.dialog.needs': 'الاحتياجات',
     'st.dialog.visits': 'الزيارات',
     'st.dialog.manager': 'مدير المحطة',
+    'st.dialog.liveDashboard': 'اللوحة المباشرة',
     'st.dialog.noContact': 'لا تتوفر بيانات اتصال',
     'st.dialog.crops': 'المحاصيل',
     'st.dialog.est': 'التأسيس',

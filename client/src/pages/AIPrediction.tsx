@@ -306,7 +306,7 @@ export default function AIPrediction() {
             <FadeUp delay={0.1}>
               <h1 className={`text-4xl sm:text-6xl font-black mb-4 leading-tight tracking-tight ${isRTL ? "text-right" : ""}`}
                 style={{ background: `linear-gradient(135deg, #ffffff 0%, ${C.cyan} 50%, ${C.purple} 100%)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                {isRTL ? "مركز التنبؤ بالذكاء الاصطناعي" : "AI Prediction Center"}
+                {isRTL ? "مركز الذكاء الاصطناعي" : "AI Prediction Center"}
               </h1>
             </FadeUp>
 
@@ -616,7 +616,7 @@ export default function AIPrediction() {
                 </p>
                 <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.38)" }}>
                   {isRTL
-                    ? "هذه النسخة تجريبية تطويرية لمركز التنبؤ بالذكاء الاصطناعي الخاص بمركز البذور السعودي. جميع النماذج والمخططات والبيانات المعروضة هي لأغراض المفهوم والتصميم فقط، ولا تمثل نتائج إنتاجية. يُتوقع إطلاق النسخة الإنتاجية في الربع الأخير من عام 2026."
+                    ? "هذه النسخة تجريبية تطويرية لمركز الذكاء الاصطناعي الخاص بمركز البذور السعودي. جميع النماذج والمخططات والبيانات المعروضة هي لأغراض المفهوم والتصميم فقط، ولا تمثل نتائج إنتاجية. يُتوقع إطلاق النسخة الإنتاجية في الربع الأخير من عام 2026."
                     : "This is a development prototype of the Saudi SEEd Center AI Prediction platform. All models, diagrams, and data shown are for conceptual and design purposes only and do not represent production-ready outputs. The full production release is targeted for Q3–Q4 2026."}
                 </p>
               </div>
