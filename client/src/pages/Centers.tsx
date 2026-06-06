@@ -20,6 +20,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   MapPin,
   Wheat,
+  User,
   Users,
   Calendar,
   Phone,
@@ -1172,8 +1173,27 @@ export default function Centers() {
                 {/* Overview */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
-                    { val: selectedCenter.area, labelKey: "st.dialog.area" },
+                    {
+                      val: selectedCenter.area || "—",
+                      labelKey: "st.dialog.totalArea",
+                    },
+                    {
+                      val: selectedCenter.utilizedArea || "—",
+                      labelKey: "st.dialog.utilizedArea",
+                    },
                     { val: selectedCenter.staff, labelKey: "st.dialog.staff" },
+                    {
+                      val: selectedCenter.stats.equipment,
+                      labelKey: "st.dialog.equipment",
+                    },
+                    {
+                      val: selectedCenter.stats.needs,
+                      labelKey: "st.dialog.needs",
+                    },
+                    {
+                      val: selectedCenter.stats.visits,
+                      labelKey: "st.dialog.visits",
+                    },
                     {
                       val: selectedCenter.crops.length,
                       labelKey: "st.dialog.crops",
@@ -1306,28 +1326,57 @@ export default function Centers() {
                     {t("st.dialog.contact")}
                   </h3>
                   <div className="space-y-2">
-                    <div
-                      className={`flex items-center gap-2 text-sm ${isRTL ? "flex-row-reverse" : ""}`}
-                    >
-                      <Phone className="h-4 w-4 text-primary" />
-                      <a
-                        href={`tel:${selectedCenter.contact.phone}`}
-                        className="hover:underline"
+                    {(language === "ar"
+                      ? selectedCenter.managerAr
+                      : selectedCenter.manager) && (
+                      <div
+                        className={`flex items-center gap-2 text-sm ${isRTL ? "flex-row-reverse" : ""}`}
                       >
-                        {selectedCenter.contact.phone}
-                      </a>
-                    </div>
-                    <div
-                      className={`flex items-center gap-2 text-sm ${isRTL ? "flex-row-reverse" : ""}`}
-                    >
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a
-                        href={`mailto:${selectedCenter.contact.email}`}
-                        className="hover:underline"
+                        <User className="h-4 w-4 text-primary" />
+                        <span>
+                          <span className="text-muted-foreground">
+                            {t("st.dialog.manager")}:{" "}
+                          </span>
+                          {language === "ar"
+                            ? selectedCenter.managerAr
+                            : selectedCenter.manager}
+                        </span>
+                      </div>
+                    )}
+                    {selectedCenter.contact.phone && (
+                      <div
+                        className={`flex items-center gap-2 text-sm ${isRTL ? "flex-row-reverse" : ""}`}
                       >
-                        {selectedCenter.contact.email}
-                      </a>
-                    </div>
+                        <Phone className="h-4 w-4 text-primary" />
+                        <a
+                          href={`tel:${selectedCenter.contact.phone}`}
+                          className="hover:underline"
+                          dir="ltr"
+                        >
+                          {selectedCenter.contact.phone}
+                        </a>
+                      </div>
+                    )}
+                    {selectedCenter.contact.email && (
+                      <div
+                        className={`flex items-center gap-2 text-sm ${isRTL ? "flex-row-reverse" : ""}`}
+                      >
+                        <Mail className="h-4 w-4 text-primary" />
+                        <a
+                          href={`mailto:${selectedCenter.contact.email}`}
+                          className="hover:underline"
+                        >
+                          {selectedCenter.contact.email}
+                        </a>
+                      </div>
+                    )}
+                    {!selectedCenter.contact.phone &&
+                      !selectedCenter.contact.email &&
+                      !selectedCenter.manager && (
+                        <p className="text-sm text-muted-foreground">
+                          {t("st.dialog.noContact")}
+                        </p>
+                      )}
                   </div>
                 </div>
               </div>
