@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'wouter';
 import PageLayout from '@/components/PageLayout';
 import DataTable from '@/components/DataTable';
 import FilterPanel from '@/components/FilterPanel';
@@ -13,6 +14,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function DataCatalog() {
   const { t, dir } = useLanguage();
+  const [, navigate] = useLocation();
   const [allData, setAllData] = useState<SeedPassport[]>([]);
   const [filteredData, setFilteredData] = useState<SeedPassport[]>([]);
   const [loading, setLoading] = useState(true);
@@ -175,7 +177,7 @@ export default function DataCatalog() {
                   </p>
                 </div>
               </div>
-              <Button className="mewa-gradient text-white" onClick={() => window.location.href = '/fingerprints'}>
+              <Button className="mewa-gradient text-white" onClick={() => navigate('/fingerprints')}>
                 <Fingerprint className="h-4 w-4 mr-2" />
                 View Fingerprints
               </Button>
