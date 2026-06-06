@@ -75,8 +75,7 @@ export default function PageLayout({
               <img
                 src="/vision2030.png"
                 alt="Vision 2030"
-                className="h-10 w-auto mt-4"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                className="h-12 w-auto mt-4 bg-white rounded-md p-1.5 object-contain"
                 onError={(e) => { (e.target as HTMLImageElement).src = 'https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png'; }}
               />
             </div>
