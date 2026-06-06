@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Link } from "wouter";
 import Navigation from "./Navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -55,6 +56,7 @@ export default function PageLayout({
 
       {/* Footer — fully localized */}
       <footer className="bg-primary text-primary-foreground mt-auto" dir={dir}>
+        <div className="h-1 w-full bg-gradient-to-r from-[var(--mewa-gold)] via-[var(--mewa-gold)]/60 to-transparent" />
         <div className="container py-8">
           <div
             className={`grid grid-cols-1 md:grid-cols-3 gap-8 ${isRTL ? "text-right" : ""}`}
@@ -71,11 +73,11 @@ export default function PageLayout({
                 {t("footer.country")}
               </p>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Vision2030_logo.svg/400px-Vision2030_logo.svg.png"
+                src="/vision2030.png"
                 alt="Vision 2030"
                 className="h-10 w-auto mt-4"
                 style={{ filter: 'brightness(0) invert(1)' }}
-                onError={(e) => { (e.target as HTMLImageElement).src = 'https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png'; (e.target as HTMLImageElement).style.filter = ''; }}
+                onError={(e) => { (e.target as HTMLImageElement).src = 'https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png'; }}
               />
             </div>
 
@@ -86,24 +88,29 @@ export default function PageLayout({
               </h3>
               <ul className="space-y-2 text-sm text-primary-foreground/80">
                 <li>
-                  <a href="/catalog" className="hover:text-primary-foreground transition-colors">
+                  <Link href="/catalog" className="inline-block hover:text-primary-foreground hover:translate-x-0.5 rtl:hover:-translate-x-0.5 transition-all">
                     {t("nav.catalog")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/genomics" className="hover:text-primary-foreground transition-colors">
+                  <Link href="/genomics" className="inline-block hover:text-primary-foreground hover:translate-x-0.5 rtl:hover:-translate-x-0.5 transition-all">
                     {t("nav.genomics")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/centers" className="hover:text-primary-foreground transition-colors">
+                  <Link href="/centers" className="inline-block hover:text-primary-foreground hover:translate-x-0.5 rtl:hover:-translate-x-0.5 transition-all">
                     {t("nav.centers")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/research" className="hover:text-primary-foreground transition-colors">
+                  <Link href="/research" className="inline-block hover:text-primary-foreground hover:translate-x-0.5 rtl:hover:-translate-x-0.5 transition-all">
                     {t("nav.research")}
-                  </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="inline-block hover:text-primary-foreground hover:translate-x-0.5 rtl:hover:-translate-x-0.5 transition-all">
+                    {t("nav.about")}
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -117,9 +124,9 @@ export default function PageLayout({
                 <li>{t("footer.email")}</li>
                 <li>{t("footer.phone")}</li>
                 <li>
-                  <a href="/contact" className="hover:text-primary-foreground transition-colors">
+                  <Link href="/contact" className="inline-block hover:text-primary-foreground hover:translate-x-0.5 rtl:hover:-translate-x-0.5 transition-all">
                     {t("footer.contactForm")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
