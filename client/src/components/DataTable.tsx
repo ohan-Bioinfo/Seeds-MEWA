@@ -34,10 +34,11 @@ export default function DataTable({ data }: DataTableProps) {
   const currentData = data.slice(startIndex, endIndex);
   
   const handleExport = () => {
-    const headers = ['Accession ID', 'Crop', 'Arabic Name', 'Scientific Name', 'Country', 'Province', 'Location', 'Source'];
+    const headers = ['Accession ID', 'Crop', 'Local Name', 'Arabic Name', 'Scientific Name', 'Country', 'Province', 'Location', 'Source'];
     const rows = data.map(item => [
       item.accessionId,
       item.cropType,
+      item.localName,
       item.arabicName,
       item.scientificName,
       item.country,
@@ -73,14 +74,15 @@ export default function DataTable({ data }: DataTableProps) {
         </Button>
       </div>
       
-      <div className="border rounded-lg overflow-hidden">
+      <div className="border rounded-lg overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50">
               <TableHead className="font-semibold">Accession ID</TableHead>
               <TableHead className="font-semibold">Crop</TableHead>
-              <TableHead className="font-semibold">Arabic Name</TableHead>
+              <TableHead className="font-semibold">Local Name</TableHead>
               <TableHead className="font-semibold">Scientific Name</TableHead>
+              <TableHead className="font-semibold">Source / Donor</TableHead>
               <TableHead className="font-semibold">Country</TableHead>
               <TableHead className="font-semibold">Region</TableHead>
               <TableHead className="font-semibold">Location</TableHead>
@@ -109,11 +111,12 @@ export default function DataTable({ data }: DataTableProps) {
                       : CROP_META[item.cropType].label}
                   </span>
                 </TableCell>
-                <TableCell className="text-sm">{item.arabicName}</TableCell>
+                <TableCell className="text-sm">{item.localName || item.arabicName || "—"}</TableCell>
                 <TableCell className="text-sm italic">{item.scientificName}</TableCell>
+                <TableCell className="text-sm">{item.source || "—"}</TableCell>
                 <TableCell className="text-sm">{item.country}</TableCell>
-                <TableCell className="text-sm">{item.province}</TableCell>
-                <TableCell className="text-sm">{item.location}</TableCell>
+                <TableCell className="text-sm">{item.province || "—"}</TableCell>
+                <TableCell className="text-sm">{item.location || "—"}</TableCell>
               </TableRow>
             ))}
           </TableBody>
