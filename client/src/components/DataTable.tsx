@@ -16,6 +16,12 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
 
 interface DataTableProps {
@@ -26,7 +32,9 @@ const ITEMS_PER_PAGE = 20;
 
 export default function DataTable({ data }: DataTableProps) {
   const { language } = useLanguage();
+  const isAr = language === 'ar';
   const [currentPage, setCurrentPage] = useState(1);
+  const [selected, setSelected] = useState<SeedPassport | null>(null);
   
   const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -62,6 +70,7 @@ export default function DataTable({ data }: DataTableProps) {
       <div className="flex items-center justify-between">
         <div className="text-sm text-muted-foreground">
           Showing {startIndex + 1}-{Math.min(endIndex, data.length)} of {data.length} samples
+          <span className="hidden sm:inline"> · {isAr ? 'انقر صفاً لعرض التفاصيل' : 'click a row for details'}</span>
         </div>
         <Button
           variant="outline"
@@ -90,7 +99,11 @@ export default function DataTable({ data }: DataTableProps) {
           </TableHeader>
           <TableBody>
             {currentData.map((item) => (
-              <TableRow key={item.id} className="hover:bg-muted/30">
+              <TableRow
+                key={item.id}
+                className="hover:bg-muted/30 cursor-pointer"
+                onClick={() => setSelected(item)}
+              >
                 <TableCell className="font-mono text-sm font-medium">
                   {item.accessionId}
                 </TableCell>
@@ -170,6 +183,53 @@ export default function DataTable({ data }: DataTableProps) {
           <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
+
+      {/* Accession detail dialog */}
+      <Dialog open={!!selected} onOpenChange={(open) => !open && setSelected(null)}>
+        <DialogContent className="sm:max-w-lg" dir={isAr ? 'rtl' : 'ltr'}>
+          {selected && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2 font-mono">
+                  <span
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
+                    style={{
+                      backgroundColor: `${CROP_META[selected.cropType].color}22`,
+                      color: CROP_META[selected.cropType].color,
+                    }}
+                  >
+                    <span>{CROP_META[selected.cropType].icon}</span>
+                    {isAr
+                      ? CROP_META[selected.cropType].labelAr
+                      : CROP_META[selected.cropType].label}
+                  </span>
+                  {selected.accessionId}
+                </DialogTitle>
+              </DialogHeader>
+              <dl className="grid grid-cols-3 gap-x-4 gap-y-3 text-sm mt-2">
+                {[
+                  { label: isAr ? 'الاسم المحلي' : 'Local Name', val: selected.localName },
+                  { label: isAr ? 'الاسم العربي' : 'Arabic Name', val: selected.arabicName },
+                  { label: isAr ? 'الجنس' : 'Genus', val: selected.genus },
+                  { label: isAr ? 'النوع' : 'Species', val: selected.species },
+                  { label: isAr ? 'الاسم العلمي' : 'Scientific Name', val: selected.scientificName, italic: true },
+                  { label: isAr ? 'المصدر / المانح' : 'Source / Donor', val: selected.source },
+                  { label: isAr ? 'الدولة' : 'Country', val: selected.country },
+                  { label: isAr ? 'موقع الجمع' : 'Collection Site', val: selected.province },
+                  { label: isAr ? 'المنطقة' : 'Region', val: selected.location },
+                ].map(({ label, val, italic }) => (
+                  <div key={label} className="contents">
+                    <dt className="col-span-1 text-muted-foreground">{label}</dt>
+                    <dd className={`col-span-2 font-medium break-words ${italic ? 'italic' : ''}`}>
+                      {val || '—'}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
