@@ -114,3 +114,5 @@ temp/
 
 # Screenshots
 *.png
+# ...but keep committed app assets in public/
+!client/public/*.png
