@@ -351,6 +351,24 @@ export default function Centers() {
               {t("st.hero.subtitle")}
             </p>
           </FadeUp>
+
+          <FadeUp delay={0.3}>
+            <div className={isRTL ? "text-right" : ""}>
+              <a
+                href="https://seed-stations.embryo.sa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group inline-flex items-center gap-2.5 rounded-xl bg-[var(--mewa-gold)] px-5 py-3 text-sm md:text-base font-semibold text-[#0c1a0e] shadow-lg shadow-black/20 transition-all hover:scale-[1.03] hover:shadow-xl ${isRTL ? "flex-row-reverse" : ""}`}
+              >
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-600 opacity-75" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-700" />
+                </span>
+                {t("st.hero.liveDashboard")}
+                <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
