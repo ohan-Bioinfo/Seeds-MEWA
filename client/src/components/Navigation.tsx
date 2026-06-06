@@ -33,7 +33,7 @@ export default function Navigation() {
   const isRTL = dir === "rtl";
 
   return (
-    <nav className="bg-white border-b border-border sticky top-0 z-50 shadow-sm">
+    <nav className="bg-white/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-sm">
       <div className="container">
         {/* Main bar */}
         <div
@@ -45,9 +45,9 @@ export default function Navigation() {
             className={`flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}
           >
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663143815567/GepFqmryaNTsXTiv.jpg"
+              src="/mewa-logo.jpg"
               alt="MEWA Logo"
-              className="h-14 w-auto"
+              className="h-16 w-auto rounded-md"
             />
             <div className="hidden sm:block">
               <div className="text-xl font-bold text-primary leading-tight">
@@ -70,10 +70,10 @@ export default function Navigation() {
                 <Link
                   key={item.path}
                   href={item.path}
-                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg text-[15px] font-medium transition-colors whitespace-nowrap ${
+                  className={`flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-[15px] font-medium transition-all duration-200 whitespace-nowrap ${
                     isActive
-                      ? "bg-primary text-primary-foreground"
-                      : "text-foreground hover:bg-secondary"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-foreground hover:bg-secondary hover:text-primary"
                   } ${isRTL ? "flex-row-reverse" : ""}`}
                 >
                   <Icon className="h-[18px] w-[18px] shrink-0" />
@@ -86,7 +86,7 @@ export default function Navigation() {
           {/* Vision 2030 logo + Language Switcher — desktop */}
           <div className={`hidden lg:flex items-center gap-3 shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Vision2030_logo.svg/400px-Vision2030_logo.svg.png"
+              src="/vision2030.png"
               alt="Vision 2030"
               className="h-9 w-auto"
               onError={(e) => { (e.target as HTMLImageElement).src = 'https://salogos.b-cdn.net/logos/png/1774895139386-ffizo9wl.png'; }}
@@ -125,10 +125,10 @@ export default function Navigation() {
                     key={item.path}
                     href={item.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-2.5 px-4 py-3.5 rounded-lg text-base font-medium transition-colors ${
+                    className={`flex items-center gap-2.5 px-4 py-3.5 rounded-lg text-base font-medium transition-all ${
                       isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "text-foreground hover:bg-secondary"
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "text-foreground hover:bg-secondary hover:text-primary"
                     } ${isRTL ? "flex-row-reverse" : ""}`}
                   >
                     <Icon className="h-5 w-5 shrink-0" />
