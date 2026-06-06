@@ -1,5 +1,5 @@
 /**
- * Seed stations — derived from المحطات/فهرس_المحطات.json (updated 2026-04-23).
+ * Seed stations — derived from data-sources/المحطات/فهرس_المحطات.json (updated 2026-04-23).
  * 9 real stations: staff, area, coordinates, and operational stats from source data.
  * Fields with no data in the source are left blank / zero.
  */

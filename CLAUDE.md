@@ -28,19 +28,23 @@ There are no automated tests configured despite Vitest being installed.
 
 ### Directory layout
 ```
-client/src/
-  pages/          # 13 route-level page components
-  components/     # Reusable components
-    ui/           # Shadcn/ui primitives (Button, Dialog, etc.)
-  contexts/       # ThemeContext, LanguageContext (en/ar)
-  hooks/          # Custom React hooks
-  lib/            # dataLoader.ts (CSV parsing), htmlExport.ts
-  data/           # Static seed center data (seedCenters.ts, inventoryData.ts)
-  types/          # TypeScript interfaces
+client/
+  public/         # Static assets served at site root (wheatpassport.csv, CoffeePassport(1).csv)
+  src/
+    pages/        # 11 route-level page components (10 routes + NotFound)
+    components/   # Reusable components
+      ui/         # Shadcn/ui primitives (Button, Dialog, etc.)
+    contexts/     # ThemeContext, LanguageContext (en/ar)
+    hooks/        # Custom React hooks
+    lib/          # dataLoader.ts (CSV parsing), htmlExport.ts
+    data/         # Static seed center data (passportData.ts, seedCenters.ts, inventoryData.ts)
+    types/        # TypeScript interfaces
 server/
   index.ts        # Express: static file serving + SPA fallback
 shared/
   const.ts        # Shared constants (COOKIE_NAME, ONE_YEAR_MS)
+docs/             # Planning/scratch notes (todo, progress, ideas, etc.) — not part of the app
+data-sources/     # Raw provenance data the data/ TS files were derived from — NOT loaded at runtime
 ```
 
 ### Path aliases
@@ -49,7 +53,7 @@ shared/
 - `@assets/*` → `attached_assets/*`
 
 ### Data loading
-`lib/dataLoader.ts` parses tab-separated CSV files (`wheatpassport.csv`, `CoffeePassport(1).csv`) located in `client/src/data/` into `SeedPassport[]` objects entirely in the browser. There is no fetch to a backend API. The `SeedPassport` type is in `client/src/types/data.ts` and includes `cropType: 'wheat' | 'coffee'`.
+`lib/dataLoader.ts` fetches CSV files (`wheatpassport.csv`, `CoffeePassport(1).csv`) served from `client/public/` at the site root and parses them into `SeedPassport[]` objects entirely in the browser. There is no fetch to a backend API. The `SeedPassport` type is in `client/src/types/data.ts` and includes `cropType: 'wheat' | 'coffee'`.
 
 ### Internationalization
 Custom context-based i18n system in `contexts/LanguageContext.tsx` with 375+ English/Arabic translation keys. **Default language is Arabic** (RTL). Access translations via `const { t, language, dir } = useLanguage()`. `t('key')` falls back to English then the raw key. Language auto-sets `document.dir` and persists to localStorage. All user-facing strings must go through `t()`.

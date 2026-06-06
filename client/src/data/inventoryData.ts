@@ -1,6 +1,6 @@
 /**
  * Inventory data derived from the Saudi Seed Bank cold-storage workbook
- * (غرف التبريد1 سعد+5-2024.xlsx, May 2024), converted via seedbank-dataset/seedbank.json.
+ * (غرف التبريد1 سعد+5-2024.xlsx, May 2024), converted via data-sources/seedbank-dataset/seedbank.json.
  *
  * 3,341 accessions stored in 8 cold rooms.
  * stockLevel = total weight (kg) of weighed accessions in each room.

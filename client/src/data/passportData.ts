@@ -3,7 +3,7 @@
  * - 8 crops have full passport data (regional breakdown, accession counts)
  * - 20 crops have genomics data only (WGS/GBS samples, no passport)
  *
- * Sources: SEEd_Data_Summary.json + SEEd_Passport_Summary.csv
+ * Sources: data-sources/summarydata/SEEd_Data_Summary.json + data-sources/summarydata/SEEd_Passport_Summary.csv
  * Saudi Regions tracked: Jazan, Aseer, Al-Baha, Riyadh, Qaseem, Hail, Taif, Najran, Tabuk
  */
 
