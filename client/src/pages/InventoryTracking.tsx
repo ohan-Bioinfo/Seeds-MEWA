@@ -50,16 +50,13 @@ import {
   Clock
 } from 'lucide-react';
 
-// Overview bar chart — accessions per cold room (static, not filtered)
-const COLD_ROOM_BAR_DATA = [
-  { room: 'غ١', label: 'غرفة التبريد الأولى', accessions: 2179, fill: '#0B5F3A' },
-  { room: 'غ٢', label: 'غرفة التبريد الثانية', accessions: 451,  fill: '#D97706' },
-  { room: 'غ٨', label: 'غرفة التبريد الثامنة', accessions: 325,  fill: '#6B4423' },
-  { room: 'غ٧', label: 'غرفة التبريد السابعة', accessions: 212,  fill: '#7c3aed' },
-  { room: 'غ٥', label: 'غرفة التبريد الخامسة', accessions: 109,  fill: '#dc2626' },
-  { room: 'غ٤', label: 'غرفة التبريد الرابعة', accessions: 50,   fill: '#ef4444' },
-  { room: 'غ٦', label: 'غرفة التبريد السادسة', accessions: 8,    fill: '#9ca3af' },
-  { room: 'غ٣', label: 'غرفة التبريد الثالثة', accessions: 7,    fill: '#9ca3af' },
+// Overview bar chart — accessions per collection category (static, not filtered)
+const CATEGORY_BAR_DATA = [
+  { room: 'حقلية', label: 'محاصيل حقلية', accessions: 2200, fill: '#0B5F3A' },
+  { room: 'خضر',   label: 'خضروات',       accessions: 408,  fill: '#D97706' },
+  { room: 'بستانية', label: 'بستانية',    accessions: 350,  fill: '#6B4423' },
+  { room: 'برية',  label: 'نباتات برية',  accessions: 301,  fill: '#7c3aed' },
+  { room: 'طبية',  label: 'نباتات طبية',  accessions: 82,   fill: '#dc2626' },
 ];
 
 /**
@@ -170,7 +167,7 @@ export default function InventoryTracking() {
           <thead>
             <tr>
               <th>${language === 'ar' ? 'المحصول' : 'Crop'}</th>
-              <th>${language === 'ar' ? 'المركز' : 'Center'}</th>
+              <th>${language === 'ar' ? 'الفئة' : 'Category'}</th>
               <th>${language === 'ar' ? 'المخزون' : 'Stock'}</th>
               <th>${language === 'ar' ? 'الإنبات' : 'Germination'}</th>
               <th>${language === 'ar' ? 'الحالة' : 'Status'}</th>
@@ -209,8 +206,8 @@ export default function InventoryTracking() {
                   </h1>
                   <p className="text-green-100 mt-2">
                     {language === 'ar' 
-                      ? '3,341 مقتنى في 8 غرف تبريد — بنك البذور الوطني، الرياض'
-                      : '3,341 accessions across 8 cold rooms — National Seed Bank, Riyadh'}
+                      ? '3,341 مقتنى عبر 5 فئات للمجموعة — بنك البذور الوطني، الرياض'
+                      : '3,341 accessions across 5 collection categories — National Seed Bank, Riyadh'}
                   </p>
                 </div>
               </div>
@@ -350,7 +347,7 @@ export default function InventoryTracking() {
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {language === 'ar' ? 'المركز' : 'Center'}
+                  {language === 'ar' ? 'الفئة' : 'Category'}
                 </label>
                 <Select value={selectedCenter} onValueChange={setSelectedCenter}>
                   <SelectTrigger>
@@ -358,7 +355,7 @@ export default function InventoryTracking() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">
-                      {language === 'ar' ? 'جميع المراكز' : 'All Centers'}
+                      {language === 'ar' ? 'جميع الفئات' : 'All Categories'}
                     </SelectItem>
                     {uniqueCenters.map(center => (
                       <SelectItem key={center.id} value={center.id}>
@@ -422,7 +419,7 @@ export default function InventoryTracking() {
               </TabsTrigger>
               <TabsTrigger value="centers" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
                 <Activity className="w-4 h-4 mr-2" />
-                <span className="hidden sm:inline">{language === 'ar' ? 'ملخص المراكز' : 'Centers'}</span>
+                <span className="hidden sm:inline">{language === 'ar' ? 'ملخص الفئات' : 'Categories'}</span>
               </TabsTrigger>
             </TabsList>
 
@@ -468,24 +465,24 @@ export default function InventoryTracking() {
                 </Card>
               )}
 
-              {/* Overview Bar Chart — accessions per cold room */}
+              {/* Overview Bar Chart — accessions per collection category */}
               <Card className="p-6 bg-white border-2 border-green-100">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="font-semibold text-gray-900">
-                      {language === 'ar' ? 'المقتنيات حسب غرفة التبريد' : 'Accessions per Cold Room'}
+                      {language === 'ar' ? 'المقتنيات حسب الفئة' : 'Accessions by Category'}
                     </h3>
                     <p className="text-xs text-gray-500 mt-0.5">
                       {language === 'ar' ? 'إجمالي 3,341 مقتنى — بنك البذور الوطني، الرياض' : 'Total 3,341 accessions — National Seed Bank, Riyadh'}
                     </p>
                   </div>
                   <Badge variant="secondary" className="bg-green-100 text-green-800">
-                    {language === 'ar' ? '8 غرف' : '8 Rooms'}
+                    {language === 'ar' ? '5 فئات' : '5 Categories'}
                   </Badge>
                 </div>
                 <div dir="ltr" className="w-full h-44">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={COLD_ROOM_BAR_DATA} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
+                    <BarChart data={CATEGORY_BAR_DATA} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
                       <XAxis dataKey="room" tick={{ fontSize: 12 }} axisLine={false} tickLine={false} />
                       <YAxis tick={{ fontSize: 11 }} axisLine={false} tickLine={false} width={42} />
                       <Tooltip
@@ -496,7 +493,7 @@ export default function InventoryTracking() {
                         contentStyle={{ fontSize: 12, borderRadius: 8 }}
                       />
                       <Bar dataKey="accessions" radius={[4, 4, 0, 0]}>
-                        {COLD_ROOM_BAR_DATA.map((entry) => (
+                        {CATEGORY_BAR_DATA.map((entry) => (
                           <Cell key={entry.room} fill={entry.fill} />
                         ))}
                       </Bar>
