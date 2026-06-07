@@ -1,10 +1,12 @@
 /**
- * Inventory data derived from the Saudi Seed Bank cold-storage workbook
- * (غرف التبريد1 سعد+5-2024.xlsx, May 2024), converted via data-sources/seedbank-dataset/seedbank.json.
+ * National seed-bank inventory — recomputed from the authoritative master workbook
+ * data-sources/raw/seed-bank.xlsx (sheet 'ALL', 3,341 accessions) via
+ * data-sources/convert_seedbank.py. Regenerate by re-running that script.
  *
- * 3,341 accessions stored in 8 cold rooms.
+ * The 'Code' column (1..8) is the cold-room assignment.
  * stockLevel = total weight (kg) of weighed accessions in each room.
- * germinationRate = average of latest test per accession (rooms with no tests: estimated).
+ * germinationRate = average of the latest test per accession.
+ * germinationHistory = per-year average of all germination tests in that room.
  */
 
 export interface GerminationPoint {
@@ -72,13 +74,13 @@ export const inventoryData: InventoryItem[] = [
     stockLevel: 153.42,
     minThreshold: 80,
     maxCapacity: 250,
-    germinationRate: 93,
+    germinationRate: 92,
     germinationHistory: [
-      { year: '2016', pct: 74.7 },
-      { year: '2017', pct: 88.0 },
-      { year: '2018', pct: 68.2 },
-      { year: '2019', pct: 94.7 },
-      { year: '2020', pct: 69.0 },
+      { year: '2016', pct: 46.0 },
+      { year: '2017', pct: 79.3 },
+      { year: '2018', pct: 85.5 },
+      { year: '2019', pct: 93.4 },
+      { year: '2020', pct: 56.0 },
     ],
     lastTested: '2024-11-19',
     harvestYear: 2024,
@@ -97,13 +99,12 @@ export const inventoryData: InventoryItem[] = [
     stockLevel: 47.06,
     minThreshold: 30,
     maxCapacity: 100,
-    germinationRate: 63,
+    germinationRate: 60,
     germinationHistory: [
-      { year: '2016', pct: 47.9 },
-      { year: '2017', pct: 75.0 },
-      { year: '2018', pct: 73.7 },
-      { year: '2019', pct: 66.4 },
-      { year: '2020', pct: 46.6 },
+      { year: '2017', pct: 54.4 },
+      { year: '2018', pct: 67.0 },
+      { year: '2019', pct: 71.2 },
+      { year: '2020', pct: 37.0 },
     ],
     lastTested: '2024-11-15',
     harvestYear: 2024,
@@ -124,8 +125,7 @@ export const inventoryData: InventoryItem[] = [
     maxCapacity: 10,
     germinationRate: 77,
     germinationHistory: [
-      { year: '2018', pct: 5.0 },
-      { year: '2019', pct: 100.0 },
+      { year: '2019', pct: 76.2 },
       { year: '2020', pct: 8.0 },
     ],
     lastTested: '2024-10-01',
@@ -145,8 +145,8 @@ export const inventoryData: InventoryItem[] = [
     stockLevel: 0.97,
     minThreshold: 1,
     maxCapacity: 5,
-    germinationRate: 23,
-    germinationHistory: [{ year: '2020', pct: 22.5 }],
+    germinationRate: 22,
+    germinationHistory: [{ year: '2020', pct: 0.0 }],
     lastTested: '2024-09-10',
     harvestYear: 2023,
     storageLocation: 'غرفة تبريد 4',
@@ -164,13 +164,12 @@ export const inventoryData: InventoryItem[] = [
     stockLevel: 14.91,
     minThreshold: 10,
     maxCapacity: 25,
-    germinationRate: 44,
+    germinationRate: 46,
     germinationHistory: [
-      { year: '2016', pct: 60.3 },
-      { year: '2017', pct: 74.2 },
-      { year: '2018', pct: 18.4 },
+      { year: '2017', pct: 61.8 },
+      { year: '2018', pct: 57.2 },
       { year: '2019', pct: 89.9 },
-      { year: '2020', pct: 24.0 },
+      { year: '2020', pct: 20.7 },
     ],
     lastTested: '2024-08-20',
     harvestYear: 2024,
@@ -230,15 +229,14 @@ export const inventoryData: InventoryItem[] = [
     stockLevel: 3.01,
     minThreshold: 3,
     maxCapacity: 10,
-    germinationRate: 50,
+    germinationRate: 25,
     germinationHistory: [
-      { year: '2016', pct: 100.0 },
-      { year: '2020', pct: 0.0 },
+      { year: '2017', pct: 100.0 },
     ],
     lastTested: '2024-11-01',
     harvestYear: 2024,
     storageLocation: 'غرفة تبريد 8',
-    status: 'low',
+    status: 'critical',
     distributionRequests: 2,
     pendingOrders: 1,
   },
@@ -383,12 +381,12 @@ export function getPendingDistributions(): DistributionRequest[] {
 
 export const SEEDBANK_TOTALS = {
   total: 3341,
-  saudiLocal: 1814,        // excl. international trials + backup copies
-  internationalTrials: 1525,
-  backupCopies: 259,
-  withGerminationData: 773,
-  highViability: 512,      // ≥80% germination
-  lowViability: 261,       // <80% germination (tested but poor)
+  saudiLocal: 1611,        // excl. international trials + backup copies
+  internationalTrials: 1473, // CIMMYT / ACSAD / ICRISAT / ICARDA accessions
+  backupCopies: 257,       // نسخة احتياطية copies
+  withGerminationData: 764,
+  highViability: 456,      // ≥80% germination (latest test)
+  lowViability: 308,       // <80% germination (tested but poor)
   weighed: 928,            // accessions with weight_g recorded
   totalWeightKg: 221.6,
   avgWeightG: 238.8,
@@ -407,12 +405,12 @@ export const CATEGORY_BREAKDOWN = [
 export const SOURCE_BREAKDOWN = [
   { name: 'CIMMYT',                      count: 1047, type: 'international' as const },
   { name: 'Farm',                        count: 818,  type: 'local' as const },
-  { name: 'Market',                      count: 452,  type: 'local' as const },
+  { name: 'Market',                      count: 438,  type: 'local' as const },
   { name: 'ACSAD',                       count: 295,  type: 'international' as const },
   { name: 'Agri. Res. Center, Gizan',    count: 106,  type: 'local' as const },
   { name: 'Dr Salem Alghamdy (KSU)',     count: 99,   type: 'local' as const },
   { name: 'ICRISAT',                     count: 49,   type: 'international' as const },
-  { name: 'Other',                       count: 475,  type: 'other' as const },
+  { name: 'Other',                       count: 489,  type: 'other' as const },
 ];
 
 export const FAMILY_BREAKDOWN = [
