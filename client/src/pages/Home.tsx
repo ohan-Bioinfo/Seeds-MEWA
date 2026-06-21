@@ -35,6 +35,8 @@ import {
   TOTAL_GENOMIC_CROPS,
   getActiveCropTypes,
   getPassportCropTypes,
+  getCropsByGroup,
+  CROP_GROUP_META,
   REGION_CROP_DATA,
 } from "@/data/passportData";
 import {
@@ -384,85 +386,68 @@ export default function Home() {
       {/* ── Crop tiles strip ── */}
       <section className="bg-muted/40 border-y border-border py-4">
         <div className="container">
-          {/* Passport crops row */}
-          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide mb-1.5 px-0.5">
-            {language === "ar"
-              ? `محاصيل لها بيانات جواز (${PASSPORT_CROPS.length})`
-              : `Passport crops with regional data (${PASSPORT_CROPS.length})`}
-          </div>
-          <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-2 mb-3">
-            {PASSPORT_CROPS.map((crop, i) => {
-              const meta = CROP_META[crop];
-              const isSelected = selectedCrops.includes(crop);
-              return (
-                <motion.button
-                  key={crop}
-                  onClick={() => handleCropToggle(crop)}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.04, duration: 0.3 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  className={`flex flex-col items-center p-2 sm:p-3 rounded-xl border-2 transition-all cursor-pointer text-center ${
-                    isSelected
-                      ? "border-primary shadow-lg bg-primary/5"
-                      : selectedCrops.length === 0
-                        ? "border-border bg-card hover:border-primary/50 hover:shadow-md"
-                        : "border-border bg-card opacity-45 hover:opacity-80"
-                  }`}
-                  title={`${meta.scientificName} — ${meta.totalAccessions} ${t("home.label.accessions")}`}
-                >
-                  <span className="text-xl sm:text-2xl mb-0.5 sm:mb-1">{meta.icon}</span>
-                  <span className="text-[10px] sm:text-xs font-semibold text-foreground truncate w-full leading-tight">
-                    {cropLabel(crop)}
-                  </span>
-                  <span className="text-base sm:text-lg font-bold mt-0.5" style={{ color: meta.color }}>
-                    {meta.totalAccessions}
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] text-muted-foreground">{t("home.label.accessions")}</span>
-                </motion.button>
-              );
-            })}
+          {/* Crops grouped by botanical / use type */}
+          <div className="text-[10px] text-muted-foreground/70 mb-2 px-0.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span className="inline-flex items-center gap-1">
+              <span className="w-3 h-3 rounded border-2 border-border bg-card inline-block" />
+              {language === "ar" ? "لها بيانات جواز" : "Passport data"}
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <span className="w-3 h-3 rounded border-2 border-dashed border-border bg-card/60 inline-block" />
+              {language === "ar" ? "جينوميات فقط (WGS/GBS)" : "Genomics-only (WGS/GBS)"}
+            </span>
           </div>
 
-          {/* Genomics-only crops row */}
-          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide mb-1.5 px-0.5">
-            {language === "ar"
-              ? `محاصيل جينوميات فقط — WGS/GBS (${ALL_CROPS.length - PASSPORT_CROPS.length})`
-              : `Genomics-only crops — WGS/GBS (${ALL_CROPS.length - PASSPORT_CROPS.length})`}
-          </div>
-          <div className="grid grid-cols-4 sm:grid-cols-7 lg:grid-cols-10 gap-1.5 sm:gap-2">
-            {ALL_CROPS.filter(c => !CROP_META[c].hasPassport).map((crop, i) => {
-              const meta = CROP_META[crop];
-              const isSelected = selectedCrops.includes(crop);
-              return (
-                <motion.button
-                  key={crop}
-                  onClick={() => handleCropToggle(crop)}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 + i * 0.03, duration: 0.3 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  className={`flex flex-col items-center p-1.5 sm:p-2 rounded-xl border-2 transition-all cursor-pointer text-center ${
-                    isSelected
-                      ? "border-primary shadow-lg bg-primary/5"
-                      : "border-dashed border-border bg-card/60 hover:border-primary/50 hover:shadow-md"
-                  }`}
-                  title={meta.scientificName}
-                >
-                  <span className="text-lg sm:text-xl mb-0.5">{meta.icon}</span>
-                  <span className="text-[9px] sm:text-[10px] font-semibold text-foreground truncate w-full leading-tight">
-                    {cropLabel(crop)}
-                  </span>
-                  <span className="text-sm sm:text-base font-bold mt-0.5" style={{ color: meta.color }}>
-                    {meta.samples}
-                  </span>
-                  <span className="text-[8px] sm:text-[9px] text-muted-foreground">{meta.sequencingType}</span>
-                </motion.button>
-              );
-            })}
-          </div>
+          {CROP_GROUP_META.map((grp) => {
+            const crops = getCropsByGroup(grp.id);
+            if (crops.length === 0) return null;
+            return (
+              <div key={grp.id} className="mb-3">
+                <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide mb-1.5 px-0.5 flex items-center gap-1.5">
+                  <span className="text-sm">{grp.icon}</span>
+                  <span>{language === "ar" ? grp.ar : grp.en}</span>
+                  <span className="text-muted-foreground/50 normal-case">({crops.length})</span>
+                </div>
+                <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-10 gap-1.5 sm:gap-2">
+                  {crops.map((crop, i) => {
+                    const meta = CROP_META[crop];
+                    const isSelected = selectedCrops.includes(crop);
+                    const dim = selectedCrops.length > 0 && !isSelected;
+                    return (
+                      <motion.button
+                        key={crop}
+                        onClick={() => handleCropToggle(crop)}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.03, duration: 0.3 }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`flex flex-col items-center p-1.5 sm:p-2 rounded-xl border-2 transition-all cursor-pointer text-center ${
+                          isSelected
+                            ? "border-primary shadow-lg bg-primary/5"
+                            : meta.hasPassport
+                              ? "border-border bg-card hover:border-primary/50 hover:shadow-md"
+                              : "border-dashed border-border bg-card/60 hover:border-primary/50 hover:shadow-md"
+                        } ${dim ? "opacity-45 hover:opacity-80" : ""}`}
+                        title={`${meta.scientificName} — ${meta.hasPassport ? `${meta.totalAccessions} ${t("home.label.accessions")}` : `${meta.samples} ${meta.sequencingType}`}`}
+                      >
+                        <span className="text-lg sm:text-xl mb-0.5">{meta.icon}</span>
+                        <span className="text-[9px] sm:text-[10px] font-semibold text-foreground truncate w-full leading-tight">
+                          {cropLabel(crop)}
+                        </span>
+                        <span className="text-sm sm:text-base font-bold mt-0.5" style={{ color: meta.color }}>
+                          {meta.hasPassport ? meta.totalAccessions : meta.samples}
+                        </span>
+                        <span className="text-[8px] sm:text-[9px] text-muted-foreground">
+                          {meta.hasPassport ? t("home.label.accessions") : meta.sequencingType}
+                        </span>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
 
           {/* Active filter bar */}
           {(selectedCrops.length > 0 || selectedRegion) && (

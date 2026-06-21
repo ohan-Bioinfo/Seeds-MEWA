@@ -327,6 +327,55 @@ export const REGION_CROP_DATA: RegionCropCounts[] = [
   },
 ];
 
+// ── Crop classification by botanical / use group ──────────────────────────
+export type CropGroup =
+  | "cereal" | "legume" | "vegetable" | "fruit" | "oilseed" | "other";
+
+export const CROP_GROUP: Record<CropType, CropGroup> = {
+  // Cereals
+  breadWheat: "cereal", durumWheat: "cereal", barley: "cereal",
+  millet: "cereal", sorghum: "cereal", oat: "cereal",
+  // Legumes
+  fabaBean: "legume", chickpea: "legume", asparagusBean: "legume",
+  fenugreek: "legume", guar: "legume",
+  // Vegetables
+  okra: "vegetable", hotPepper: "vegetable", pumpkin: "vegetable",
+  // Fruits
+  mango: "fruit", fig: "fruit", pomegranate: "fruit", papaya: "fruit",
+  peach: "fruit", plum: "fruit", grape: "fruit", apricot: "fruit",
+  guava: "fruit", lemon: "fruit", quince: "fruit", apricotArmeniaca: "fruit",
+  // Oilseeds
+  sesame: "oilseed",
+  // Other (beverage / rootstock)
+  coffee: "other", nemaGuard: "other",
+};
+
+// Display order + bilingual labels for each group
+export const CROP_GROUP_META: { id: CropGroup; en: string; ar: string; icon: string }[] = [
+  { id: "cereal",    en: "Cereals",    ar: "الحبوب",        icon: "🌾" },
+  { id: "legume",    en: "Legumes",    ar: "البقوليات",     icon: "🫘" },
+  { id: "vegetable", en: "Vegetables", ar: "الخضروات",      icon: "🥬" },
+  { id: "fruit",     en: "Fruits",     ar: "الفواكه",       icon: "🍎" },
+  { id: "oilseed",   en: "Oilseeds",   ar: "البذور الزيتية", icon: "🌰" },
+  { id: "other",     en: "Other",      ar: "أخرى",          icon: "☕" },
+];
+
+/**
+ * Crops in a group, passport crops first, then by accession/sample count desc.
+ */
+export function getCropsByGroup(group: CropGroup): CropType[] {
+  return (Object.keys(CROP_META) as CropType[])
+    .filter((c) => CROP_GROUP[c] === group)
+    .sort((a, b) => {
+      const pa = CROP_META[a].hasPassport ? 1 : 0;
+      const pb = CROP_META[b].hasPassport ? 1 : 0;
+      if (pa !== pb) return pb - pa;
+      const va = CROP_META[a].totalAccessions || CROP_META[a].samples;
+      const vb = CROP_META[b].totalAccessions || CROP_META[b].samples;
+      return vb - va;
+    });
+}
+
 /**
  * Get all crop types (including those without regional data like mango)
  */
