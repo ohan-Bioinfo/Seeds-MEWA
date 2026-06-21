@@ -6,7 +6,7 @@
  */
 
 import { useState, useMemo, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   PieChart,
   Pie,
@@ -37,6 +37,7 @@ import {
   getPassportCropTypes,
   getCropsByGroup,
   CROP_GROUP_META,
+  type CropGroup,
   REGION_CROP_DATA,
 } from "@/data/passportData";
 import {
@@ -50,6 +51,7 @@ import {
   HardDrive,
   TrendingUp,
   BarChart3,
+  ChevronDown,
 } from "lucide-react";
 
 const ALL_CROPS = getActiveCropTypes();          // all 28
@@ -193,6 +195,7 @@ function ChartTooltip({
 export default function Home() {
   const { t, language } = useLanguage();
   const [selectedCrops, setSelectedCrops] = useState<CropType[]>([]);
+  const [expandedGroup, setExpandedGroup] = useState<CropGroup | null>(null);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
 
   // Filtered region data based on selected crops
@@ -386,40 +389,77 @@ export default function Home() {
       {/* ── Crop tiles strip ── */}
       <section className="bg-muted/40 border-y border-border py-4">
         <div className="container">
-          {/* Crops grouped by botanical / use type */}
-          <div className="text-[10px] text-muted-foreground/70 mb-2 px-0.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span className="inline-flex items-center gap-1">
-              <span className="w-3 h-3 rounded border-2 border-border bg-card inline-block" />
-              {language === "ar" ? "لها بيانات جواز" : "Passport data"}
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="w-3 h-3 rounded border-2 border-dashed border-border bg-card/60 inline-block" />
-              {language === "ar" ? "جينوميات فقط (WGS/GBS)" : "Genomics-only (WGS/GBS)"}
-            </span>
+          {/* Category cluster cards — click to drill into a group's crops */}
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+            {CROP_GROUP_META.map((grp) => {
+              const crops = getCropsByGroup(grp.id);
+              if (crops.length === 0) return null;
+              const isOpen = expandedGroup === grp.id;
+              const selectedInGroup = crops.filter((c) => selectedCrops.includes(c)).length;
+              return (
+                <motion.button
+                  key={grp.id}
+                  onClick={() => setExpandedGroup(isOpen ? null : grp.id)}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className={`relative flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all cursor-pointer text-center ${
+                    isOpen
+                      ? "border-primary bg-primary/5 shadow-lg"
+                      : selectedInGroup > 0
+                        ? "border-primary/60 bg-primary/5 hover:shadow-md"
+                        : "border-border bg-card hover:border-primary/40 hover:shadow-md"
+                  }`}
+                >
+                  {selectedInGroup > 0 && (
+                    <span className="absolute top-1.5 end-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-bold flex items-center justify-center">
+                      {selectedInGroup}
+                    </span>
+                  )}
+                  <span className="text-2xl sm:text-3xl mb-1">{grp.icon}</span>
+                  <span className="text-xs sm:text-sm font-semibold text-foreground leading-tight">
+                    {language === "ar" ? grp.ar : grp.en}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground mt-0.5 flex items-center gap-1">
+                    {crops.length} {language === "ar" ? "محاصيل" : "crops"}
+                    <ChevronDown className={`h-3 w-3 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                  </span>
+                </motion.button>
+              );
+            })}
           </div>
 
-          {CROP_GROUP_META.map((grp) => {
-            const crops = getCropsByGroup(grp.id);
-            if (crops.length === 0) return null;
-            return (
-              <div key={grp.id} className="mb-3">
-                <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide mb-1.5 px-0.5 flex items-center gap-1.5">
-                  <span className="text-sm">{grp.icon}</span>
-                  <span>{language === "ar" ? grp.ar : grp.en}</span>
-                  <span className="text-muted-foreground/50 normal-case">({crops.length})</span>
+          {/* Drill-in: crops of the expanded category */}
+          <AnimatePresence initial={false}>
+            {expandedGroup && (
+              <motion.div
+                key={expandedGroup}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden"
+              >
+                <div className="text-[10px] text-muted-foreground/70 mt-3 mb-2 px-0.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span className="inline-flex items-center gap-1">
+                    <span className="w-3 h-3 rounded border-2 border-border bg-card inline-block" />
+                    {language === "ar" ? "لها بيانات جواز" : "Passport data"}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <span className="w-3 h-3 rounded border-2 border-dashed border-border bg-card/60 inline-block" />
+                    {language === "ar" ? "جينوميات فقط (WGS/GBS)" : "Genomics-only (WGS/GBS)"}
+                  </span>
                 </div>
-                <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-10 gap-1.5 sm:gap-2">
-                  {crops.map((crop, i) => {
+                <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-10 gap-1.5 sm:gap-2 pb-1">
+                  {getCropsByGroup(expandedGroup).map((crop, i) => {
                     const meta = CROP_META[crop];
                     const isSelected = selectedCrops.includes(crop);
-                    const dim = selectedCrops.length > 0 && !isSelected;
                     return (
                       <motion.button
                         key={crop}
                         onClick={() => handleCropToggle(crop)}
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: i * 0.03, duration: 0.3 }}
+                        transition={{ delay: i * 0.03, duration: 0.25 }}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.97 }}
                         className={`flex flex-col items-center p-1.5 sm:p-2 rounded-xl border-2 transition-all cursor-pointer text-center ${
@@ -428,7 +468,7 @@ export default function Home() {
                             : meta.hasPassport
                               ? "border-border bg-card hover:border-primary/50 hover:shadow-md"
                               : "border-dashed border-border bg-card/60 hover:border-primary/50 hover:shadow-md"
-                        } ${dim ? "opacity-45 hover:opacity-80" : ""}`}
+                        }`}
                         title={`${meta.scientificName} — ${meta.hasPassport ? `${meta.totalAccessions} ${t("home.label.accessions")}` : `${meta.samples} ${meta.sequencingType}`}`}
                       >
                         <span className="text-lg sm:text-xl mb-0.5">{meta.icon}</span>
@@ -445,9 +485,9 @@ export default function Home() {
                     );
                   })}
                 </div>
-              </div>
-            );
-          })}
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Active filter bar */}
           {(selectedCrops.length > 0 || selectedRegion) && (
