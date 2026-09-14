@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>MEWA Seed Center · Sign in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Reem+Kufi:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --forest: #0b5f3a;
+        --canopy: #06301e;
+        --gold: #d4af37;
+        --paper: #e8f0ea;
+        --ink: #122a1f;
+        --line: #c3d3c8;
+        --muted: #4d6a5b;
+        --error: #b3261e;
+        --display: "Reem Kufi", "IBM Plex Sans Arabic", system-ui, sans-serif;
+        --body:
+          "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Tahoma,
+          sans-serif;
+        --mono:
+          "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: var(--body);
+        color: var(--ink);
+        background: var(--paper);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+
+      /* ---------- Identity panel ---------- */
+      .panel {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            120% 80% at 85% 110%,
+            rgba(212, 175, 55, 0.12),
+            transparent 60%
+          ),
+          var(--canopy);
+        color: #eaf2ec;
+        padding: clamp(28px, 5vw, 64px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 48px;
+      }
+
+      .brand {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand img {
+        height: 52px;
+        width: auto;
+        background: #fff;
+        border-radius: 8px;
+        padding: 6px;
+      }
+
+      .brand .v2030 {
+        height: 44px;
+      }
+
+      .lang {
+        margin-inline-start: auto;
+        font-family: var(--body);
+        font-size: 14px;
+        color: #eaf2ec;
+        background: transparent;
+        border: 1px solid rgba(234, 242, 236, 0.35);
+        border-radius: 999px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+
+      .lang:hover {
+        border-color: var(--gold);
+        background: rgba(212, 175, 55, 0.08);
+      }
+
+      .thesis {
+        position: relative;
+        z-index: 1;
+        max-width: 34rem;
+      }
+
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin: 0 0 20px;
+      }
+
+      [dir="rtl"] .eyebrow {
+        font-family: var(--body);
+        font-size: 15px;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        font-family: var(--display);
+        font-weight: 600;
+        font-size: clamp(2.4rem, 5.2vw, 4.6rem);
+        line-height: 1.12;
+        margin: 0 0 22px;
+        color: #fff;
+        text-wrap: balance;
+      }
+
+      .lede {
+        font-size: clamp(1rem, 1.3vw, 1.125rem);
+        line-height: 1.75;
+        color: rgba(234, 242, 236, 0.78);
+        margin: 0;
+        max-width: 30rem;
+      }
+
+      .collection {
+        position: relative;
+        z-index: 1;
+      }
+
+      .collection h2 {
+        font-family: var(--mono);
+        font-weight: 500;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(234, 242, 236, 0.55);
+        margin: 0 0 12px;
+      }
+
+      [dir="rtl"] .collection h2 {
+        font-family: var(--body);
+        font-size: 14px;
+        letter-spacing: 0;
+      }
+
+      .crops {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        max-width: 36rem;
+      }
+
+      .crops li {
+        font-size: 14px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        color: #f3ecd2;
+      }
+
+      /* Wheat ear line drawing */
+      .ear {
+        position: absolute;
+        inset-block: -4%;
+        inset-inline-end: -6%;
+        height: 108%;
+        width: auto;
+        pointer-events: none;
+        opacity: 0.9;
+      }
+
+      [dir="ltr"] .ear {
+        transform: scaleX(-1);
+      }
+
+      .ear * {
+        fill: none;
+        stroke: var(--gold);
+        stroke-width: 1.3;
+        stroke-linecap: round;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: draw 2.4s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+      }
+
+      .ear .awn {
+        stroke-width: 0.8;
+        opacity: 0.55;
+        animation-duration: 2.8s;
+      }
+
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      /* ---------- Sign-in side ---------- */
+      .access {
+        display: grid;
+        place-items: center;
+        padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 56px);
+      }
+
+      .card {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 44px 32px 32px;
+        box-shadow:
+          0 1px 0 rgba(18, 42, 31, 0.04),
+          0 24px 48px -28px rgba(6, 48, 30, 0.35);
+      }
+
+      /* Tag punch-hole, like the label tied to a seed sample bag */
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 16px;
+        inset-inline-start: 50%;
+        width: 14px;
+        height: 14px;
+        margin-inline-start: -7px;
+        border-radius: 50%;
+        background: var(--paper);
+        box-shadow: inset 0 1px 2px rgba(18, 42, 31, 0.25);
+      }
+
+      .card h2 {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 1.75rem;
+        margin: 8px 0 8px;
+        color: var(--forest);
+      }
+
+      .hint {
+        margin: 0 0 26px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      .error {
+        display: none;
+        margin: 0 0 20px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        background: #fbeceb;
+        color: var(--error);
+        font-size: 14px;
+        line-height: 1.6;
+        border-inline-start: 3px solid var(--error);
+      }
+
+      .error.show {
+        display: block;
+      }
+
+      .field {
+        margin-bottom: 18px;
+      }
+
+      label {
+        display: block;
+        font-weight: 500;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .input-wrap {
+        position: relative;
+      }
+
+      input {
+        width: 100%;
+        font: inherit;
+        font-size: 16px;
+        color: var(--ink);
+        background: #f7faf8;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px 14px;
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s,
+          background 0.15s;
+      }
+
+      input:focus {
+        outline: none;
+        background: #fff;
+        border-color: var(--forest);
+        box-shadow: 0 0 0 3px rgba(11, 95, 58, 0.18);
+      }
+
+      .has-toggle input {
+        padding-inline-end: 64px;
+      }
+
+      .toggle {
+        position: absolute;
+        inset-block: 6px;
+        inset-inline-end: 6px;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--forest);
+        background: transparent;
+        border: 0;
+        border-radius: 7px;
+        padding: 0 10px;
+        cursor: pointer;
+      }
+
+      .toggle:hover {
+        background: var(--paper);
+      }
+
+      .submit {
+        width: 100%;
+        margin-top: 8px;
+        font: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        background: var(--forest);
+        border: 0;
+        border-radius: 10px;
+        padding: 14px;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.1s;
+      }
+
+      .submit:hover {
+        background: #0a5233;
+      }
+
+      .submit:active {
+        transform: translateY(1px);
+      }
+
+      .lang:focus-visible,
+      .toggle:focus-visible,
+      .submit:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 2px;
+      }
+
+      .footnote {
+        margin: 24px 0 0;
+        padding-top: 18px;
+        border-top: 1px dashed var(--line);
+        font-size: 13px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 880px) {
+        .shell {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          gap: 32px;
+          padding-bottom: 40px;
+        }
+
+        .collection {
+          display: none;
+        }
+
+        .ear {
+          height: 130%;
+          inset-inline-end: -18%;
+          opacity: 0.4;
+        }
+
+        .access {
+          padding-top: 32px;
+          padding-bottom: 48px;
+        }
+
+        .brand img {
+          height: 44px;
+        }
+
+        .brand .v2030 {
+          height: 36px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .ear * {
+          animation: none;
+          stroke-dashoffset: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <section class="panel">
+        <svg
+          class="ear"
+          viewBox="0 0 400 900"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path pathLength="1" d="M214 900 C 206 700 196 520 200 150" />
+          <g id="grains"></g>
+        </svg>
+
+        <div class="brand">
+          <img src="/mewa-logo.jpg" alt="MEWA" />
+          <img class="v2030" src="/vision2030.png" alt="Vision 2030" />
+          <button class="lang" type="button" id="lang">English</button>
+        </div>
+
+        <div class="thesis">
+          <p class="eyebrow" data-i18n="ministry"></p>
+          <h1 data-i18n="title"></h1>
+          <p class="lede" data-i18n="lede"></p>
+        </div>
+
+        <div class="collection">
+          <h2 data-i18n="collection"></h2>
+          <ul class="crops" id="crops"></ul>
+        </div>
+      </section>
+
+      <main class="access">
+        <form class="card" method="post" action="/login" id="form">
+          <h2 data-i18n="signIn"></h2>
+          <p class="hint" data-i18n="hint"></p>
+          <p class="error" id="error" role="alert" data-i18n="error"></p>
+
+          <input type="hidden" name="next" id="next" value="/" />
+
+          <div class="field">
+            <label for="username" data-i18n="username"></label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              autocomplete="username"
+              autocapitalize="none"
+              spellcheck="false"
+              required
+              autofocus
+            />
+          </div>
+
+          <div class="field">
+            <label for="password" data-i18n="password"></label>
+            <div class="input-wrap has-toggle">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+              />
+              <button
+                class="toggle"
+                type="button"
+                id="toggle"
+                aria-controls="password"
+                data-i18n="show"
+              ></button>
+            </div>
+          </div>
+
+          <button class="submit" type="submit" data-i18n="signIn"></button>
+
+          <p class="footnote" data-i18n="country"></p>
+        </form>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var copy = {
+          ar: {
+            ministry: "وزارة البيئة والمياه والزراعة",
+            title: "مركز بيانات البذور والتقاوي",
+            lede: "بيانات الجواز والمخزون الوراثي للمحاصيل المحفوظة في بنك البذور عبر مناطق المملكة.",
+            collection: "المحاصيل في المجموعة",
+            crops: [
+              "قمح الخبز",
+              "قمح الدوروم",
+              "شعير",
+              "دخن",
+              "ذرة رفيعة",
+              "سمسم",
+              "فول",
+              "بن",
+              "مانجو",
+              "بابايا",
+            ],
+            signIn: "تسجيل الدخول",
+            hint: "الوصول إلى هذا الموقع مخصص للمستخدمين المصرح لهم. أدخل اسم المستخدم وكلمة المرور.",
+            error:
+              "اسم المستخدم أو كلمة المرور غير صحيحة. تحقق منهما وحاول مرة أخرى.",
+            username: "اسم المستخدم",
+            password: "كلمة المرور",
+            show: "إظهار",
+            hide: "إخفاء",
+            country: "المملكة العربية السعودية",
+            other: "English",
+            doc: "تسجيل الدخول · مركز بيانات البذور",
+          },
+          en: {
+            ministry: "Ministry of Environment, Water & Agriculture",
+            title: "MEWA Seed & Seedlings Data Center",
+            lede: "Passport and inventory data for the crops held in the seed bank, across the regions of the Kingdom.",
+            collection: "Crops in the collection",
+            crops: [
+              "Bread wheat",
+              "Durum wheat",
+              "Barley",
+              "Millet",
+              "Sorghum",
+              "Sesame",
+              "Faba bean",
+              "Coffee",
+              "Mango",
+              "Papaya",
+            ],
+            signIn: "Sign in",
+            hint: "This site is limited to authorized users. Enter your username and password.",
+            error:
+              "The username or password is incorrect. Check both and try again.",
+            username: "Username",
+            password: "Password",
+            show: "Show",
+            hide: "Hide",
+            country: "Kingdom of Saudi Arabia",
+            other: "العربية",
+            doc: "Sign in · MEWA Seed Center",
+          },
+        };
+
+        var lang = "ar";
+        try {
+          lang = localStorage.getItem("language") === "en" ? "en" : "ar";
+        } catch (e) {}
+
+        var passwordInput = document.getElementById("password");
+        var toggle = document.getElementById("toggle");
+
+        function render() {
+          var t = copy[lang];
+          document.documentElement.lang = lang;
+          document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+          document.title = t.doc;
+          document.querySelectorAll("[data-i18n]").forEach(function (el) {
+            el.textContent = t[el.getAttribute("data-i18n")];
+          });
+          toggle.textContent =
+            passwordInput.type === "password" ? t.show : t.hide;
+          document.getElementById("lang").textContent = t.other;
+          document.getElementById("crops").innerHTML = t.crops
+            .map(function (c) {
+              return "<li>" + c + "</li>";
+            })
+            .join("");
+        }
+
+        document.getElementById("lang").addEventListener("click", function () {
+          lang = lang === "ar" ? "en" : "ar";
+          try {
+            localStorage.setItem("language", lang);
+          } catch (e) {}
+          render();
+        });
+
+        toggle.addEventListener("click", function () {
+          passwordInput.type =
+            passwordInput.type === "password" ? "text" : "password";
+          toggle.textContent =
+            copy[lang][passwordInput.type === "password" ? "show" : "hide"];
+          passwordInput.focus();
+        });
+
+        var params = new URLSearchParams(location.search);
+        if (params.get("error")) {
+          document.getElementById("error").classList.add("show");
+        }
+        var next = params.get("next");
+        if (next && next.charAt(0) === "/" && next.charAt(1) !== "/") {
+          document.getElementById("next").value = next;
+        }
+
+        // Wheat ear grains: alternating spikelets up the stem, each with an awn
+        var ns = "http://www.w3.org/2000/svg";
+        var grains = document.getElementById("grains");
+        for (var i = 0; i < 11; i++) {
+          var y = 640 - i * 44;
+          var side = i % 2 === 0 ? -1 : 1;
+          var scale = 1 - i * 0.035;
+          var g = document.createElementNS(ns, "g");
+          g.setAttribute(
+            "transform",
+            "translate(" +
+              (201 + side * 4) +
+              " " +
+              y +
+              ") rotate(" +
+              side * 24 +
+              ") scale(" +
+              scale +
+              ")"
+          );
+          var grain = document.createElementNS(ns, "path");
+          grain.setAttribute("pathLength", "1");
+          grain.setAttribute(
+            "d",
+            "M0 0 C -20 -22 -20 -62 0 -84 C 20 -62 20 -22 0 0 Z"
+          );
+          grain.style.animationDelay = 0.5 + i * 0.09 + "s";
+          var crease = document.createElementNS(ns, "path");
+          crease.setAttribute("pathLength", "1");
+          crease.setAttribute("d", "M0 -8 C -4 -30 -4 -54 0 -76");
+          crease.style.animationDelay = 0.8 + i * 0.09 + "s";
+          var awn = document.createElementNS(ns, "path");
+          awn.setAttribute("class", "awn");
+          awn.setAttribute("pathLength", "1");
+          awn.setAttribute("d", "M0 -84 C 2 -150 6 -210 14 -270");
+          awn.style.animationDelay = 1 + i * 0.09 + "s";
+          g.appendChild(grain);
+          g.appendChild(crease);
+          g.appendChild(awn);
+          grains.appendChild(g);
+        }
+
+        render();
+      })();
+    </script>
+  </body>
+</html>
